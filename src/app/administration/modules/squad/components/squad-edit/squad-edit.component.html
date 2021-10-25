@@ -1,0 +1,75 @@
+<div *ngIf="_squad" class="edit-container">
+
+  <h3 *ngIf="!_createMode">Squad : {{ _squad.name }}</h3>
+  <h3 *ngIf="_createMode">Create a squad !</h3>
+
+  <div class="edit-category">
+    <h4 class="edit-category-title">Main informations</h4>
+    <form [formGroup]="squadForm" class="edit-form">
+      <div class="edit-field">
+        <label class="edit-label">Name</label>
+        <input class="edit-input" formControlName="name" type="text" pInputText />
+      </div>
+    </form>
+    <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
+      class="edit-save p-button-outlined p-button-success" (click)="createSquad()" [disabled]="squadForm.invalid"></button>
+    <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
+      class="edit-save p-button-outlined p-button-primary" (click)="updateSquad()" [disabled]="squadForm.invalid"></button>
+  </div>
+
+  <ng-container *ngIf="!_createMode">
+    <div class="edit-category">
+      <h4 class="edit-category-title">Manager informations</h4>
+      <ng-container *ngIf="_squad.manager">
+        <form [formGroup]="managerForm" class="edit-form">
+          <div class="double-field-container">
+            <div class="edit-field">
+              <label class="edit-label">Firstname</label>
+              <input class="edit-input" formControlName="firstName" type="text" pInputText />
+            </div>
+            <div class="edit-field">
+              <label class="edit-label">lastname</label>
+              <input class="edit-input" formControlName="lastName" type="text" pInputText />
+            </div>
+          </div>
+          <div class="double-field-container">
+            <div class="edit-field">
+              <label class="edit-label">Email</label>
+              <input class="edit-input" formControlName="email" type="text" pInputText />
+            </div>
+            <div class="edit-field">
+              <label class="edit-label">Rank</label>
+              <input class="edit-input" formControlName="rank" type="text" pInputText />
+            </div>
+          </div>
+        </form>
+        <button pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Manager"
+          class="edit-save p-button-outlined p-button-danger" (click)="removeManagement(_squad.manager.id)"></button>
+      </ng-container>
+      <ng-container *ngIf="!_squad.manager">
+        <div>
+          <p class="empty-list-message">This squad hasn't manager yet :(</p>
+          <app-buster-search (busterSelection)="addManagement($event)"></app-buster-search>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="edit-category">
+      <h4 class="edit-category-title">Busters in this squad</h4>
+      <p class="empty-list-message">WIP</p>
+    </div>
+
+    <div class="edit-category">
+      <h4 class="edit-category-title">Squad's clients</h4>
+      <p class="empty-list-message">WIP</p>
+    </div>
+
+    <div class="edit-category">
+      <h4 class="edit-category-title">Related technologies</h4>
+      <p class="empty-list-message">WIP</p>
+    </div>
+  </ng-container>
+
+
+
+</div>

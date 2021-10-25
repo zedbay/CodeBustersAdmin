@@ -1,0 +1,8 @@
+<div class="listing">
+  <div class="list-header">
+    <h2>Clients</h2>
+  </div>
+  <app-client-listing [clients]="clients" (selectClient)="selectClient($event)">
+  </app-client-listing>
+</div>
+<app-client-edit [clients]="selectedClient" class="edit-element"></app-client-edit>

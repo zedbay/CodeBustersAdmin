@@ -1,0 +1,7 @@
+<div class="add-first-element-container">
+  <p-autoComplete [(ngModel)]="research" [suggestions]="results" (completeMethod)="search($event)" class="add-first-element-input"
+    [dropdown]="true" (onSelect)="selectSquad($event)">
+  </p-autoComplete>
+  <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Add Squad" class="edit-save p-button-outlined p-button-success"
+    [disabled]="!selectedSquad" (click)="emitSquad()"></button>
+</div>

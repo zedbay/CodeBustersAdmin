@@ -1,0 +1,7 @@
+<div class="listing">
+  <div class="list-header">
+    <h2>Technologies</h2>
+  </div>
+  <app-technology-listing [technos]="technos" (selectTechnology)="selectTechno($event)"></app-technology-listing>
+</div>
+<app-technology-edit [techno]="selectedTechno" class="edit-element"></app-technology-edit>

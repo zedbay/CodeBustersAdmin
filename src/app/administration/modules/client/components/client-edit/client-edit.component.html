@@ -1,0 +1,22 @@
+<div *ngIf="_client" class="edit-container">
+  <h3>Client : {{ _client.name }}</h3>
+
+  <div class="edit-category">
+    <h4 class="edit-category-title">Main informations</h4>
+    <form [formGroup]="clientForm" class="edit-form">
+      <div class="edit-field">
+        <label class="edit-label">Name</label>
+        <input class="edit-input" formControlName="name" type="text" pInputText />
+      </div>
+    </form>
+  </div>
+
+  <div class="edit-category">
+    <h4 class="edit-category-title">Client's busters</h4>
+  </div>
+
+  <div class="edit-category">
+    <h4 class="edit-category-title">Related technologies</h4>
+  </div>
+
+</div>

@@ -1,0 +1,83 @@
+<div *ngIf="_buster" class="edit-container">
+
+  <h3 *ngIf="!_createMode">Buster: {{ _buster.firstName }} {{ _buster.lastName }}</h3>
+  <h3 *ngIf="_createMode">Create a buster !</h3>
+
+  <div class="edit-category">
+    <h4 class="edit-category-title">Main informations</h4>
+    <form [formGroup]="busterForm" class="edit-form">
+      <div class="double-field-container">
+        <div class="edit-field">
+          <label class="edit-label">Firstname</label>
+          <input class="edit-input" formControlName="firstName" type="text" pInputText />
+        </div>
+        <div class="edit-field">
+          <label class="edit-label">lastname</label>
+          <input class="edit-input" formControlName="lastName" type="text" pInputText />
+        </div>
+      </div>
+      <div class="double-field-container">
+        <div class="edit-field">
+          <label class="edit-label">Email</label>
+          <input class="edit-input" formControlName="email" type="text" pInputText />
+        </div>
+        <div class="edit-field">
+          <label class="edit-label">Rank</label>
+          <input class="edit-input" formControlName="rank" type="text" pInputText />
+        </div>
+      </div>
+    </form>
+    <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
+      class="edit-save p-button-outlined p-button-success" (click)="createBuster()" [disabled]="busterForm.invalid"></button>
+    <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
+      class="edit-save p-button-outlined p-button-primary" (click)="updateBuster()" [disabled]="busterForm.invalid"></button>
+  </div>
+
+  <ng-container *ngIf="!_createMode">
+    <div class="edit-category">
+      <h4 class="edit-category-title">Buster's squad</h4>
+      <form [formGroup]="busterSquadForm" class="edit-form" *ngIf="_buster.squad">
+        <div class="edit-field">
+          <label class="edit-label">Name</label>
+          <input class="edit-input" formControlName="name" type="text" pInputText />
+        </div>
+      </form>
+      <button *ngIf="_buster.squad" pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Membership"
+        class="edit-save p-button-outlined p-button-danger" (click)="removeMembershipOfSquad(_buster.squad.id)"></button>
+      <div *ngIf="!_buster.squad">
+        <p class="empty-list-message">This buster isn't member of squad :(</p>
+        <app-squad-search (squadSelection)="addMembership($event)"></app-squad-search>
+      </div>
+    </div>
+
+    <div class="edit-category">
+      <h4>Buster's current client</h4>
+      <form [formGroup]="busterCurrentClientForm" class="edit-form" *ngIf="_buster.currentClient">
+        <div class="edit-field">
+          <label class="edit-label">Name</label>
+          <input class="edit-input" formControlName="name" type="text" pInputText />
+        </div>
+      </form>
+      <button *ngIf="_buster.currentClient" pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Current Client"
+        class="edit-save p-button-outlined p-button-danger" (click)="removeCurrentClient(_buster.currentClient.id)"></button>
+      <div *ngIf="!_buster.currentClient">
+        <p class="empty-list-message">This buster hasn't current client yet :(</p>
+        <app-client-search (clientSelection)="addCurrentClient($event)"></app-client-search>
+      </div>
+    </div>
+
+    <div class="edit-category">
+      <h4 class="edit-category-title">All buster's clients</h4>
+      <p class="empty-list-message">WIP</p>
+    </div>
+
+    <div class="edit-category">
+      <h4 class="edit-category-title">Buster's technologies</h4>
+      <p class="empty-list-message">WIP</p>
+    </div>
+
+  </ng-container>
+
+
+
+</div>
