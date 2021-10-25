@@ -1,7 +1,11 @@
 <div class="listing">
   <div class="list-header">
     <h2>Technologies</h2>
+    <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Create A Technology"
+      class="edit-save p-button-outlined p-button-success" (click)="creationMode = true"></button>
   </div>
-  <app-technology-listing [technos]="technos" (selectTechnology)="selectTechno($event)"></app-technology-listing>
+  <app-technology-listing (deleteTechnology)="deleteTechno($event)" [technos]="technos" (selectTechnology)="selectTechno($event)">
+  </app-technology-listing>
 </div>
-<app-technology-edit [techno]="selectedTechno" class="edit-element"></app-technology-edit>
+<app-technology-edit (newTechno)="onTechnoCreation($event)" [createMode]="creationMode" [techno]="selectedTechno" class="edit-element">
+</app-technology-edit>

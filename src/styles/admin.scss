@@ -26,6 +26,11 @@
     .edit-category-title {
       margin: 0 0 12px 0;
     }
+
+    .edit-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 
   .edit-form {
@@ -65,14 +70,12 @@
 }
 
 .add-first-element-container {
+  margin-top: 12px;
   display: flex;
-
-  :first-child {
-    margin-right: 12px;
-  }
+  justify-content: flex-end;
 
   .add-first-element-input {
-    flex: 1;
+    margin-right: 12px;
   }
 }
 

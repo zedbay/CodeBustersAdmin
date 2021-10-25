@@ -6,7 +6,7 @@ import { BusterRoutingModule } from './buster-routing.module';
 import { BusterEditComponent } from './components/buster-edit/buster-edit.component';
 import { BusterComponent } from './components/buster/buster.component';
 import { SharedAdministrationModule } from '../../shared-administration/shared-administration.module';
-import { BusterListingComponent } from './components/buster-listing/buster-listing.component';
+import { BusterListingComponent } from '../../shared-administration/components/buster-listing/buster-listing.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientModule } from '../client/client.module';
 import { AutoCompleteModule } from 'primeng/autocomplete';
@@ -17,8 +17,7 @@ import { SquadListingComponent } from '../squad/components/squad-listing/squad-l
 @NgModule({
   declarations: [
     BusterEditComponent,
-    BusterComponent,
-    BusterListingComponent
+    BusterComponent
   ],
   imports: [
     CommonModule,

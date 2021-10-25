@@ -7,4 +7,6 @@ export class Squad extends Resource {
 
   manager?: Buster;
 
+  members?: Buster[];
+
 }

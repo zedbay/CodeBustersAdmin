@@ -11,10 +11,12 @@
         <input class="edit-input" formControlName="name" type="text" pInputText />
       </div>
     </form>
-    <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
-      class="edit-save p-button-outlined p-button-success" (click)="createSquad()" [disabled]="squadForm.invalid"></button>
-    <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
-      class="edit-save p-button-outlined p-button-primary" (click)="updateSquad()" [disabled]="squadForm.invalid"></button>
+    <div class="edit-actions">
+      <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
+        class="edit-save p-button-outlined p-button-success" (click)="createSquad()" [disabled]="squadForm.invalid"></button>
+      <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
+        class="edit-save p-button-outlined p-button-primary" (click)="updateSquad()" [disabled]="squadForm.invalid"></button>
+    </div>
   </div>
 
   <ng-container *ngIf="!_createMode">
@@ -43,8 +45,10 @@
             </div>
           </div>
         </form>
-        <button pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Manager"
-          class="edit-save p-button-outlined p-button-danger" (click)="removeManagement(_squad.manager.id)"></button>
+        <div class="edit-actions">
+          <button pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Manager"
+            class="edit-save p-button-outlined p-button-danger" (click)="removeManagement(_squad.manager.id)"></button>
+        </div>
       </ng-container>
       <ng-container *ngIf="!_squad.manager">
         <div>
@@ -56,7 +60,9 @@
 
     <div class="edit-category">
       <h4 class="edit-category-title">Busters in this squad</h4>
-      <p class="empty-list-message">WIP</p>
+      <app-buster-listing [busters]="_squad.members" (deleteBuster)="removeBusterInSquad($event)"></app-buster-listing>
+      <p class="empty-list-message" *ngIf="!_squad.members || _squad.members.length === 0">This squad has no member yet :(</p>
+      <app-buster-search (busterSelection)="addMemberInSquad($event)"></app-buster-search>
     </div>
 
     <div class="edit-category">

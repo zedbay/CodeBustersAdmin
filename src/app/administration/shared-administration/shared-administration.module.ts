@@ -7,12 +7,14 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { BusterListingComponent } from './components/buster-listing/buster-listing.component';
 
 
 @NgModule({
   declarations: [
     TableComponent,
-    BusterSearchComponent
+    BusterSearchComponent,
+    BusterListingComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { ButtonModule } from 'primeng/button';
   ],
   exports: [
     TableComponent,
-    BusterSearchComponent
+    BusterSearchComponent,
+    BusterListingComponent
   ]
 })
 export class SharedAdministrationModule { }

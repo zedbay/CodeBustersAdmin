@@ -27,10 +27,12 @@
         </div>
       </div>
     </form>
-    <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
-      class="edit-save p-button-outlined p-button-success" (click)="createBuster()" [disabled]="busterForm.invalid"></button>
-    <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
-      class="edit-save p-button-outlined p-button-primary" (click)="updateBuster()" [disabled]="busterForm.invalid"></button>
+    <div class="edit-actions">
+      <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
+        class="edit-save p-button-outlined p-button-success" (click)="createBuster()" [disabled]="busterForm.invalid"></button>
+      <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
+        class="edit-save p-button-outlined p-button-primary" (click)="updateBuster()" [disabled]="busterForm.invalid"></button>
+    </div>
   </div>
 
   <ng-container *ngIf="!_createMode">
@@ -42,8 +44,11 @@
           <input class="edit-input" formControlName="name" type="text" pInputText />
         </div>
       </form>
-      <button *ngIf="_buster.squad" pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Membership"
-        class="edit-save p-button-outlined p-button-danger" (click)="removeMembershipOfSquad(_buster.squad.id)"></button>
+      <div class="edit-actions">
+        <button *ngIf="_buster.squad" pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Membership"
+          class="edit-save p-button-outlined p-button-danger" (click)="removeMembershipOfSquad(_buster.squad.id)"></button>
+      </div>
+
       <div *ngIf="!_buster.squad">
         <p class="empty-list-message">This buster isn't member of squad :(</p>
         <app-squad-search (squadSelection)="addMembership($event)"></app-squad-search>
@@ -58,8 +63,12 @@
           <input class="edit-input" formControlName="name" type="text" pInputText />
         </div>
       </form>
-      <button *ngIf="_buster.currentClient" pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Current Client"
-        class="edit-save p-button-outlined p-button-danger" (click)="removeCurrentClient(_buster.currentClient.id)"></button>
+
+      <div class="edit-actions">
+        <button *ngIf="_buster.currentClient" pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Current Client"
+          class="edit-save p-button-outlined p-button-danger" (click)="removeCurrentClient(_buster.currentClient.id)"></button>
+      </div>
+
       <div *ngIf="!_buster.currentClient">
         <p class="empty-list-message">This buster hasn't current client yet :(</p>
         <app-client-search (clientSelection)="addCurrentClient($event)"></app-client-search>

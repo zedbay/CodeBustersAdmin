@@ -17,12 +17,15 @@ export class SquadEditComponent implements OnInit {
 
   @Input() set createMode(createMode: boolean) {
     this._createMode = createMode;
-    this.resetSquadForm();
+    if (createMode) {
+      this.resetSquadForm();
+    }
   }
 
   @Input() set squad(squad: Squad) {
 
     if (squad) {
+
       this._squad = squad;
       this.squadForm.controls.name.setValue(squad.name);
 
@@ -96,6 +99,18 @@ export class SquadEditComponent implements OnInit {
         this._squad.manager = buster;
         this.initManagerForm(buster);
       }
+    );
+  }
+
+  public removeBusterInSquad(busterId: number) {
+    this.busterService.removeMembershipOfSquad(busterId, this._squad.id).subscribe(
+      () => this._squad.members = this._squad.members.filter((b) => b.id !== busterId)
+    );
+  }
+
+  public addMemberInSquad(buster: Buster) {
+    this.busterService.addMembership(buster.id, this._squad.id).subscribe(
+      () => this._squad.members.push(buster)
     );
   }
 

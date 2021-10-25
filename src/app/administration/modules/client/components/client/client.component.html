@@ -1,8 +1,12 @@
 <div class="listing">
   <div class="list-header">
     <h2>Clients</h2>
+    <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Create A Client"
+      class="edit-save p-button-outlined p-button-success" (click)="creationMode = true"></button>
   </div>
-  <app-client-listing [clients]="clients" (selectClient)="selectClient($event)">
+  <app-client-listing (deleteClient)="deleteClient($event)" [clients]="clients" (selectClient)="selectClient($event)">
   </app-client-listing>
 </div>
-<app-client-edit [clients]="selectedClient" class="edit-element"></app-client-edit>
+<app-client-edit (newClient)="onClientCreation($event)" [createMode]="creationMode" (updateClientEmit)="onUpdatClient($event)"
+  [clients]="selectedClient" class="edit-element">
+</app-client-edit>

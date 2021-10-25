@@ -8,6 +8,7 @@ import { SharedAdministrationModule } from '../../shared-administration/shared-a
 import { TechnologyComponent } from './components/technology/technology.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { InputTextModule } from 'primeng/inputtext';
     ReactiveFormsModule,
     FormsModule,
     InputTextModule,
+    ButtonModule
   ]
 })
 export class TechnologyModule { }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ClientService } from 'src/app/core/services/client.service';
 import { Client } from 'src/app/shared/models/client';
-import { TableLabels } from '../../../../shared-administration/models/TableLabel.mode';
 
 @Component({
   selector: 'app-client',
@@ -12,9 +11,8 @@ import { TableLabels } from '../../../../shared-administration/models/TableLabel
 export class ClientComponent implements OnInit {
 
   public clients: Client[] = this.activeRoute.snapshot.data.clients;
-  public clientsLabel: TableLabels[] = [
-    { value: 'Name', key: 'name' }
-  ];
+
+  public creationMode: boolean = false;
 
   public selectedClient: Client;
 
@@ -27,10 +25,30 @@ export class ClientComponent implements OnInit {
     this.selectClient(this.clients[0].id);
   }
 
+  public deleteClient(clientId: number) {
+    this.clientService.delete(clientId).subscribe(
+      () => this.clients = this.clients.filter((s) => s.id !== clientId)
+    );
+  }
+
   public selectClient(clientId: number) {
     this.clientService.read(clientId).subscribe(
-      (client: Client) => this.selectedClient = client
+      (client: Client) => {
+        this.selectedClient = client;
+        this.creationMode = false;
+      }
     );
+  }
+
+  public onUpdatClient(updatedClient: Client) {
+    this.clients = this.clients.map(
+      (client: Client) => client.id === updatedClient.id ? updatedClient : client
+    );
+  }
+
+  public onClientCreation(client: Client) {
+    this.clients.push(client);
+    this.selectClient(client.id);
   }
 
 }

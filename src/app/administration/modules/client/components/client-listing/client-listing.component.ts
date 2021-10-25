@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TableAction } from 'src/app/administration/shared-administration/models/TableActions.model';
 import { TableLabels } from 'src/app/administration/shared-administration/models/TableLabel.mode';
 import { Client } from 'src/app/shared/models/client';
 
@@ -10,15 +11,16 @@ import { Client } from 'src/app/shared/models/client';
 export class ClientListingComponent implements OnInit {
 
   @Output() selectClient = new EventEmitter<number>();
-
+  @Output() deleteClient = new EventEmitter<number>();
 
   @Input() clients: Client[];
   public clientsLabel: TableLabels[] = [
     { value: 'Name', key: 'name' }
   ];
 
-  public clientAction = {
-    onRowClick: (id: number) => this.selectClient.emit(id)
+  public clientAction: TableAction = {
+    onRowClick: (id: number) => this.selectClient.emit(id),
+    onDelete: (id: number) => this.deleteClient.emit(id)
   }
 
   constructor() { }

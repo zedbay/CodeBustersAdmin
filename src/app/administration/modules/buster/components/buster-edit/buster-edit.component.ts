@@ -19,10 +19,13 @@ export class BusterEditComponent implements OnInit {
   @Input() set createMode(createMode: boolean) {
     this._createMode = createMode;
 
-    this.busterForm.controls.email.setValue('');
-    this.busterForm.controls.firstName.setValue('');
-    this.busterForm.controls.lastName.setValue('');
-    this.busterForm.controls.rank.setValue('');
+    if (createMode) {
+      this.busterForm.controls.email.setValue('');
+      this.busterForm.controls.firstName.setValue('');
+      this.busterForm.controls.lastName.setValue('');
+      this.busterForm.controls.rank.setValue('');
+    }
+
   }
 
   @Input() set buster(buster: Buster) {

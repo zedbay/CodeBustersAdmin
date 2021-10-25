@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BusterService } from 'src/app/core/services/buster.service';
 import { Buster } from 'src/app/shared/models/buster';
 
@@ -10,6 +10,8 @@ import { Buster } from 'src/app/shared/models/buster';
 export class BusterSearchComponent implements OnInit {
 
   @Output() busterSelection = new EventEmitter<Buster>();
+
+  @Input() actionLabel: string = 'Add Buster';
 
   public busters: Buster[] = [];
 
