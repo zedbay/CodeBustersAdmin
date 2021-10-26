@@ -4,8 +4,8 @@
     <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Create A Buster"
       class="edit-save p-button-outlined p-button-success" (click)="creationMode = true"></button>
   </div>
-  <app-buster-listing [busters]="busters" (selectBuster)="selectBuster($event)" class="listing-element"
-    (deleteBuster)="deleteBuster($event)"></app-buster-listing>
+  <app-resource-listing [resourcesLabels]="bustersLabel" [resourcesActions]="bustersListingAction" [resources]="busters">
+  </app-resource-listing>
 </div>
 <app-buster-edit [buster]="selectedBuster" class="edit-element" [createMode]="creationMode" (newBuster)="onNewBuster($event)"
   (updateBusterEmit)="onUpdateBuster($event)">

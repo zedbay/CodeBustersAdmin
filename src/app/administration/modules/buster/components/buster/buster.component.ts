@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
+import { bustersLabel } from 'src/app/administration/shared/utils/labelsResource';
 import { BusterService } from 'src/app/core/services/buster.service';
 import { Buster } from 'src/app/shared/models/buster';
 
@@ -15,6 +17,13 @@ export class BusterComponent implements OnInit {
   public selectedBuster: Buster = undefined;
 
   public creationMode: boolean = false;
+
+  public bustersListingAction: TableAction = {
+    onDelete: (busterId: number) => this.deleteBuster(busterId),
+    onRowClick: (busterId: number) => this.selectBuster(busterId)
+  }
+
+  public bustersLabel = bustersLabel;
 
   constructor(
     private activeRoute: ActivatedRoute,

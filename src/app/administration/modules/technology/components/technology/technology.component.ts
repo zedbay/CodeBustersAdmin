@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
+import { technologyLabels } from 'src/app/administration/shared/utils/labelsResource';
 import { TechnoService } from 'src/app/core/services/techno.service';
 import { Techno } from 'src/app/shared/models/techno';
 
@@ -15,6 +17,13 @@ export class TechnologyComponent implements OnInit {
   public selectedTechno: Techno;
 
   public creationMode: boolean = false;
+
+  public technologiesListingAction: TableAction = {
+    onDelete: (technoId: number) => this.deleteTechno(technoId),
+    onRowClick: (technoId: number) => this.selectTechno(technoId)
+  }
+
+  public technologyLabels = technologyLabels;
 
   constructor(
     private activeRoute: ActivatedRoute,

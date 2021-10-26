@@ -1,6 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
+import { bustersLabel } from 'src/app/administration/shared/utils/labelsResource';
+import { resourceNameFunctionBuster } from 'src/app/administration/shared/utils/searchResource';
+import { BusterService } from 'src/app/core/services/buster.service';
 import { ClientService } from 'src/app/core/services/client.service';
+import { Buster } from 'src/app/shared/models/buster';
 import { Client } from 'src/app/shared/models/client';
 
 @Component({
@@ -9,6 +14,8 @@ import { Client } from 'src/app/shared/models/client';
   styleUrls: ['./client-edit.component.scss']
 })
 export class ClientEditComponent implements OnInit {
+
+  public resourceNameFunctionBuster = resourceNameFunctionBuster;
 
   @Output() newClient = new EventEmitter<Client>();
   @Output() updateClientEmit = new EventEmitter<Client>();
@@ -28,6 +35,11 @@ export class ClientEditComponent implements OnInit {
     }
   }
 
+  public bustersListingAction: TableAction = {
+    onDelete: (busterId: number) => this.deleteContractorForClient(busterId)
+  }
+  public bustersLabel = bustersLabel;
+
   public _client: Client;
   public _createMode: boolean = false;
 
@@ -37,7 +49,8 @@ export class ClientEditComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private clientService: ClientService
+    private clientService: ClientService,
+    public busterService: BusterService
   ) { }
 
   ngOnInit(): void {
@@ -58,6 +71,18 @@ export class ClientEditComponent implements OnInit {
       ...this.clientForm.value
     }).subscribe(
       (c: Client) => this.newClient.emit(c)
+    );
+  }
+
+  public deleteContractorForClient(busterId: number) {
+    this.busterService.removeCurrentClient(busterId, this._client.id).subscribe(
+      () => this._client.contractors = this._client.contractors.filter((c) => c.id !== busterId)
+    );
+  }
+
+  public addContractotForClient(buster: Buster) {
+    this.busterService.addCurrentClient(buster.id, this._client.id).subscribe(
+      () => this._client.contractors.push(buster)
     );
   }
 

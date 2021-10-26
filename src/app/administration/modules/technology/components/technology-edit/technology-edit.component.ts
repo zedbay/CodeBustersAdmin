@@ -1,6 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
+import { bustersLabel } from 'src/app/administration/shared/utils/labelsResource';
+import { resourceNameFunctionBuster } from 'src/app/administration/shared/utils/searchResource';
+import { BusterService } from 'src/app/core/services/buster.service';
 import { TechnoService } from 'src/app/core/services/techno.service';
+import { Buster } from 'src/app/shared/models/buster';
 import { Techno } from 'src/app/shared/models/techno';
 
 @Component({
@@ -9,6 +14,8 @@ import { Techno } from 'src/app/shared/models/techno';
   styleUrls: ['./technology-edit.component.scss']
 })
 export class TechnologyEditComponent implements OnInit {
+
+  public resourceNameFunctionBuster = resourceNameFunctionBuster;
 
   @Output() newTechno = new EventEmitter<Techno>();
   @Output() updateTechnoEmit = new EventEmitter<Techno>();
@@ -35,9 +42,17 @@ export class TechnologyEditComponent implements OnInit {
     name: ['', [Validators.required]]
   });
 
+  public bustersListingAction: TableAction = {
+    onDelete: (busterId: number) => this.onRemoveBusterKnowledge(busterId)
+  }
+  public bustersLabel = bustersLabel;
+
+
+
   constructor(
     private formBuilder: FormBuilder,
-    private technoService: TechnoService
+    private technoService: TechnoService,
+    public busterService: BusterService
   ) { }
 
   ngOnInit(): void {
@@ -57,6 +72,18 @@ export class TechnologyEditComponent implements OnInit {
       ...this.technoForm.value
     }).subscribe(
       (t: Techno) => this.newTechno.emit(t)
+    );
+  }
+
+  public onRemoveBusterKnowledge(busterId: number) {
+    this.technoService.removeKnowledgeForBuster(this._techno.id, busterId).subscribe(
+      () => this._techno.consumers = this._techno.consumers.filter((b) => b.id !== busterId)
+    );
+  }
+
+  public onAddingBusterKnowledge(buster: Buster) {
+    this.technoService.setTechnoToBuster(this._techno.id, buster.id).subscribe(
+      () => this._techno.consumers.push(buster)
     );
   }
 

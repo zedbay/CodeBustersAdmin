@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
+import { squadsLabel } from 'src/app/administration/shared/utils/labelsResource';
 import { SquadService } from 'src/app/core/services/squad.service';
 import { Squad } from 'src/app/shared/models/squad';
 
@@ -15,6 +17,13 @@ export class SquadComponent implements OnInit {
   public selectedSquad: Squad;
 
   public creationMode: boolean = false;
+
+  public squadsLabel = squadsLabel;
+
+  public squadsListingAction: TableAction = {
+    onDelete: (squadId: number) => this.deleteSquad(squadId),
+    onRowClick: (squadId: number) => this.selectSquad(squadId)
+  }
 
   constructor(
     private activeRoute: ActivatedRoute,

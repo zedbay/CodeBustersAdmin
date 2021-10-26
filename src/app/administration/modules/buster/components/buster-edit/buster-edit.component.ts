@@ -1,10 +1,16 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
+import { technologyLabels } from 'src/app/administration/shared/utils/labelsResource';
+import { resourceNameFunctionClient, resourceNameFunctionSquad, resourceNameFunctionTechno } from 'src/app/administration/shared/utils/searchResource';
 import { BusterService } from 'src/app/core/services/buster.service';
+import { ClientService } from 'src/app/core/services/client.service';
+import { SquadService } from 'src/app/core/services/squad.service';
+import { TechnoService } from 'src/app/core/services/techno.service';
 import { Buster } from 'src/app/shared/models/buster';
 import { Client } from 'src/app/shared/models/client';
 import { Squad } from 'src/app/shared/models/squad';
+import { Techno } from 'src/app/shared/models/techno';
 
 @Component({
   selector: 'app-buster-edit',
@@ -13,34 +19,35 @@ import { Squad } from 'src/app/shared/models/squad';
 })
 export class BusterEditComponent implements OnInit {
 
+  public resourceNameFunctionTechno = resourceNameFunctionTechno;
+  public resourceNameFunctionClient = resourceNameFunctionClient;
+  public resourceNameFunctionSquad = resourceNameFunctionSquad;
+
+  public technologyLabels = technologyLabels;
+
   @Output() newBuster = new EventEmitter<Buster>();
   @Output() updateBusterEmit = new EventEmitter<Buster>();
 
   @Input() set createMode(createMode: boolean) {
     this._createMode = createMode;
-
     if (createMode) {
       this.busterForm.controls.email.setValue('');
       this.busterForm.controls.firstName.setValue('');
       this.busterForm.controls.lastName.setValue('');
       this.busterForm.controls.rank.setValue('');
     }
-
   }
 
   @Input() set buster(buster: Buster) {
     if (buster) {
-
       this._buster = buster;
       this.busterForm.controls.email.setValue(buster.email);
       this.busterForm.controls.firstName.setValue(buster.firstName);
       this.busterForm.controls.lastName.setValue(buster.lastName);
       this.busterForm.controls.rank.setValue(buster.rank);
-
       if (buster.squad) {
         this.busterSquadForm.controls.name.setValue(buster.squad.name);
       }
-
       if (buster.currentClient) {
         this.busterCurrentClientForm.controls.name.setValue(buster.currentClient.name);
       }
@@ -65,9 +72,16 @@ export class BusterEditComponent implements OnInit {
     name: [{ value: '', disabled: true }, [Validators.required]]
   });
 
+  public technologiesListingAction: TableAction = {
+    onDelete: (technoId: number) => this.onDeleteTechno(technoId)
+  }
+
   constructor(
     private formBuilder: FormBuilder,
-    private busterService: BusterService
+    private busterService: BusterService,
+    public technoService: TechnoService,
+    public clientService: ClientService,
+    public squadService: SquadService
   ) { }
 
   ngOnInit(): void {
@@ -111,6 +125,20 @@ export class BusterEditComponent implements OnInit {
       () => this._buster.currentClient = client
     );
   }
+
+  public onDeleteTechno(technoId: number) {
+    this.technoService.removeKnowledgeForBuster(technoId, this._buster.id).subscribe(
+      () => this._buster.technologies = this._buster.technologies.filter((t) => t.id !== technoId)
+    );
+  }
+
+  public onAddingTechno(techno: Techno) {
+    this.technoService.setTechnoToBuster(techno.id, this._buster.id).subscribe(
+      () => this._buster.technologies.push(techno)
+    );
+  }
+
+
 
 
 }

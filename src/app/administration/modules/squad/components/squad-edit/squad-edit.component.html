@@ -53,16 +53,21 @@
       <ng-container *ngIf="!_squad.manager">
         <div>
           <p class="empty-list-message">This squad hasn't manager yet :(</p>
-          <app-buster-search (busterSelection)="addManagement($event)"></app-buster-search>
+          <app-resource-search actionLabel="Add manager" [resourceNameFunction]="resourceNameFunctionBuster"
+            [resourceService]="busterService" (selectionEmitter)="addManagement($event)">
+          </app-resource-search>
         </div>
       </ng-container>
     </div>
 
     <div class="edit-category">
       <h4 class="edit-category-title">Busters in this squad</h4>
-      <app-buster-listing [busters]="_squad.members" (deleteBuster)="removeBusterInSquad($event)"></app-buster-listing>
+      <app-resource-listing [resources]="_squad.members" [resourcesLabels]="bustersLabel" [resourcesActions]="bustersListingAction">
+      </app-resource-listing>
       <p class="empty-list-message" *ngIf="!_squad.members || _squad.members.length === 0">This squad has no member yet :(</p>
-      <app-buster-search (busterSelection)="addMemberInSquad($event)"></app-buster-search>
+      <app-resource-search actionLabel="Add Buster" [resourceNameFunction]="resourceNameFunctionBuster" [resourceService]="busterService"
+        (selectionEmitter)="addMemberInSquad($event)">
+      </app-resource-search>
     </div>
 
     <div class="edit-category">

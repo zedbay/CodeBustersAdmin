@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClientListingComponent } from './client-listing.component';
+import { ResourceListingComponent } from './resource-listing.component';
 
-describe('ClientListingComponent', () => {
-  let component: ClientListingComponent;
-  let fixture: ComponentFixture<ClientListingComponent>;
+describe('ResourceListingComponent', () => {
+  let component: ResourceListingComponent;
+  let fixture: ComponentFixture<ResourceListingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ClientListingComponent ]
+      declarations: [ ResourceListingComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClientListingComponent);
+    fixture = TestBed.createComponent(ResourceListingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

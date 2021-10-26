@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
+import { clientsLabel } from 'src/app/administration/shared/utils/labelsResource';
 import { ClientService } from 'src/app/core/services/client.service';
 import { Client } from 'src/app/shared/models/client';
 
@@ -15,6 +17,12 @@ export class ClientComponent implements OnInit {
   public creationMode: boolean = false;
 
   public selectedClient: Client;
+
+  public clientsListingAction: TableAction = {
+    onDelete: (clientId: number) => this.deleteClient(clientId),
+    onRowClick: (clientId: number) => this.selectClient(clientId)
+  }
+  public clientsLabel = clientsLabel;
 
   constructor(
     private activeRoute: ActivatedRoute,

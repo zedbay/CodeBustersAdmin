@@ -7,7 +7,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { WebsiteComponent } from './components/website/website.component';
-import { SharedAdministrationModule } from './shared-administration/shared-administration.module';
+import { SharedAdministrationModule } from './shared/shared-administration.module';
 
 @NgModule({
   declarations: [

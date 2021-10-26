@@ -4,7 +4,9 @@
     <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Create A Squad"
       class="edit-save p-button-outlined p-button-success" (click)="creationMode = true"></button>
   </div>
-  <app-squad-listing [squads]="squads" (selectSquad)="selectSquad($event)" (deleteSquad)="deleteSquad($event)"></app-squad-listing>
+
+  <app-resource-listing [resources]="squads" [resourcesActions]="squadsListingAction" [resourcesLabels]="squadsLabel">
+  </app-resource-listing>
 </div>
 <app-squad-edit (updateSquadEmit)="onUpdateSquad($event)" [squad]="selectedSquad" class="edit-element" [createMode]="creationMode"
   (newSquadEmit)="onNewSquad($event)">

@@ -4,8 +4,9 @@
     <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Create A Client"
       class="edit-save p-button-outlined p-button-success" (click)="creationMode = true"></button>
   </div>
-  <app-client-listing (deleteClient)="deleteClient($event)" [clients]="clients" (selectClient)="selectClient($event)">
-  </app-client-listing>
+  <app-resource-listing [resources]="clients" [resourcesActions]="clientsListingAction" [resourcesLabels]="clientsLabel">
+
+  </app-resource-listing>
 </div>
 <app-client-edit (newClient)="onClientCreation($event)" [createMode]="creationMode" (updateClientEmit)="onUpdatClient($event)"
   [clients]="selectedClient" class="edit-element">

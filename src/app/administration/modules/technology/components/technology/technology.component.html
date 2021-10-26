@@ -4,8 +4,8 @@
     <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Create A Technology"
       class="edit-save p-button-outlined p-button-success" (click)="creationMode = true"></button>
   </div>
-  <app-technology-listing (deleteTechnology)="deleteTechno($event)" [technos]="technos" (selectTechnology)="selectTechno($event)">
-  </app-technology-listing>
+  <app-resource-listing [resources]="technos" [resourcesActions]="technologiesListingAction" [resourcesLabels]="technologyLabels">
+  </app-resource-listing>
 </div>
 <app-technology-edit (newTechno)="onTechnoCreation($event)" [createMode]="creationMode" [techno]="selectedTechno" class="edit-element">
 </app-technology-edit>
