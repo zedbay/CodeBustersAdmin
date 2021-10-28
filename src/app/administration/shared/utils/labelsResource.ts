@@ -18,3 +18,7 @@ export const clientsLabel: TableLabels[] = [
 export const squadsLabel: TableLabels[] = [
   { value: 'Name', key: 'name' },
 ];
+
+export const jobsLabel: TableLabels[] = [
+  { value: 'Title', key: 'title' }
+]

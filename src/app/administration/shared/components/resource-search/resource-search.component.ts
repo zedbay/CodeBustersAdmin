@@ -13,8 +13,6 @@ export class ResourceSearchComponent<T extends Resource> implements OnInit {
 
   @Input() actionLabel: string = 'Add';
 
-  @Input() resourceNameFunction: (r: T) => string;
-
   @Input() resourceService: ResourcesService<T>;
 
   public resources: T[] = [];
@@ -36,13 +34,13 @@ export class ResourceSearchComponent<T extends Resource> implements OnInit {
 
   public search(event) {
     this.results = this.resources
-      .map((r: T) => this.resourceNameFunction(r))
+      .map((r: T) =>  this.resourceService.searchNameOnResource(r))
       .filter((name: string) => name.toLocaleLowerCase().includes(event.query.toLocaleLowerCase()));
   }
 
   public select(name: string) {
     const selectedResource: T = this.resources.find(
-      (r: T) => name === this.resourceNameFunction(r));
+      (r: T) => name === this.resourceService.searchNameOnResource(r));
     this.selectedResource = selectedResource;
   }
 

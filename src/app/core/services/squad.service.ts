@@ -16,4 +16,8 @@ export class SquadService extends ResourcesService<Squad> {
       networkService
     );
   }
+
+  public searchNameOnResource(squad: Squad): string {
+    return squad.name;
+  }
 }

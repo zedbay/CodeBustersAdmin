@@ -26,4 +26,8 @@ export class TechnoService extends ResourcesService<Techno> {
     return this.networkService.put(`${this.endpoint}/${technoId}/buster/${busterId}`);
   }
 
+  public searchNameOnResource(techno: Techno): string {
+    return techno.name;
+  }
+
 }

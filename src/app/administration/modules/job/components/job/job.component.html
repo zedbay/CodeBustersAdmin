@@ -1,0 +1,12 @@
+<div class="listing">
+  <div class="list-header">
+    <h2>Jobs</h2>
+    <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Create A Job"
+      class="edit-save p-button-outlined p-button-success" (click)="creationMode = true"></button>
+  </div>
+  <app-resource-listing [resourcesLabels]="jobsLabel" [resourcesActions]="jobsListingAction" [resources]="jobs">
+  </app-resource-listing>
+</div>
+<app-job-edit [createMode]="creationMode" [resource]="selectedJob" (newResourceEmitter)="onNewJob($event)"
+  (updateResourceEmit)="onUpdateJob($event)" class="edit-element">
+</app-job-edit>

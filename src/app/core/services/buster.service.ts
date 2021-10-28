@@ -42,4 +42,8 @@ export class BusterService extends ResourcesService<Buster> {
     return this.networkService.put(`${this.endpoint}/${busterId}/manage/${squadId}`);
   }
 
+  public searchNameOnResource(buster: Buster): string {
+    return `${buster.firstName} ${buster.lastName}`;
+  }
+
 }

@@ -26,7 +26,7 @@
       </app-resource-listing>
       <p class="empty-list-message" *ngIf="!_client.contractors || _client.contractors.length === 0">This clients hasn't buster yet</p>
       <app-resource-search [resourceService]="busterService" actionLabel="Add Buster" (selectionEmitter)="addContractotForClient($event)"
-        [resourceNameFunction]="resourceNameFunctionBuster">
+        >
       </app-resource-search>
     </div>
 

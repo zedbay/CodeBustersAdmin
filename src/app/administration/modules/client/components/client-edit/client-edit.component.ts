@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
 import { bustersLabel } from 'src/app/administration/shared/utils/labelsResource';
-import { resourceNameFunctionBuster } from 'src/app/administration/shared/utils/searchResource';
 import { BusterService } from 'src/app/core/services/buster.service';
 import { ClientService } from 'src/app/core/services/client.service';
 import { Buster } from 'src/app/shared/models/buster';
@@ -14,8 +13,6 @@ import { Client } from 'src/app/shared/models/client';
   styleUrls: ['./client-edit.component.scss']
 })
 export class ClientEditComponent implements OnInit {
-
-  public resourceNameFunctionBuster = resourceNameFunctionBuster;
 
   @Output() newClient = new EventEmitter<Client>();
   @Output() updateClientEmit = new EventEmitter<Client>();

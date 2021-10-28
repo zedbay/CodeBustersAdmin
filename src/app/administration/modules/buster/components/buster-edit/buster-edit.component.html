@@ -51,7 +51,7 @@
 
       <div *ngIf="!_buster.squad">
         <p class="empty-list-message">This buster isn't member of squad :(</p>
-        <app-resource-search actionLabel="Add Squad" [resourceService]="squadService" [resourceNameFunction]="resourceNameFunctionSquad"
+        <app-resource-search actionLabel="Add Squad" [resourceService]="squadService"
           (selectionEmitter)="addMembership($event)">
         </app-resource-search>
       </div>
@@ -74,7 +74,7 @@
       <div *ngIf="!_buster.currentClient">
         <p class="empty-list-message">This buster hasn't current client yet :(</p>
         <app-resource-search actionLabel="Add Current Client" [resourceService]="clientService"
-          [resourceNameFunction]="resourceNameFunctionClient" (selectionEmitter)="addCurrentClient($event)">
+           (selectionEmitter)="addCurrentClient($event)">
         </app-resource-search>
       </div>
     </div>
@@ -92,7 +92,7 @@
       <p class="empty-list-message" *ngIf="!_buster.technologies || _buster.technologies.length === 0">This buster don't knows any
         technology</p>
       <app-resource-search actionLabel="Add Technology" [resourceService]="technoService"
-        [resourceNameFunction]="resourceNameFunctionTechno" (selectionEmitter)="onAddingTechno($event)"></app-resource-search>
+         (selectionEmitter)="onAddingTechno($event)"></app-resource-search>
     </div>
 
   </ng-container>

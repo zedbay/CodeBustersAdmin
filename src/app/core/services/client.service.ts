@@ -17,4 +17,8 @@ export class ClientService extends ResourcesService<Client> {
     );
   }
 
+  public searchNameOnResource(client: Client): string {
+    return client.name;
+  }
+
 }

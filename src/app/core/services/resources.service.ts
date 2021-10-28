@@ -6,7 +6,7 @@ import { NetworkService } from './network.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ResourcesService<T extends Resource> {
+export abstract class ResourcesService<T extends Resource> {
 
   constructor(
     @Inject('endpoint') public endpoint: string,
@@ -37,5 +37,7 @@ export class ResourcesService<T extends Resource> {
     return this.networkService
       .get<T>(`${this.endpoint}/${ressourceId}`);
   }
+
+  public abstract searchNameOnResource(resource: T): string;
 
 }

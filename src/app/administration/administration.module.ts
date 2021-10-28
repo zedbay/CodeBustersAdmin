@@ -12,7 +12,7 @@ import { SharedAdministrationModule } from './shared/shared-administration.modul
 @NgModule({
   declarations: [
     AdministrationComponent,
-    WebsiteComponent,
+    WebsiteComponent
   ],
   imports: [
     CommonModule,

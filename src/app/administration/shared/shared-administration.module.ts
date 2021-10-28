@@ -8,7 +8,6 @@ import { ButtonModule } from 'primeng/button';
 import { ResourceSearchComponent } from './components/resource-search/resource-search.component';
 import { ResourceListingComponent } from './components/resource-listing/resource-listing.component';
 
-
 @NgModule({
   declarations: [
     ResourceSearchComponent,

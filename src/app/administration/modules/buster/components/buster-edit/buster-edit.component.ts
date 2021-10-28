@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ResourceEditComponent } from 'src/app/administration/shared/components/resource-edit/resource-edit.component';
 import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
 import { technologyLabels } from 'src/app/administration/shared/utils/labelsResource';
-import { resourceNameFunctionClient, resourceNameFunctionSquad, resourceNameFunctionTechno } from 'src/app/administration/shared/utils/searchResource';
 import { BusterService } from 'src/app/core/services/buster.service';
 import { ClientService } from 'src/app/core/services/client.service';
 import { SquadService } from 'src/app/core/services/squad.service';
@@ -18,10 +18,6 @@ import { Techno } from 'src/app/shared/models/techno';
   styleUrls: ['./buster-edit.component.scss']
 })
 export class BusterEditComponent implements OnInit {
-
-  public resourceNameFunctionTechno = resourceNameFunctionTechno;
-  public resourceNameFunctionClient = resourceNameFunctionClient;
-  public resourceNameFunctionSquad = resourceNameFunctionSquad;
 
   public technologyLabels = technologyLabels;
 

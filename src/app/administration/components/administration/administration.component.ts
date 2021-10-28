@@ -17,8 +17,10 @@ export class AdministrationComponent implements OnInit {
     { label: 'Buster', icon: 'pi pi-fw pi-user', routerLink: '/admin/buster' },
     { label: 'Squad', icon: 'pi pi-fw pi-users', routerLink: '/admin/squad' },
     { label: 'Client', icon: 'pi pi-fw pi-id-card', routerLink: '/admin/client' },
+    { label: 'Project', icon: 'pi pi-fw pi-desktop', routerLink: '/admin/project' },
+    { label: 'Event', icon: 'pi pi-fw pi-calendar', routerLink: '/admin/event' },
     { label: 'Technology', icon: 'pi pi-fw pi-globe', routerLink: '/admin/technology' },
-    { label: 'Job Offer', icon: 'pi pi-fw pi-wallet', routerLink: '/admin/jobOffer' },
+    { label: 'Job', icon: 'pi pi-fw pi-wallet', routerLink: '/admin/job' },
     { label: 'Website', icon: 'pi pi-fw pi-cog', routerLink: '/admin/website' }
   ];
 

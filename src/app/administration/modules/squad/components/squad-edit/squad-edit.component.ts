@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
 import { bustersLabel } from 'src/app/administration/shared/utils/labelsResource';
-import { resourceNameFunctionBuster } from 'src/app/administration/shared/utils/searchResource';
 import { BusterService } from 'src/app/core/services/buster.service';
 import { SquadService } from 'src/app/core/services/squad.service';
 import { Buster } from 'src/app/shared/models/buster';
@@ -14,8 +13,6 @@ import { Squad } from 'src/app/shared/models/squad';
   styleUrls: ['./squad-edit.component.scss']
 })
 export class SquadEditComponent implements OnInit {
-
-  public resourceNameFunctionBuster = resourceNameFunctionBuster;
 
   @Output() newSquadEmit = new EventEmitter<Squad>();
   @Output() updateSquadEmit = new EventEmitter<Squad>();

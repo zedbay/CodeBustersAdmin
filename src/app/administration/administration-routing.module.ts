@@ -25,6 +25,18 @@ const routes: Routes = [
         loadChildren: () => import('./modules/technology/technology.module').then(m => m.TechnologyModule)
       },
       {
+        path: 'job',
+        loadChildren: () => import('./modules/job/job.module').then(m => m.JobModule)
+      },
+      {
+        path: 'project',
+        loadChildren: () => import('./modules/project/project.module').then(m => m.ProjectModule)
+      },
+      {
+        path: 'event',
+        loadChildren: () => import('./modules/event/event.module').then(m => m.EventModule)
+      },
+      {
         path: 'website',
         component: WebsiteComponent
       },
