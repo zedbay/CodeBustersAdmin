@@ -1,0 +1,48 @@
+<div *ngIf="_resource" class="edit-container">
+
+  <h3 *ngIf="!_createMode">Project: {{ _resource.name }}</h3>
+  <h3 *ngIf="_createMode">Create a project !</h3>
+
+  <div class="edit-category">
+    <h4 class="edit-category-title">Main informations</h4>
+    <form [formGroup]="resourceForm" class="edit-form">
+      <div class="double-field-container">
+        <div class="edit-field">
+          <label class="edit-label">Name</label>
+          <input class="edit-input" formControlName="name" type="text" pInputText />
+        </div>
+      </div>
+    </form>
+    <div class="edit-actions">
+      <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
+        class="edit-save p-button-outlined p-button-success" (click)="createResource()"
+        [disabled]="resourceForm.invalid"></button>
+      <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
+        class="edit-save p-button-outlined p-button-primary" (click)="updateResource()"
+        [disabled]="resourceForm.invalid"></button>
+    </div>
+  </div>
+
+  <div class="edit-category">
+    <h4 class="edit-category-title">Workers</h4>
+    <app-resource-listing [resourceService]="busterService" [resources]="_resource.workers"
+      [resourcesActions]="bustersListingAction"></app-resource-listing>
+    <p class="empty-list-message" *ngIf="!_resource.technologies || _resource.technologies.length === 0">
+      This project hasn't worker binded yet
+    </p>
+    <app-resource-search actionLabel="Add Worker" [resourceService]="busterService"
+      (selectionEmitter)="addingWorker($event)"></app-resource-search>
+  </div>
+
+  <div class="edit-category">
+    <h4 class="edit-category-title">Related technologies</h4>
+    <app-resource-listing [resourceService]="technoService" [resources]="_resource.technologies"
+      [resourcesActions]="technologiesListingAction"></app-resource-listing>
+    <p class="empty-list-message" *ngIf="!_resource.technologies || _resource.technologies.length === 0">
+      This project hasn't techno binded yet
+    </p>
+    <app-resource-search actionLabel="Add Technology" [resourceService]="technoService"
+      (selectionEmitter)="addingTechno($event)"></app-resource-search>
+  </div>
+
+</div>

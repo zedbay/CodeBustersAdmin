@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TableLabels } from 'src/app/administration/shared/models/TableLabel.mode';
 import { Job } from 'src/app/shared/models/job';
 import { NetworkService } from './network.service';
 import { ResourcesService } from './resources.service';
@@ -8,6 +9,10 @@ import { ResourcesService } from './resources.service';
   providedIn: 'root'
 })
 export class JobService extends ResourcesService<Job> {
+
+  public labels: TableLabels[] = [
+    { value: 'Title', key: 'title' }
+  ];
 
   constructor(
     public networkService: NetworkService

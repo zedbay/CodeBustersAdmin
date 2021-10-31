@@ -1,11 +1,11 @@
-<div *ngIf="_techno" class="edit-container">
+<div *ngIf="_resource" class="edit-container">
 
-  <h3 *ngIf="!_createMode">Technology : {{ _techno.name }}</h3>
+  <h3 *ngIf="!_createMode">Technology : {{ _resource.name }}</h3>
   <h3 *ngIf="_createMode">Create a technology</h3>
 
   <div class="edit-category">
     <h4 class="edit-category-title">Main informations</h4>
-    <form [formGroup]="technoForm" class="edit-form">
+    <form [formGroup]="resourceForm" class="edit-form">
       <div class="edit-field">
         <label class="edit-label">Name</label>
         <input class="edit-input" formControlName="name" type="text" pInputText />
@@ -14,18 +14,22 @@
 
     <div class="edit-actions">
       <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
-        class="edit-save p-button-outlined p-button-success" (click)="createTechno()" [disabled]="technoForm.invalid"></button>
+        class="edit-save p-button-outlined p-button-success" (click)="createResource()"
+        [disabled]="resourceForm.invalid"></button>
       <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
-        class="edit-save p-button-outlined p-button-primary" (click)="updateTechno()" [disabled]="technoForm.invalid"></button>
+        class="edit-save p-button-outlined p-button-primary" (click)="updateResource()"
+        [disabled]="resourceForm.invalid"></button>
     </div>
   </div>
 
   <ng-container *ngIf="!_createMode">
     <div class="edit-category">
       <h4 class="edit-category-title">Busters who knows</h4>
-      <app-resource-listing [resourcesLabels]="bustersLabel" [resourcesActions]="bustersListingAction" [resources]="_techno.consumers">
+      <app-resource-listing [resourceService]="busterService" [resourcesActions]="bustersListingAction"
+        [resources]="_resource.consumers">
       </app-resource-listing>
-      <p class="empty-list-message" *ngIf="!_techno.consumers || _techno.consumers.length === 0">Noby knows this technology</p>
+      <p class="empty-list-message" *ngIf="!_resource.consumers || _resource.consumers.length === 0">Noby knows this
+        technology</p>
       <app-resource-search actionLabel="Add Buster" [resourceService]="busterService"
         (selectionEmitter)="onAddingBusterKnowledge($event)"></app-resource-search>
     </div>

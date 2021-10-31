@@ -4,10 +4,11 @@
     <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Create A Client"
       class="edit-save p-button-outlined p-button-success" (click)="creationMode = true"></button>
   </div>
-  <app-resource-listing [resources]="clients" [resourcesActions]="clientsListingAction" [resourcesLabels]="clientsLabel">
+  <app-resource-listing [resourceService]="clientService" [resources]="resources"
+    [resourcesActions]="clientsListingAction">
 
   </app-resource-listing>
 </div>
-<app-client-edit (newClient)="onClientCreation($event)" [createMode]="creationMode" (updateClientEmit)="onUpdatClient($event)"
-  [clients]="selectedClient" class="edit-element">
+<app-client-edit (newResourceEmitter)="onNewResource($event)" [createMode]="creationMode"
+  (updateResourceEmit)="onUpdateResource($event)" [resource]="selectedResource" class="edit-element">
 </app-client-edit>

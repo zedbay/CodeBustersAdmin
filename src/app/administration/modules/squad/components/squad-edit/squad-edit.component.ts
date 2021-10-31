@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ResourceEditComponent } from 'src/app/administration/shared/components/resource-edit/resource-edit.component';
 import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
-import { bustersLabel } from 'src/app/administration/shared/utils/labelsResource';
 import { BusterService } from 'src/app/core/services/buster.service';
 import { SquadService } from 'src/app/core/services/squad.service';
 import { Buster } from 'src/app/shared/models/buster';
@@ -12,33 +12,9 @@ import { Squad } from 'src/app/shared/models/squad';
   templateUrl: './squad-edit.component.html',
   styleUrls: ['./squad-edit.component.scss']
 })
-export class SquadEditComponent implements OnInit {
+export class SquadEditComponent extends ResourceEditComponent<Squad> implements OnInit {
 
-  @Output() newSquadEmit = new EventEmitter<Squad>();
-  @Output() updateSquadEmit = new EventEmitter<Squad>();
-
-  @Input() set createMode(createMode: boolean) {
-    this._createMode = createMode;
-    if (createMode) {
-      this.resetSquadForm();
-    }
-  }
-
-  @Input() set squad(squad: Squad) {
-
-    if (squad) {
-
-      this._squad = squad;
-      this.squadForm.controls.name.setValue(squad.name);
-
-      if (squad.manager) {
-        this.initManagerForm(squad.manager);
-      }
-    }
-
-  };
-
-  public squadForm: FormGroup = this.formBuilder.group({
+  public resourceForm: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required]]
   });
 
@@ -49,22 +25,27 @@ export class SquadEditComponent implements OnInit {
     rank: [{ value: '', disabled: true }, [Validators.required]]
   })
 
-  public _squad: Squad;
-  public _createMode: boolean = false;
-
   public bustersListingAction: TableAction = {
     onDelete: (busterId: number) => this.removeBusterInSquad(busterId)
   }
-  public bustersLabel = bustersLabel;
-
 
   constructor(
     private formBuilder: FormBuilder,
-    private squadService: SquadService,
+    public squadService: SquadService,
     public busterService: BusterService
-  ) { }
+  ) {
+    super(squadService);
+  }
 
   ngOnInit(): void {
+  }
+
+  protected onChangeCreateMode(): void {
+    this.resourceForm.controls.name.setValue('');
+  }
+
+  protected onChangeResource(squad: Squad): void {
+    this.resourceForm.controls.name.setValue(squad.name);
   }
 
   private initManagerForm(manager: Buster) {
@@ -74,51 +55,30 @@ export class SquadEditComponent implements OnInit {
     this.managerForm.controls.rank.setValue(manager.rank);
   }
 
-  private resetSquadForm() {
-    this.squadForm.controls.name.setValue('');
-  }
-
-  public updateSquad() {
-    this.squadService.update({
-      ...this._squad,
-      ...this.squadForm.value
-    }).subscribe(
-      (s: Squad) => this.updateSquadEmit.emit(s)
-    )
-  }
-
-  public createSquad() {
-    this.squadService.create({
-      ...this.squadForm.value
-    }).subscribe(
-      (s: Squad) => this.newSquadEmit.emit(s)
-    )
-  }
-
   public removeManagement(busterId: number) {
-    this.busterService.removeManagement(busterId, this._squad.id).subscribe(
-      () => this._squad.manager = undefined
+    this.busterService.removeManagement(busterId, this._resource.id).subscribe(
+      () => this._resource.manager = undefined
     );
   }
 
   public addManagement(buster: Buster) {
-    this.busterService.addManagement(buster.id, this._squad.id).subscribe(
+    this.busterService.addManagement(buster.id, this._resource.id).subscribe(
       () => {
-        this._squad.manager = buster;
+        this._resource.manager = buster;
         this.initManagerForm(buster);
       }
     );
   }
 
   public removeBusterInSquad(busterId: number) {
-    this.busterService.removeMembershipOfSquad(busterId, this._squad.id).subscribe(
-      () => this._squad.members = this._squad.members.filter((b) => b.id !== busterId)
+    this.busterService.removeMembershipOfSquad(busterId, this._resource.id).subscribe(
+      () => this._resource.members = this._resource.members.filter((b) => b.id !== busterId)
     );
   }
 
   public addMemberInSquad(buster: Buster) {
-    this.busterService.addMembership(buster.id, this._squad.id).subscribe(
-      () => this._squad.members.push(buster)
+    this.busterService.addMembership(buster.id, this._resource.id).subscribe(
+      () => this._resource.members.push(buster)
     );
   }
 

@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: TechnologyComponent,
     resolve: {
-      technos: TechnosResolver
+      resources: TechnosResolver
     }
   }
 ];

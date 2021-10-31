@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourceEditComponent } from 'src/app/administration/shared/components/resource-edit/resource-edit.component';
 import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
-import { technologyLabels } from 'src/app/administration/shared/utils/labelsResource';
 import { BusterService } from 'src/app/core/services/buster.service';
 import { ClientService } from 'src/app/core/services/client.service';
 import { SquadService } from 'src/app/core/services/squad.service';
@@ -17,43 +16,9 @@ import { Techno } from 'src/app/shared/models/techno';
   templateUrl: './buster-edit.component.html',
   styleUrls: ['./buster-edit.component.scss']
 })
-export class BusterEditComponent implements OnInit {
+export class BusterEditComponent extends ResourceEditComponent<Buster> implements OnInit {
 
-  public technologyLabels = technologyLabels;
-
-  @Output() newBuster = new EventEmitter<Buster>();
-  @Output() updateBusterEmit = new EventEmitter<Buster>();
-
-  @Input() set createMode(createMode: boolean) {
-    this._createMode = createMode;
-    if (createMode) {
-      this.busterForm.controls.email.setValue('');
-      this.busterForm.controls.firstName.setValue('');
-      this.busterForm.controls.lastName.setValue('');
-      this.busterForm.controls.rank.setValue('');
-    }
-  }
-
-  @Input() set buster(buster: Buster) {
-    if (buster) {
-      this._buster = buster;
-      this.busterForm.controls.email.setValue(buster.email);
-      this.busterForm.controls.firstName.setValue(buster.firstName);
-      this.busterForm.controls.lastName.setValue(buster.lastName);
-      this.busterForm.controls.rank.setValue(buster.rank);
-      if (buster.squad) {
-        this.busterSquadForm.controls.name.setValue(buster.squad.name);
-      }
-      if (buster.currentClient) {
-        this.busterCurrentClientForm.controls.name.setValue(buster.currentClient.name);
-      }
-    }
-  };
-
-  public _createMode: boolean = false;
-  public _buster: Buster;
-
-  public busterForm: FormGroup = this.formBuilder.group({
+  public resourceForm: FormGroup = this.formBuilder.group({
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
     email: ['', [Validators.required]],
@@ -78,63 +43,65 @@ export class BusterEditComponent implements OnInit {
     public technoService: TechnoService,
     public clientService: ClientService,
     public squadService: SquadService
-  ) { }
+  ) {
+    super(busterService);
+  }
 
   ngOnInit(): void {
   }
 
-
-  public createBuster() {
-    this.busterService.create({
-      ...this.busterForm.value,
-      password: 'admin'
-    }).subscribe(
-      (buster: Buster) => this.newBuster.emit(buster)
-    );
+  protected onChangeCreateMode(): void {
+    this.resourceForm.controls.email.setValue('');
+    this.resourceForm.controls.firstName.setValue('');
+    this.resourceForm.controls.lastName.setValue('');
+    this.resourceForm.controls.rank.setValue('');
   }
 
-  public updateBuster() {
-    this.busterService.update({
-      ...this._buster,
-      ...this.busterForm.value
-    }).subscribe(
-      (buster: Buster) => this.updateBusterEmit.emit(buster)
-    )
+  protected onChangeResource(buster: Buster): void {
+    this._resource = buster;
+    this.resourceForm.controls.email.setValue(buster.email);
+    this.resourceForm.controls.firstName.setValue(buster.firstName);
+    this.resourceForm.controls.lastName.setValue(buster.lastName);
+    this.resourceForm.controls.rank.setValue(buster.rank);
+    if (buster.squad) {
+      this.busterSquadForm.controls.name.setValue(buster.squad.name);
+    }
+    if (buster.currentClient) {
+      this.busterCurrentClientForm.controls.name.setValue(buster.currentClient.name);
+    }
   }
+
 
   public removeMembershipOfSquad(squadId: number) {
-    this.busterService.removeMembershipOfSquad(this._buster.id, squadId).subscribe(() => this._buster.squad = undefined)
+    this.busterService.removeMembershipOfSquad(this._resource.id, squadId).subscribe(() => this._resource.squad = undefined)
   }
 
   public addMembership(squad: Squad) {
-    this.busterService.addMembership(this._buster.id, squad.id).subscribe(() => this._buster.squad = squad);
+    this.busterService.addMembership(this._resource.id, squad.id).subscribe(() => this._resource.squad = squad);
   }
 
   public removeCurrentClient(clienId: number) {
-    this.busterService.removeCurrentClient(this._buster.id, clienId).subscribe(
-      () => this._buster.currentClient = undefined
+    this.busterService.removeCurrentClient(this._resource.id, clienId).subscribe(
+      () => this._resource.currentClient = undefined
     );
   }
 
   public addCurrentClient(client: Client) {
-    this.busterService.addCurrentClient(this._buster.id, client.id).subscribe(
-      () => this._buster.currentClient = client
+    this.busterService.addCurrentClient(this._resource.id, client.id).subscribe(
+      () => this._resource.currentClient = client
     );
   }
 
   public onDeleteTechno(technoId: number) {
-    this.technoService.removeKnowledgeForBuster(technoId, this._buster.id).subscribe(
-      () => this._buster.technologies = this._buster.technologies.filter((t) => t.id !== technoId)
+    this.technoService.removeKnowledgeForBuster(technoId, this._resource.id).subscribe(
+      () => this._resource.technologies = this._resource.technologies.filter((t) => t.id !== technoId)
     );
   }
 
   public onAddingTechno(techno: Techno) {
-    this.technoService.setTechnoToBuster(techno.id, this._buster.id).subscribe(
-      () => this._buster.technologies.push(techno)
+    this.technoService.setTechnoToBuster(techno.id, this._resource.id).subscribe(
+      () => this._resource.technologies.push(techno)
     );
   }
-
-
-
 
 }

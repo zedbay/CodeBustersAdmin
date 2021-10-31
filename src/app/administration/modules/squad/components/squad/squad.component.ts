@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ResourceComponent } from 'src/app/administration/shared/components/resource/resource.component';
 import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
-import { squadsLabel } from 'src/app/administration/shared/utils/labelsResource';
 import { SquadService } from 'src/app/core/services/squad.service';
 import { Squad } from 'src/app/shared/models/squad';
 
@@ -10,54 +10,21 @@ import { Squad } from 'src/app/shared/models/squad';
   templateUrl: './squad.component.html',
   styleUrls: ['./squad.component.scss']
 })
-export class SquadComponent implements OnInit {
-
-  public squads: Squad[] = this.activeRoute.snapshot.data.squads;
-
-  public selectedSquad: Squad;
-
-  public creationMode: boolean = false;
-
-  public squadsLabel = squadsLabel;
+export class SquadComponent extends ResourceComponent<Squad> {
 
   public squadsListingAction: TableAction = {
-    onDelete: (squadId: number) => this.deleteSquad(squadId),
-    onRowClick: (squadId: number) => this.selectSquad(squadId)
+    onDelete: (squadId: number) => this.deleteResource(squadId),
+    onRowClick: (squadId: number) => this.selectResource(squadId)
   }
 
   constructor(
-    private activeRoute: ActivatedRoute,
-    private squadService: SquadService
-  ) { }
-
-  ngOnInit(): void {
-    this.selectSquad(this.squads[0].id);
-  }
-
-  public deleteSquad(squadId: number) {
-    this.squadService.delete(squadId).subscribe(
-      () => this.squads = this.squads.filter((s) => s.id !== squadId)
+    public activeRoute: ActivatedRoute,
+    public squadService: SquadService
+  ) {
+    super(
+      activeRoute,
+      squadService
     );
-  }
-
-  public onUpdateSquad(squad: Squad) {
-    this.squads = this.squads.map(
-      (s: Squad) => s.id === squad.id ? squad : s
-    );
-  }
-
-  public selectSquad(squadId) {
-    this.squadService.read(squadId).subscribe(
-      (squad: Squad) => {
-        this.creationMode = false;
-        this.selectedSquad = squad;
-      }
-    )
-  }
-
-  public onNewSquad(squad: Squad) {
-    this.squads.push(squad);
-    this.selectSquad(squad.id);
   }
 
 }

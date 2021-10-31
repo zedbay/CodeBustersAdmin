@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ResourcesService } from 'src/app/core/services/resources.service';
 import { Resource } from 'src/app/shared/models/ressource';
 import { TableAction } from '../../models/TableActions.model';
 import { TableLabels } from '../../models/TableLabel.mode';
@@ -11,11 +12,14 @@ import { TableLabels } from '../../models/TableLabel.mode';
 export class ResourceListingComponent<T extends Resource> implements OnInit {
 
   @Input() resources: T[] = [];
-  @Input() resourcesLabels: TableLabels[];
+  public resourcesLabels: TableLabels[] = [];
   @Input() resourcesActions: TableAction;
+  @Input() resourceService: ResourcesService<T>;
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.resourcesLabels = this.resourceService.labels;
+  }
 
 }

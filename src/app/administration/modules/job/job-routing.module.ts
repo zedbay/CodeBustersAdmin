@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: JobComponent,
     resolve: {
-      jobs: JobsResolver
+      resources: JobsResolver
     }
   }
 ];

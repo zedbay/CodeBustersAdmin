@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: SquadComponent,
     resolve: {
-      squads: SquadsResolver
+      resources: SquadsResolver
     }
   }
 ];

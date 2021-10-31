@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TableLabels } from 'src/app/administration/shared/models/TableLabel.mode';
 import { NetworkService } from 'src/app/core/services/network.service';
 import { ResourcesService } from 'src/app/core/services/resources.service';
 import { Squad } from 'src/app/shared/models/squad';
@@ -7,6 +8,10 @@ import { Squad } from 'src/app/shared/models/squad';
   providedIn: 'root'
 })
 export class SquadService extends ResourcesService<Squad> {
+
+  public labels: TableLabels[] = [
+    { value: 'Name', key: 'name' },
+  ];
 
   constructor(
     public networkService: NetworkService

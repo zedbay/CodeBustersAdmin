@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TableLabels } from 'src/app/administration/shared/models/TableLabel.mode';
 import { NetworkService } from 'src/app/core/services/network.service';
 import { ResourcesService } from 'src/app/core/services/resources.service';
 import { Buster } from 'src/app/shared/models/buster';
@@ -8,6 +9,12 @@ import { Buster } from 'src/app/shared/models/buster';
   providedIn: 'root'
 })
 export class BusterService extends ResourcesService<Buster> {
+
+  public labels: TableLabels[] = [
+    { value: 'Name', formatter: (b: Buster) => `${b.firstName} ${b.lastName}` },
+    { value: 'Email', key: 'email' },
+    { value: 'Rank', key: 'rank' },
+  ];
 
   constructor(
     public networkService: NetworkService

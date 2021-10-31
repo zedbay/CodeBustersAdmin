@@ -5,9 +5,10 @@
       class="edit-save p-button-outlined p-button-success" (click)="creationMode = true"></button>
   </div>
 
-  <app-resource-listing [resources]="squads" [resourcesActions]="squadsListingAction" [resourcesLabels]="squadsLabel">
+  <app-resource-listing [resourceService]="squadService" [resources]="resources"
+    [resourcesActions]="squadsListingAction">
   </app-resource-listing>
 </div>
-<app-squad-edit (updateSquadEmit)="onUpdateSquad($event)" [squad]="selectedSquad" class="edit-element" [createMode]="creationMode"
-  (newSquadEmit)="onNewSquad($event)">
+<app-squad-edit (updateResourceEmit)="onUpdateResource($event)" [resource]="selectedResource" class="edit-element"
+  [createMode]="creationMode" (newResourceEmitter)="onNewResource($event)">
 </app-squad-edit>

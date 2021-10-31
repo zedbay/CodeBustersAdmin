@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourceEditComponent } from 'src/app/administration/shared/components/resource-edit/resource-edit.component';
 import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
-import { technologyLabels } from 'src/app/administration/shared/utils/labelsResource';
 import { JobService } from 'src/app/core/services/job.service';
 import { SquadService } from 'src/app/core/services/squad.service';
 import { TechnoService } from 'src/app/core/services/techno.service';
@@ -17,9 +16,7 @@ import { Techno } from 'src/app/shared/models/techno';
 })
 export class JobEditComponent extends ResourceEditComponent<Job> implements OnInit {
 
-  public technologyLabels = technologyLabels;
-
-  public jobForm: FormGroup = this.formBuilder.group({
+  public resourceForm: FormGroup = this.formBuilder.group({
     title: ['', [Validators.required]],
     underTitle: ['', [Validators.required]],
     description: ['', [Validators.required]]
@@ -39,7 +36,9 @@ export class JobEditComponent extends ResourceEditComponent<Job> implements OnIn
     public squadService: SquadService,
     public technoService: TechnoService
   ) {
-    super();
+    super(
+      jobService
+    );
   }
 
   ngOnInit(): void {
@@ -47,38 +46,20 @@ export class JobEditComponent extends ResourceEditComponent<Job> implements OnIn
 
   protected onChangeCreateMode(): void {
     if (this._createMode) {
-      this.jobForm.controls.title.setValue('');
-      this.jobForm.controls.underTitle.setValue('');
-      this.jobForm.controls.description.setValue('');
+      this.resourceForm.controls.title.setValue('');
+      this.resourceForm.controls.underTitle.setValue('');
+      this.resourceForm.controls.description.setValue('');
       this.resetJobSquadForm();
     }
   }
 
   protected onChangeResource(): void {
-    console.log(this._resource);
-    this.jobForm.controls.title.setValue(this._resource.title);
-    this.jobForm.controls.underTitle.setValue(this._resource.underTitle);
-    this.jobForm.controls.description.setValue(this._resource.description);
+    this.resourceForm.controls.title.setValue(this._resource.title);
+    this.resourceForm.controls.underTitle.setValue(this._resource.underTitle);
+    this.resourceForm.controls.description.setValue(this._resource.description);
     if (this._resource.squad) {
       this.setJobSquadForm(this._resource.squad);
     }
-  }
-
-  public createResource(): void {
-    this.jobService.create({
-      ...this.jobForm.value
-    }).subscribe(
-      (j: Job) => this.newResourceEmitter.emit(j)
-    );
-  }
-
-  public updateResource(): void {
-    this.jobService.update({
-      ...this._resource,
-      ...this.jobForm.value
-    }).subscribe(
-      (j: Job) => this.updateResourceEmit.emit(j)
-    );
   }
 
   public addOfferInSquad(squad: Squad): void {

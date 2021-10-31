@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ResourceComponent } from 'src/app/administration/shared/components/resource/resource.component';
 import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
-import { technologyLabels } from 'src/app/administration/shared/utils/labelsResource';
 import { TechnoService } from 'src/app/core/services/techno.service';
 import { Techno } from 'src/app/shared/models/techno';
 
@@ -10,54 +10,21 @@ import { Techno } from 'src/app/shared/models/techno';
   templateUrl: './technology.component.html',
   styleUrls: ['./technology.component.scss']
 })
-export class TechnologyComponent implements OnInit {
-
-  public technos: Techno[] = this.activeRoute.snapshot.data.technos;
-
-  public selectedTechno: Techno;
-
-  public creationMode: boolean = false;
+export class TechnologyComponent extends ResourceComponent<Techno> {
 
   public technologiesListingAction: TableAction = {
-    onDelete: (technoId: number) => this.deleteTechno(technoId),
-    onRowClick: (technoId: number) => this.selectTechno(technoId)
+    onDelete: (technoId: number) => this.deleteResource(technoId),
+    onRowClick: (technoId: number) => this.selectResource(technoId)
   }
-
-  public technologyLabels = technologyLabels;
 
   constructor(
-    private activeRoute: ActivatedRoute,
-    private technoService: TechnoService
-  ) { }
-
-  ngOnInit(): void {
-    this.selectTechno(this.technos[0].id);
-  }
-
-  public deleteTechno(technoId: number) {
-    this.technoService.delete(technoId).subscribe(
-      () => this.technos = this.technos.filter((s) => s.id !== technoId)
+    public activeRoute: ActivatedRoute,
+    public technoService: TechnoService
+  ) {
+    super(
+      activeRoute,
+      technoService
     );
-  }
-
-  public selectTechno(technoId: number) {
-    this.technoService.read(technoId).subscribe(
-      (techno: Techno) => {
-        this.selectedTechno = techno;
-        this.creationMode = false;
-      }
-    );
-  }
-
-  public onUpdateTechno(updatedTechno: Techno) {
-    this.technos = this.technos.map(
-      (techno: Techno) => techno.id === updatedTechno.id ? updatedTechno : techno
-    );
-  }
-
-  public onTechnoCreation(techno: Techno) {
-    this.technos.push(techno);
-    this.selectTechno(techno.id);
   }
 
 }

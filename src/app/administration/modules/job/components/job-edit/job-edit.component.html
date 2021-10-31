@@ -6,7 +6,7 @@
 
   <div class="edit-category">
     <h4 class="edit-category-title">Main informations</h4>
-    <form [formGroup]="jobForm" class="edit-form">
+    <form [formGroup]="resourceForm" class="edit-form">
 
 
       <div class="double-field-container">
@@ -30,10 +30,10 @@
     <div class="edit-actions">
       <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
         class="edit-save p-button-outlined p-button-success" (click)="createResource()"
-        [disabled]="jobForm.invalid"></button>
+        [disabled]="resourceForm.invalid"></button>
       <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
         class="edit-save p-button-outlined p-button-primary" (click)="updateResource()"
-        [disabled]="jobForm.invalid"></button>
+        [disabled]="resourceForm.invalid"></button>
     </div>
   </div>
 
@@ -62,8 +62,8 @@
 
     <div class="edit-category">
       <h4 class="edit-category-title">Technologies required</h4>
-      <app-resource-listing [resources]="_resource.technologies" [resourcesActions]="technologiesListingAction"
-        [resourcesLabels]="technologyLabels">
+      <app-resource-listing [resourceService]="technoService" [resources]="_resource.technologies"
+        [resourcesActions]="technologiesListingAction">
       </app-resource-listing>
       <app-resource-search [resourceService]="technoService" actionLabel="Add Technology"
         (selectionEmitter)="addTechno($event)"></app-resource-search>

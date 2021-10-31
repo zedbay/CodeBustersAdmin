@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TableLabels } from 'src/app/administration/shared/models/TableLabel.mode';
 import { Resource } from 'src/app/shared/models/ressource';
 import { NetworkService } from './network.service';
 
@@ -7,6 +8,8 @@ import { NetworkService } from './network.service';
   providedIn: 'root'
 })
 export abstract class ResourcesService<T extends Resource> {
+
+  public abstract labels: TableLabels[];
 
   constructor(
     @Inject('endpoint') public endpoint: string,

@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: BusterComponent,
     resolve: {
-      busters: BustersResolver
+      resources: BustersResolver
     }
   }
 ];

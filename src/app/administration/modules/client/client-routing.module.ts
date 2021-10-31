@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: ClientComponent,
     resolve: {
-      clients: ClientsResolver
+      resources: ClientsResolver
     }
   }
 ];
