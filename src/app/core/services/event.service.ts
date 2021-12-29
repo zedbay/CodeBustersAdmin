@@ -9,7 +9,7 @@ import { ResourcesService } from './resources.service';
 })
 export class EventService extends ResourcesService<Event> {
 
-  public labels: TableLabels[] = [
+  public labels: TableLabels<Event>[] = [
     { value: 'Name', key: 'name' },
   ];
 

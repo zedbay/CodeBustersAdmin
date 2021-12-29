@@ -9,7 +9,7 @@ import { Client } from 'src/app/shared/models/client';
 })
 export class ClientService extends ResourcesService<Client> {
 
-  public labels: TableLabels[] = [
+  public labels: TableLabels<Client>[] = [
     { value: 'Name', key: 'name' }
   ];
 

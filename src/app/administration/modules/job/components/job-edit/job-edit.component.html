@@ -1,78 +1,77 @@
 <div class="edit-container" *ngIf="_resource">
+  <p-tabView>
 
-  <h3 *ngIf="_createMode">Create a job</h3>
-  <h3 *ngIf="!_createMode">Job: {{ _resource.title }}</h3>
-
-
-  <div class="edit-category">
-    <h4 class="edit-category-title">Main informations</h4>
-    <form [formGroup]="resourceForm" class="edit-form">
-
-
-      <div class="double-field-container">
-        <div class="edit-field">
-          <label class="edit-label">Title</label>
-          <input class="edit-input" formControlName="title" type="text" pInputText />
-        </div>
-        <div class="edit-field">
-          <label class="edit-label">Undertitle</label>
-          <input class="edit-input" formControlName="underTitle" type="text" pInputText />
-        </div>
-      </div>
-
-      <div class="edit-field">
-        <label class="edit-label">Description</label>
-        <input class="edit-input" formControlName="description" type="text" pInputText />
-      </div>
-
-
-    </form>
-    <div class="edit-actions">
-      <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
-        class="edit-save p-button-outlined p-button-success" (click)="createResource()"
-        [disabled]="resourceForm.invalid"></button>
-      <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
-        class="edit-save p-button-outlined p-button-primary" (click)="updateResource()"
-        [disabled]="resourceForm.invalid"></button>
-    </div>
-  </div>
-
-  <ng-container *ngIf="!_createMode">
-    <div class="edit-category">
-      <h4 class="edit-category-title">Squad informations</h4>
-      <ng-container *ngIf="_resource.squad">
-        <form [formGroup]="jobSquadForm" class="edit-form">
-          <div class="edit-field">
-            <label class="edit-label">Name</label>
-            <input class="edit-input" formControlName="name" type="text" pInputText />
+    <p-tabPanel header="Main informations">
+      <div class="edit-category">
+        <form [formGroup]="resourceForm" class="edit-form">
+          <div class="double-field-container">
+            <div class="edit-field">
+              <label class="edit-label">Title</label>
+              <input class="edit-input" formControlName="title" type="text" pInputText />
+            </div>
+            <div class="edit-field">
+              <label class="edit-label">Undertitle</label>
+              <input class="edit-input" formControlName="underTitle" type="text" pInputText />
+            </div>
           </div>
+          <div class="double-field-container">
+            <div class="edit-field">
+              <label class="edit-label">Rank</label>
+              <app-rank-selector formControlName="rank"></app-rank-selector>
+            </div>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Description</label>
+            <input class="edit-input" formControlName="description" type="text" pInputText />
+          </div>
+
         </form>
         <div class="edit-actions">
-          <button pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Squad"
-            class="edit-save p-button-outlined p-button-danger"
-            (click)="removeOfferInSquad(_resource.squad.id)"></button>
+          <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
+            class="edit-save p-button-outlined p-button-success" (click)="createResource()"
+            [disabled]="resourceForm.invalid"></button>
+          <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
+            class="edit-save p-button-outlined p-button-primary" (click)="updateResource()"
+            [disabled]="resourceForm.invalid"></button>
         </div>
-      </ng-container>
-      <p *ngIf="!_resource.squad" class="empty-list-message">No squad yet for this post</p>
-      <app-resource-search *ngIf="!_resource.squad" [resourceService]="squadService" actionLabel="Add Squad"
-        (selectionEmitter)="addOfferInSquad($event)">
-      </app-resource-search>
+      </div>
+    </p-tabPanel>
 
-    </div>
+    <ng-container *ngIf="!_createMode">
 
-    <div class="edit-category">
-      <h4 class="edit-category-title">Technologies required</h4>
-      <app-resource-listing [resourceService]="technoService" [resources]="_resource.technologies"
-        [resourcesActions]="technologiesListingAction">
-      </app-resource-listing>
-      <app-resource-search [resourceService]="technoService" actionLabel="Add Technology"
-        (selectionEmitter)="addTechno($event)"></app-resource-search>
-    </div>
-  </ng-container>
+      <p-tabPanel header="Squad">
+        <div class="edit-category">
+          <ng-container *ngIf="_resource.squad">
+            <form [formGroup]="jobSquadForm" class="edit-form">
+              <div class="edit-field">
+                <label class="edit-label">Name</label>
+                <input class="edit-input" formControlName="name" type="text" pInputText />
+              </div>
+            </form>
+            <div class="edit-actions">
+              <button pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Squad"
+                class="edit-save p-button-outlined p-button-danger"
+                (click)="removeOfferInSquad(_resource.squad.id)"></button>
+            </div>
+          </ng-container>
+          <p *ngIf="!_resource.squad" class="empty-list-message">No squad yet for this post</p>
+          <app-resource-search *ngIf="!_resource.squad" [resourceService]="squadService" actionLabel="Add Squad"
+            (selectionEmitter)="addOfferInSquad($event)">
+          </app-resource-search>
+        </div>
+      </p-tabPanel>
 
+      <p-tabPanel header="Technologies">
+        <div class="edit-category">
+          <app-resource-listing [resourceService]="technoService" [resources]="_resource.technologies"
+            [resourcesActions]="technologiesListingAction">
+          </app-resource-listing>
+          <app-resource-search [resourceService]="technoService" actionLabel="Add Technology"
+            (selectionEmitter)="addTechno($event)"></app-resource-search>
+        </div>
+      </p-tabPanel>
 
-
-
-
-
+    </ng-container>
+  </p-tabView>
 </div>

@@ -1,0 +1,45 @@
+@import "colors";
+@import "constants";
+
+:host {
+  display: block;
+}
+
+.talent-rank-container {
+  display: flex;
+  flex-direction: column;
+
+  .rank-description {
+    margin: 3em $side-margin-body 0 0;
+  }
+}
+
+.talent-img-container {
+  display: flex;
+  flex: 1;
+  border: solid $white;
+  border-width: 0 0 1px 0;
+
+  .talent-rank {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -0.75em;
+
+    &:last-child {
+      margin-right: $side-margin-body;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+
+    .pi {
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+  }
+  .talent-rank-img {
+    width: 100%;
+  }
+}

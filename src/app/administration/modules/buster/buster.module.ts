@@ -10,12 +10,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientModule } from '../client/client.module';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { SquadModule } from '../squad/squad.module';
+import { TabViewModule } from 'primeng/tabview';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { BusterProfilPictureComponent } from './components/buster-profil-picture/buster-profil-picture.component';
+import { CalendarModule } from 'primeng/calendar';
 
 
 @NgModule({
   declarations: [
     BusterEditComponent,
-    BusterComponent
+    BusterComponent,
+    BusterProfilPictureComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +32,10 @@ import { SquadModule } from '../squad/squad.module';
     FormsModule,
     ClientModule,
     AutoCompleteModule,
-    SquadModule
+    SquadModule,
+    TabViewModule,
+    InputTextareaModule,
+    CalendarModule
   ],
   exports: [
     BusterComponent

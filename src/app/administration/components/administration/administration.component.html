@@ -1,8 +1,14 @@
 <div class="sidebar">
-  <p-menu [model]="items"></p-menu>
+  <p-menu [style]="{'height':'100%', 'background-color': '#f8f9fa'}" [model]="items">
+
+  </p-menu>
 </div>
 <div class="menu-bar">
-  <p-menubar [model]="menuItems"></p-menubar>
+  <p-menubar [model]="menuItems">
+    <ng-template pTemplate="start">
+      <img src="{{ imgPath.logo }}" height="40" class="p-mr-2" routerLink="" class="admin-logo">
+    </ng-template>
+  </p-menubar>
 </div>
 
 <div class="body">

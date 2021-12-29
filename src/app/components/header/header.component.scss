@@ -1,0 +1,29 @@
+@import "colors";
+
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 48px;
+  margin-bottom: 48px;
+}
+
+.logo {
+  width: 125px;
+  height: 135px;
+}
+
+.header-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .header-icon {
+    margin-left: 24px;
+    &:hover {
+      cursor: pointer;
+      color: $secondary;
+      text-shadow: 1px 1px 1px $black;
+    }
+  }
+}

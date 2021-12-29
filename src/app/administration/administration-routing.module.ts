@@ -1,15 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from '../core/guards/auth-guard.service';
+import { LoginGuardService } from '../core/guards/login-guard.service';
+import { SiteResolver } from '../shared/resolvers/site.resolver';
 import { AdministrationComponent } from './components/administration/administration.component';
+import { LoginComponent } from './components/login/login.component';
 import { WebsiteComponent } from './components/website/website.component';
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [LoginGuardService]
+  },
+  {
     path: '',
     component: AdministrationComponent,
+    canActivate: [AuthGuardService],
     children: [
       {
-        path: 'buster',
+        path: '',
         loadChildren: () => import('./modules/buster/buster.module').then(m => m.BusterModule)
       },
       {
@@ -37,9 +47,16 @@ const routes: Routes = [
         loadChildren: () => import('./modules/event/event.module').then(m => m.EventModule)
       },
       {
-        path: 'website',
-        component: WebsiteComponent
+        path: 'contact',
+        loadChildren: () => import('./modules/contact/contact.module').then(m => m.ContactModule)
       },
+      {
+        path: 'website',
+        component: WebsiteComponent,
+        resolve: {
+          site: SiteResolver
+        }
+      }
     ]
   }
 ];

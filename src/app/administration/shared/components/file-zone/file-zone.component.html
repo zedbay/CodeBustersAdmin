@@ -1,0 +1,28 @@
+<div class="actop-field">
+
+  <div class="actop-file-area" *ngIf="filesToUpload?.length > 0 || fileNames?.length > 0">
+
+    <ng-container>
+      <div *ngFor="let file of fileNames" class="actop-file" (click)="downloadFile()">
+        <i [ngClass]="fileService.getIconNameFromFileName(file)" class="actop-file-icon"></i>
+        <p class="actop-file-name">{{ file }}</p>
+        <i class="pi pi-trash actop-delete-icon" (click)="deleteFile(file)" *ngIf="editionMode"></i>
+      </div>
+    </ng-container>
+
+    <div *ngFor="let file of filesToUpload" class="actop-file">
+      <i [ngClass]="fileService.getIconNameFromFileName(file.name)" class="actop-file-icon"></i>
+      <p class="actop-file-name">{{ file.name }}</p>
+    </div>
+
+  </div>
+
+  <div class="actop-drag-n-drop" appDnd (fileDropped)="addFile($event)" *ngIf="editionMode">
+    <p class="actop-drag-n-drop-label">
+      Déposé un fichier ou <span (click)="displayUploadFile()" class="actop-drag-n-drop-link">cliquer ici</span>
+    </p>
+  </div>
+
+</div>
+
+<p-toast position="top-right"></p-toast>

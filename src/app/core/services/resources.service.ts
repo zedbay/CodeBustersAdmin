@@ -9,7 +9,7 @@ import { NetworkService } from './network.service';
 })
 export abstract class ResourcesService<T extends Resource> {
 
-  public abstract labels: TableLabels[];
+  public abstract labels: TableLabels<T>[];
 
   constructor(
     @Inject('endpoint') public endpoint: string,

@@ -1,107 +1,159 @@
 <div *ngIf="_resource" class="edit-container">
 
-  <h3 *ngIf="!_createMode">Buster: {{ _resource.firstName }} {{ _resource.lastName }}</h3>
-  <h3 *ngIf="_createMode">Create a buster !</h3>
+  <p-tabView>
 
-  <div class="edit-category">
-    <h4 class="edit-category-title">Main informations</h4>
-    <form [formGroup]="resourceForm" class="edit-form">
-      <div class="double-field-container">
-        <div class="edit-field">
-          <label class="edit-label">Firstname</label>
-          <input class="edit-input" formControlName="firstName" type="text" pInputText />
-        </div>
-        <div class="edit-field">
-          <label class="edit-label">lastname</label>
-          <input class="edit-input" formControlName="lastName" type="text" pInputText />
+    <p-tabPanel header="Main informations">
+      <div class="edit-category">
+        <form [formGroup]="resourceForm" class="edit-form">
+
+
+          <div class="double-field-container">
+            <div class="edit-field">
+              <label class="edit-label">Firstname</label>
+              <input class="edit-input" formControlName="firstName" type="text" pInputText />
+            </div>
+            <div class="edit-field">
+              <label class="edit-label">Lastname</label>
+              <input class="edit-input" formControlName="lastName" type="text" pInputText />
+            </div>
+          </div>
+
+          <div class="double-field-container">
+            <div class="edit-field">
+              <label class="edit-label">Email</label>
+              <input class="edit-input" formControlName="email" type="text" pInputText />
+            </div>
+            <div class="edit-field">
+              <label class="edit-label">Rank</label>
+              <app-rank-selector formControlName="rank"></app-rank-selector>
+            </div>
+          </div>
+
+          <div class="double-field-container">
+            <div class="edit-field">
+              <label class="edit-label">Title</label>
+              <input type="text" pInputText formControlName="title" class="edit-input">
+            </div>
+
+            <div class="edit-field">
+              <label class="edit-label">Starting date</label>
+              <p-calendar [style]="{'width':'100%'}" class="cbs-calendar" [showIcon]="true"
+                formControlName="startingDate"></p-calendar>
+            </div>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Description</label>
+            <textarea pInputTextarea formControlName="description"></textarea>
+          </div>
+
+
+        </form>
+        <div class="edit-actions">
+          <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
+            class="edit-save p-button-outlined p-button-success" (click)="createResource()"
+            [disabled]="resourceForm.invalid"></button>
+          <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
+            class="edit-save p-button-outlined p-button-primary" (click)="updateResource()"
+            [disabled]="resourceForm.invalid"></button>
         </div>
       </div>
-      <div class="double-field-container">
-        <div class="edit-field">
-          <label class="edit-label">Email</label>
-          <input class="edit-input" formControlName="email" type="text" pInputText />
+    </p-tabPanel>
+
+
+
+    <ng-container *ngIf="!_createMode">
+
+      <p-tabPanel header="Profil picture">
+        <app-buster-profil-picture [buster]="_resource"></app-buster-profil-picture>
+      </p-tabPanel>
+
+      <p-tabPanel header="Buster's squad">
+        <ng-container *ngIf="!_createMode">
+          <div class="edit-category">
+            <form [formGroup]="busterSquadForm" class="edit-form" *ngIf="_resource.squad">
+              <div class="edit-field">
+                <label class="edit-label">Name</label>
+                <input class="edit-input" formControlName="name" type="text" pInputText />
+              </div>
+            </form>
+            <div class="edit-actions">
+              <button *ngIf="_resource.squad" pButton type="button" icon="pi pi-minus" iconPos="left"
+                label="Remove Membership" class="edit-save p-button-outlined p-button-danger"
+                (click)="removeMembershipOfSquad(_resource.squad.id)"></button>
+            </div>
+
+            <div *ngIf="!_resource.squad">
+              <p class="empty-list-message">This buster isn't member of squad :(</p>
+              <app-resource-search actionLabel="Add Squad" [resourceService]="squadService"
+                (selectionEmitter)="addMembership($event)">
+              </app-resource-search>
+            </div>
+          </div>
+
+        </ng-container>
+      </p-tabPanel>
+
+      <p-tabPanel header="Buster's activity">
+        <div class="edit-category">
+          <h4>Buster's current client</h4>
+          <form [formGroup]="busterCurrentClientForm" class="edit-form" *ngIf="_resource.currentClient">
+            <div class="edit-field">
+              <label class="edit-label">Name</label>
+              <input class="edit-input" formControlName="name" type="text" pInputText />
+            </div>
+          </form>
+
+          <div class="edit-actions">
+            <button *ngIf="_resource.currentClient" pButton type="button" icon="pi pi-minus" iconPos="left"
+              label="Remove Current Client" class="edit-save p-button-outlined p-button-danger"
+              (click)="removeCurrentClient(_resource.currentClient.id)"></button>
+          </div>
+
+          <div *ngIf="!_resource.currentClient">
+            <p class="empty-list-message">This buster hasn't current client yet :(</p>
+            <app-resource-search actionLabel="Add Current Client" [resourceService]="clientService"
+              (selectionEmitter)="addCurrentClient($event)">
+            </app-resource-search>
+          </div>
         </div>
-        <div class="edit-field">
-          <label class="edit-label">Rank</label>
-          <input class="edit-input" formControlName="rank" type="text" pInputText />
+
+        <div class="edit-category">
+          <h4 class="edit-category-title">Buster's projects</h4>
+          <app-resource-listing [resourceService]="projectService" [resources]="_resource.projects"
+            [resourcesActions]="projectsListingAction">
+          </app-resource-listing>
+          <p class="empty-list-message" *ngIf="!_resource.technologies || _resource.technologies.length === 0">This
+            buster
+            hasn't project yet</p>
+          <app-resource-search actionLabel="Add Project" [resourceService]="projectService"
+            (selectionEmitter)="addingProject($event)"></app-resource-search>
         </div>
-      </div>
-    </form>
-    <div class="edit-actions">
-      <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
-        class="edit-save p-button-outlined p-button-success" (click)="createResource()"
-        [disabled]="resourceForm.invalid"></button>
-      <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
-        class="edit-save p-button-outlined p-button-primary" (click)="updateResource()"
-        [disabled]="resourceForm.invalid"></button>
-    </div>
-  </div>
+      </p-tabPanel>
 
-  <ng-container *ngIf="!_createMode">
-    <div class="edit-category">
-      <h4 class="edit-category-title">Buster's squad</h4>
-      <form [formGroup]="busterSquadForm" class="edit-form" *ngIf="_resource.squad">
-        <div class="edit-field">
-          <label class="edit-label">Name</label>
-          <input class="edit-input" formControlName="name" type="text" pInputText />
+      <p-tabPanel header="Buster's technologies">
+        <div class="edit-category">
+          <app-resource-listing [resourceService]="technoService" [resources]="_resource.technologies"
+            [resourcesActions]="technologiesListingAction">
+          </app-resource-listing>
+          <p class="empty-list-message" *ngIf="!_resource.technologies || _resource.technologies.length === 0">This
+            buster
+            don't
+            knows any
+            technology</p>
+          <app-resource-search actionLabel="Add Technology" [resourceService]="technoService"
+            (selectionEmitter)="onAddingTechno($event)"></app-resource-search>
         </div>
-      </form>
-      <div class="edit-actions">
-        <button *ngIf="_resource.squad" pButton type="button" icon="pi pi-minus" iconPos="left"
-          label="Remove Membership" class="edit-save p-button-outlined p-button-danger"
-          (click)="removeMembershipOfSquad(_resource.squad.id)"></button>
-      </div>
+      </p-tabPanel>
+    </ng-container>
 
-      <div *ngIf="!_resource.squad">
-        <p class="empty-list-message">This buster isn't member of squad :(</p>
-        <app-resource-search actionLabel="Add Squad" [resourceService]="squadService"
-          (selectionEmitter)="addMembership($event)">
-        </app-resource-search>
-      </div>
-    </div>
 
-    <div class="edit-category">
-      <h4>Buster's current client</h4>
-      <form [formGroup]="busterCurrentClientForm" class="edit-form" *ngIf="_resource.currentClient">
-        <div class="edit-field">
-          <label class="edit-label">Name</label>
-          <input class="edit-input" formControlName="name" type="text" pInputText />
-        </div>
-      </form>
 
-      <div class="edit-actions">
-        <button *ngIf="_resource.currentClient" pButton type="button" icon="pi pi-minus" iconPos="left"
-          label="Remove Current Client" class="edit-save p-button-outlined p-button-danger"
-          (click)="removeCurrentClient(_resource.currentClient.id)"></button>
-      </div>
+  </p-tabView>
 
-      <div *ngIf="!_resource.currentClient">
-        <p class="empty-list-message">This buster hasn't current client yet :(</p>
-        <app-resource-search actionLabel="Add Current Client" [resourceService]="clientService"
-          (selectionEmitter)="addCurrentClient($event)">
-        </app-resource-search>
-      </div>
-    </div>
 
-    <!-- <div class="edit-category">
-      <h4 class="edit-category-title">All buster's clients</h4>
-      <p class="empty-list-message">WIP</p>
-    </div> -->
 
-    <div class="edit-category">
-      <h4 class="edit-category-title">Buster's technologies</h4>
-      <app-resource-listing [resourceService]="technoService" [resources]="_resource.technologies"
-        [resourcesActions]="technologiesListingAction">
-      </app-resource-listing>
-      <p class="empty-list-message" *ngIf="!_resource.technologies || _resource.technologies.length === 0">This buster
-        don't
-        knows any
-        technology</p>
-      <app-resource-search actionLabel="Add Technology" [resourceService]="technoService"
-        (selectionEmitter)="onAddingTechno($event)"></app-resource-search>
-    </div>
 
-  </ng-container>
 
 
 

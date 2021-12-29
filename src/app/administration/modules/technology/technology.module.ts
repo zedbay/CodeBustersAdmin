@@ -8,6 +8,8 @@ import { TechnologyComponent } from './components/technology/technology.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TabViewModule } from 'primeng/tabview';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { ButtonModule } from 'primeng/button';
     ReactiveFormsModule,
     FormsModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    InputTextareaModule,
+    TabViewModule
   ]
 })
 export class TechnologyModule { }

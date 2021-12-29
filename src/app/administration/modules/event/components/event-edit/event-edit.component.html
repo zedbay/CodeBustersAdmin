@@ -1,26 +1,32 @@
 <div *ngIf="_resource" class="edit-container">
 
-  <h3 *ngIf="!_createMode">Event: {{ _resource.name }}</h3>
-  <h3 *ngIf="_createMode">Create an event !</h3>
 
-  <div class="edit-category">
-    <h4 class="edit-category-title">Main informations</h4>
-    <form [formGroup]="resourceForm" class="edit-form">
-      <div class="double-field-container">
-        <div class="edit-field">
-          <label class="edit-label">Name</label>
-          <input class="edit-input" formControlName="name" type="text" pInputText />
+  <p-tabView>
+    <p-tabPanel header="Main informations">
+      <div class="edit-category">
+        <form [formGroup]="resourceForm" class="edit-form">
+          <div class="double-field-container">
+            <div class="edit-field">
+              <label class="edit-label">Name</label>
+              <input class="edit-input" formControlName="name" type="text" pInputText />
+            </div>
+          </div>
+        </form>
+        <div class="edit-actions">
+          <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
+            class="edit-save p-button-outlined p-button-success" (click)="createResource()"
+            [disabled]="resourceForm.invalid"></button>
+          <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
+            class="edit-save p-button-outlined p-button-primary" (click)="updateResource()"
+            [disabled]="resourceForm.invalid"></button>
         </div>
       </div>
-    </form>
-    <div class="edit-actions">
-      <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
-        class="edit-save p-button-outlined p-button-success" (click)="createResource()"
-        [disabled]="resourceForm.invalid"></button>
-      <button *ngIf="!_createMode" pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
-        class="edit-save p-button-outlined p-button-primary" (click)="updateResource()"
-        [disabled]="resourceForm.invalid"></button>
-    </div>
-  </div>
+    </p-tabPanel>
+  </p-tabView>
+
+
+
+
+
 
 </div>

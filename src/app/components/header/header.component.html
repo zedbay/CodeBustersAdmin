@@ -1,0 +1,15 @@
+<img src="{{ imgPath.logoWithoutBackground }}" alt="logo" class="logo">
+<ul class="header-links">
+  <ng-container *ngIf="visible">
+    <li routerLink="">CODE BUSTERS</li>
+    <li routerLink="/community">LA COMMUNAUTE DES BUSTERS</li>
+    <li routerLink="/busters">DEVIENS UN BUSTER</li>
+    <li routerLink="/news" class="separator">NEWS</li>
+    <i class="pi pi-times header-icon" (click)="toggleVisibility()"></i>
+  </ng-container>
+
+  <ng-container *ngIf="!visible">
+    <i class="pi pi-bars header-icon" (click)="toggleVisibility()"></i>
+  </ng-container>
+
+</ul>

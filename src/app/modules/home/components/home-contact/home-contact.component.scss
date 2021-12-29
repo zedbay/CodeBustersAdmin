@@ -1,0 +1,41 @@
+@import "colors";
+
+.answer {
+  cursor: pointer;
+  margin-bottom: 24px;
+
+  .pi {
+    margin-right: 12px;
+  }
+  &:hover,
+  &.answer-selected {
+    color: $secondary;
+  }
+}
+
+.contact-body-container {
+  display: flex;
+  align-items: center;
+}
+
+.contact-form-container {
+  display: flex;
+  align-items: center;
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 48px;
+    border: solid 1px $white;
+    padding: 48px;
+
+    input {
+      background-color: transparent;
+      outline: none;
+      color: $white;
+      border: solid $white;
+      border-width: 0 0 1px 0;
+      margin-bottom: 24px;
+    }
+  }
+}

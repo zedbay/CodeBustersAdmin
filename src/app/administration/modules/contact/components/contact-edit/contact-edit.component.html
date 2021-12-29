@@ -1,0 +1,46 @@
+<div *ngIf="_resource" class="edit-container">
+
+
+  <p-tabView>
+
+    <p-tabPanel header="Main informations">
+      <div class="edit-category">
+        <form [formGroup]="resourceForm" class="edit-form">
+          <div class="double-field-container">
+            <div class="edit-field">
+              <label class="edit-label">Firstname</label>
+              <input class="edit-input" formControlName="firstname" type="text" pInputText />
+            </div>
+            <div class="edit-field">
+              <label class="edit-label">Lastname</label>
+              <input class="edit-input" formControlName="lastname" type="text" pInputText />
+            </div>
+          </div>
+          <div class="double-field-container">
+            <div class="edit-field">
+              <label class="edit-label">Email</label>
+              <input class="edit-input" formControlName="mail" type="text" pInputText />
+            </div>
+            <div class="edit-field">
+              <label class="edit-label">Phone</label>
+              <input class="edit-input" formControlName="phone" type="text" pInputText />
+            </div>
+          </div>
+        </form>
+      </div>
+    </p-tabPanel>
+
+    <p-tabPanel header="Responses">
+      <div class="edit-field" *ngFor="let response of responses">
+        <input class="edit-input" disabled="true" [value]="response" type="text" pInputText />
+      </div>
+    </p-tabPanel>
+
+  </p-tabView>
+
+
+
+
+
+
+</div>

@@ -7,6 +7,7 @@ import { ProjectService } from 'src/app/core/services/project.service';
 import { TechnoService } from 'src/app/core/services/techno.service';
 import { Buster } from 'src/app/shared/models/buster';
 import { Project } from 'src/app/shared/models/project';
+import { Rank } from 'src/app/shared/models/rank';
 import { Techno } from 'src/app/shared/models/techno';
 
 @Component({
@@ -17,7 +18,9 @@ import { Techno } from 'src/app/shared/models/techno';
 export class ProjectEditComponent extends ResourceEditComponent<Project> implements OnInit {
 
   public resourceForm: FormGroup = this.formBuilder.group({
-    name: ['', [Validators.required]]
+    name: ['', [Validators.required]],
+    rank: ['', [Validators.required]],
+    description: ['', Validators.required]
   });
 
   public technologiesListingAction: TableAction = {
@@ -41,10 +44,14 @@ export class ProjectEditComponent extends ResourceEditComponent<Project> impleme
 
   protected onChangeCreateMode(): void {
     this.resourceForm.controls.name.setValue('');
+    this.resourceForm.controls.rank.setValue(Rank.Bronze);
+    this.resourceForm.controls.description.setValue('');
   }
 
   protected onChangeResource(project: Project): void {
     this.resourceForm.controls.name.setValue(project.name);
+    this.resourceForm.controls.rank.setValue(project.rank);
+    this.resourceForm.controls.description.setValue(project.description);
   }
 
   public addingTechno(techno: Techno): void {

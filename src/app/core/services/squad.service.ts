@@ -9,7 +9,7 @@ import { Squad } from 'src/app/shared/models/squad';
 })
 export class SquadService extends ResourcesService<Squad> {
 
-  public labels: TableLabels[] = [
+  public labels: TableLabels<Squad>[] = [
     { value: 'Name', key: 'name' },
   ];
 

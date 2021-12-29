@@ -7,11 +7,21 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { ResourceSearchComponent } from './components/resource-search/resource-search.component';
 import { ResourceListingComponent } from './components/resource-listing/resource-listing.component';
+import { RankSelectorComponent } from './components/rank-selector/rank-selector.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { PictureInputComponent } from './components/picture-input/picture-input.component';
+import { DndDirective } from './directives/dnd.directive';
+import { FileZoneComponent } from './components/file-zone/file-zone.component';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
     ResourceSearchComponent,
-    ResourceListingComponent
+    ResourceListingComponent,
+    RankSelectorComponent,
+    PictureInputComponent,
+    DndDirective,
+    FileZoneComponent
   ],
   imports: [
     CommonModule,
@@ -20,11 +30,17 @@ import { ResourceListingComponent } from './components/resource-listing/resource
     InputTextModule,
     ReactiveFormsModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    DropdownModule,
+    ToastModule
   ],
   exports: [
     ResourceSearchComponent,
-    ResourceListingComponent
+    ResourceListingComponent,
+    RankSelectorComponent,
+    PictureInputComponent,
+    DndDirective,
+    FileZoneComponent
   ]
 })
 export class SharedAdministrationModule { }

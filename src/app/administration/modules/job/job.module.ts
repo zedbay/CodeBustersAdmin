@@ -8,6 +8,7 @@ import { SharedAdministrationModule } from '../../shared/shared-administration.m
 import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { TabViewModule } from 'primeng/tabview';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     ReactiveFormsModule,
     FormsModule,
-    InputTextModule
+    InputTextModule,
+    TabViewModule
   ]
 })
 export class JobModule { }

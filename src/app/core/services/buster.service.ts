@@ -10,9 +10,8 @@ import { Buster } from 'src/app/shared/models/buster';
 })
 export class BusterService extends ResourcesService<Buster> {
 
-  public labels: TableLabels[] = [
+  public labels: TableLabels<Buster>[] = [
     { value: 'Name', formatter: (b: Buster) => `${b.firstName} ${b.lastName}` },
-    { value: 'Email', key: 'email' },
     { value: 'Rank', key: 'rank' },
   ];
 
@@ -23,6 +22,16 @@ export class BusterService extends ResourcesService<Buster> {
       'buster',
       networkService
     );
+  }
+
+  public downloadProfilPicture(busterId: number, fileName: string): Observable<File> {
+    return this.networkService.downloadFile(`${this.endpoint}/download/${busterId}?fileName=${fileName}`);
+  }
+
+  public uploadProfilPicture(busterId: number, file: File): Observable<boolean> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.networkService.post(`${this.endpoint}/upload/${busterId}`, formData);
   }
 
   public removeMembershipOfSquad(busterId: number, squadId: number): Observable<boolean> {

@@ -1,0 +1,37 @@
+@import "constants";
+@import "colors";
+
+.principles {
+  display: flex;
+  padding: 4em $side-margin-body;
+  margin-top: -40px;
+  list-style: none;
+
+  .principle {
+    flex: 1;
+    padding: 0 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .principle-img {
+      height: 15em;
+    }
+
+    h4 {
+      margin: 1em 2em;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1em;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    &:nth-child(2) {
+      border: solid $white;
+      border-width: 0 1px;
+    }
+  }
+}

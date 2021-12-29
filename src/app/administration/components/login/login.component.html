@@ -1,0 +1,17 @@
+<div>
+  <form [formGroup]="loginForm">
+    <div class="edit-field">
+      <label class="edit-label">Email</label>
+      <input class="edit-input" formControlName="email" type="email" pInputText />
+    </div>
+    <div class="edit-field">
+      <label class="edit-label">Password</label>
+      <p-password formControlName="password" [feedback]="false"></p-password>
+    </div>
+  </form>
+  <div class="edit-actions">
+    <button pButton type="button" iconPos="left" label="Login" class="edit-save p-button-outlined p-button-success"
+      (click)="login()" [disabled]="loginForm.invalid"></button>
+  </div>
+
+</div>

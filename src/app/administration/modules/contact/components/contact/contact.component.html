@@ -1,0 +1,9 @@
+<div class="listing">
+  <div class="list-header">
+    <h2>Contact</h2>
+  </div>
+  <app-resource-listing [resourceService]="contactService" [resourcesActions]="eventsListingAction"
+    [resources]="resources">
+  </app-resource-listing>
+</div>
+<app-contact-edit [createMode]="creationMode" [resource]="selectedResource" class="edit-element"></app-contact-edit>

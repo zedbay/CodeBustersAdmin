@@ -9,6 +9,7 @@ import { SharedAdministrationModule } from '../../shared/shared-administration.m
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { TabViewModule } from 'primeng/tabview';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     InputTextModule,
     ReactiveFormsModule,
     FormsModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    TabViewModule
   ],
   exports: []
 })

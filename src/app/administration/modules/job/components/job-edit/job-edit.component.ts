@@ -6,6 +6,7 @@ import { JobService } from 'src/app/core/services/job.service';
 import { SquadService } from 'src/app/core/services/squad.service';
 import { TechnoService } from 'src/app/core/services/techno.service';
 import { Job } from 'src/app/shared/models/job';
+import { Rank } from 'src/app/shared/models/rank';
 import { Squad } from 'src/app/shared/models/squad';
 import { Techno } from 'src/app/shared/models/techno';
 
@@ -19,7 +20,8 @@ export class JobEditComponent extends ResourceEditComponent<Job> implements OnIn
   public resourceForm: FormGroup = this.formBuilder.group({
     title: ['', [Validators.required]],
     underTitle: ['', [Validators.required]],
-    description: ['', [Validators.required]]
+    description: ['', [Validators.required]],
+    rank: ['', [Validators.required]]
   });
 
   public jobSquadForm: FormGroup = this.formBuilder.group({
@@ -36,19 +38,17 @@ export class JobEditComponent extends ResourceEditComponent<Job> implements OnIn
     public squadService: SquadService,
     public technoService: TechnoService
   ) {
-    super(
-      jobService
-    );
+    super(jobService);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   protected onChangeCreateMode(): void {
     if (this._createMode) {
       this.resourceForm.controls.title.setValue('');
       this.resourceForm.controls.underTitle.setValue('');
       this.resourceForm.controls.description.setValue('');
+      this.resourceForm.controls.rank.setValue(Rank.Bronze);
       this.resetJobSquadForm();
     }
   }
@@ -57,6 +57,7 @@ export class JobEditComponent extends ResourceEditComponent<Job> implements OnIn
     this.resourceForm.controls.title.setValue(this._resource.title);
     this.resourceForm.controls.underTitle.setValue(this._resource.underTitle);
     this.resourceForm.controls.description.setValue(this._resource.description);
+    this.resourceForm.controls.rank.setValue(this._resource.rank);
     if (this._resource.squad) {
       this.setJobSquadForm(this._resource.squad);
     }

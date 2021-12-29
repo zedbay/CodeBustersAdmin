@@ -10,7 +10,7 @@ import { Techno } from 'src/app/shared/models/techno';
 })
 export class TechnoService extends ResourcesService<Techno> {
 
-  public labels: TableLabels[] = [
+  public labels: TableLabels<Techno>[] = [
     { value: 'Name', key: 'name' }
   ];
 

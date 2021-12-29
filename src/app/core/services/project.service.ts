@@ -10,7 +10,7 @@ import { Project } from 'src/app/shared/models/project';
 })
 export class ProjectService extends ResourcesService<Project> {
 
-  public labels: TableLabels[] = [
+  public labels: TableLabels<Project>[] = [
     { value: 'Name', key: 'name' }
   ];
 

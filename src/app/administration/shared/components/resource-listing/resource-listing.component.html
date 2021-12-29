@@ -2,13 +2,14 @@
   <ng-template pTemplate="header">
     <tr>
       <th *ngFor="let label of resourcesLabels">{{ label.value }}</th>
-      <th>Actions</th>
+      <th class="action-cell">Actions</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-element>
-    <tr (click)="resourcesActions?.onRowClick(element.id)">
+    <tr (click)="selectElement(element); resourcesActions?.onRowClick(element.id)"
+      [ngClass]="{'selected': element.selected }">
       <td *ngFor="let label of resourcesLabels">{{ label.key ? element[label.key] : label.formatter(element) }}</td>
-      <td>
+      <td class="action-cell">
         <i class="pi pi-trash" (click)="resourcesActions?.onDelete(element.id)" *ngIf="resourcesActions.onDelete"></i>
       </td>
     </tr>

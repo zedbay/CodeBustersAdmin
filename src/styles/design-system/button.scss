@@ -1,0 +1,103 @@
+@import "colors";
+
+.cbs-button {
+  display: flex;
+  align-items: center;
+  padding: 1em 2em;
+
+  &.cbs-action {
+    color: $secondary;
+    border: solid $secondary;
+    border-width: 2px 2px 1px 1px;
+    background-color: transparent;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  &.disabled {
+    color: $first-gray !important;
+    border-color: $first-gray !important;
+    opacity: 0.7 !important;
+
+    .progress-bar {
+      border-color: $first-gray !important;
+    }
+  }
+
+  &.cbs-progression {
+    color: $secondary;
+    background-color: $primary;
+    border: solid $secondary;
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0em;
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    .progress-bar {
+      border: solid 1px $secondary;
+      align-self: flex-start;
+
+      &.progress0 {
+        visibility: hidden;
+      }
+
+      &.progress1 {
+        width: 33%;
+      }
+
+      &.progress2 {
+        width: 66%;
+      }
+
+      &.progress3 {
+        width: 100%;
+      }
+    }
+
+    .button-content {
+      display: flex;
+      align-items: center;
+      padding: 1em 2em;
+    }
+  }
+
+  &.cbs-savoir {
+    border: solid 1px white;
+    color: white;
+
+    background-color: transparent;
+
+    &:hover {
+      border-color: $secondary;
+      color: $secondary;
+      cursor: pointer;
+    }
+  }
+
+  &.cbs-retour {
+    border: solid 1px white;
+    color: white;
+    padding: 1em 2em;
+    background-color: $primary;
+
+    .pi {
+      margin-right: 1em;
+    }
+
+    &:hover {
+      border-color: $secondary;
+      color: $secondary;
+      cursor: pointer;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

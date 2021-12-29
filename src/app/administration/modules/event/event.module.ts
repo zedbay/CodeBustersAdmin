@@ -7,6 +7,7 @@ import { SharedAdministrationModule } from '../../shared/shared-administration.m
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TabViewModule } from 'primeng/tabview';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InputTextModule,
     ReactiveFormsModule,
     FormsModule,
+    TabViewModule
   ]
 })
 export class EventModule { }

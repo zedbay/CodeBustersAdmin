@@ -9,7 +9,7 @@ import { ClientEditComponent } from './components/client-edit/client-edit.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     ReactiveFormsModule,
     FormsModule,
     InputTextModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    TabViewModule
   ],
   exports: [
     ClientComponent

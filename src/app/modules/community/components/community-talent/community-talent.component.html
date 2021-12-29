@@ -1,0 +1,42 @@
+<h3 class="cbs-title cbs-second-title center-title">VALORISER LE TALENT</h3>
+<div class="flex-double-container">
+  <div class="flex-element talent-description-container">
+    <h4 class="cbs-title cbs-under-title">"Chez Code Busters, nous pensons que le Talent n’attend pas les années."</h4>
+    <p class="cbs-text">
+      C’est pourquoi nous avons décidé de mettre en place un modèle de rémunération unique et inédit basé sur l’apport
+      de valeur au sein de la communauté. Il en découle un certain nombre de responsabilités qu’ils incombent aux
+      Busters en fonction de leurs grades.
+    </p>
+  </div>
+  <div class="flex-element talent-rank-container">
+    <div class="talent-img-container">
+      <div class="talent-rank">
+        <img class="talent-rank-img" src="{{ imgPath.ranks.bronze }}" alt="bronze" (click)="selectRank(rank.Bronze)">
+        <i class="pi pi-circle-off" *ngIf="selectedRank !== rank.Bronze" (click)="selectRank(rank.Bronze)"></i>
+        <i class="pi pi-circle-on" *ngIf="selectedRank === rank.Bronze"></i>
+      </div>
+
+      <div class="talent-rank">
+        <img class="talent-rank-img selected" src="{{ imgPath.ranks.silver }}" alt="silver"
+          (click)="selectRank(rank.Silver)">
+        <i class="pi pi-circle-off" *ngIf="selectedRank !== rank.Silver" (click)="selectRank(rank.Silver)"></i>
+        <i class="pi pi-circle-on" *ngIf="selectedRank === rank.Silver"></i>
+      </div>
+
+      <div class="talent-rank">
+        <img class="talent-rank-img" src="{{ imgPath.ranks.gold }}" alt="gold" (click)="selectRank(rank.Gold)">
+        <i class="pi pi-circle-off" *ngIf="selectedRank !== rank.Gold" (click)="selectRank(rank.Gold)"></i>
+        <i class="pi pi-circle-on" *ngIf="selectedRank === rank.Gold"></i>
+      </div>
+
+      <div class="talent-rank">
+        <img class="talent-rank-img" src="{{ imgPath.ranks.diamond }}" alt="diamond" (click)="selectRank(rank.Diamond)">
+        <i class="pi pi-circle-off" *ngIf="selectedRank !== rank.Diamond" (click)="selectRank(rank.Diamond)"></i>
+        <i class="pi pi-circle-on" *ngIf="selectedRank === rank.Diamond"></i>
+      </div>
+    </div>
+    <p class="cbs-text rank-description">
+      {{ rankOptions[selectedRank].description }}
+    </p>
+  </div>
+</div>

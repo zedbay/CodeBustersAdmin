@@ -26,4 +26,9 @@ export class NetworkService {
   public put<T>(ressource: string, body: any = {}): Observable<T> {
     return this.http.put<T>(`${environment.api}/${ressource}`, body);
   }
+
+  public downloadFile(ressource: string): Observable<any> {
+    return this.http.get<any>(`${environment.api}/${ressource}`);
+  }
+
 }

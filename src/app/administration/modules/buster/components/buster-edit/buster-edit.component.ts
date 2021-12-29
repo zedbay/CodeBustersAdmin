@@ -4,10 +4,12 @@ import { ResourceEditComponent } from 'src/app/administration/shared/components/
 import { TableAction } from 'src/app/administration/shared/models/TableActions.model';
 import { BusterService } from 'src/app/core/services/buster.service';
 import { ClientService } from 'src/app/core/services/client.service';
+import { ProjectService } from 'src/app/core/services/project.service';
 import { SquadService } from 'src/app/core/services/squad.service';
 import { TechnoService } from 'src/app/core/services/techno.service';
 import { Buster } from 'src/app/shared/models/buster';
 import { Client } from 'src/app/shared/models/client';
+import { Project } from 'src/app/shared/models/project';
 import { Squad } from 'src/app/shared/models/squad';
 import { Techno } from 'src/app/shared/models/techno';
 
@@ -22,7 +24,10 @@ export class BusterEditComponent extends ResourceEditComponent<Buster> implement
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
     email: ['', [Validators.required]],
-    rank: ['', [Validators.required]]
+    rank: ['', [Validators.required]],
+    description: [''],
+    title: ['', [Validators.required]],
+    startingDate: ['', [Validators.required]]
   });
 
   public busterSquadForm: FormGroup = this.formBuilder.group({
@@ -37,12 +42,17 @@ export class BusterEditComponent extends ResourceEditComponent<Buster> implement
     onDelete: (technoId: number) => this.onDeleteTechno(technoId)
   }
 
+  public projectsListingAction: TableAction = {
+    onDelete: (projectId: number) => this.removeProject(projectId)
+  }
+
   constructor(
     private formBuilder: FormBuilder,
     private busterService: BusterService,
     public technoService: TechnoService,
     public clientService: ClientService,
-    public squadService: SquadService
+    public squadService: SquadService,
+    public projectService: ProjectService
   ) {
     super(busterService);
   }
@@ -55,6 +65,9 @@ export class BusterEditComponent extends ResourceEditComponent<Buster> implement
     this.resourceForm.controls.firstName.setValue('');
     this.resourceForm.controls.lastName.setValue('');
     this.resourceForm.controls.rank.setValue('');
+    this.resourceForm.controls.description.setValue('');
+    this.resourceForm.controls.title.setValue('');
+    this.resourceForm.controls.startingDate.setValue('');
   }
 
   protected onChangeResource(buster: Buster): void {
@@ -63,6 +76,11 @@ export class BusterEditComponent extends ResourceEditComponent<Buster> implement
     this.resourceForm.controls.firstName.setValue(buster.firstName);
     this.resourceForm.controls.lastName.setValue(buster.lastName);
     this.resourceForm.controls.rank.setValue(buster.rank);
+    this.resourceForm.controls.description.setValue(buster.description);
+    this.resourceForm.controls.title.setValue(buster.title);
+    this.resourceForm.controls.startingDate.setValue(
+      buster.startingDate ? new Date(buster.startingDate) : undefined
+    );
     if (buster.squad) {
       this.busterSquadForm.controls.name.setValue(buster.squad.name);
     }
@@ -101,6 +119,18 @@ export class BusterEditComponent extends ResourceEditComponent<Buster> implement
   public onAddingTechno(techno: Techno) {
     this.technoService.setTechnoToBuster(techno.id, this._resource.id).subscribe(
       () => this._resource.technologies.push(techno)
+    );
+  }
+
+  public addingProject(project: Project) {
+    this.projectService.addWorker(project.id, this._resource.id).subscribe(
+      () => this._resource.projects.push(project)
+    );
+  }
+
+  public removeProject(projectId: number) {
+    this.projectService.deleteWorker(projectId, this._resource.id).subscribe(
+      () => this._resource.projects = this._resource.projects.filter((r) => r.id !== projectId)
     );
   }
 

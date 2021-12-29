@@ -1,1 +1,149 @@
-<p>website works!</p>
+<p-tabView>
+
+
+  <p-tabPanel header="Code Busters">
+
+    <p-panel class="cbs-panel" header="Code Busters description" [toggleable]="true">
+      <div class="edit-category">
+        <form [formGroup]="busterDescriptionForm" class="edit-form">
+
+          <div class="edit-field">
+            <label class="edit-label">Début de Code Buster titre</label>
+            <textarea pInputTextarea formControlName="startBusterTitle" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Début de Code Buster sous titre</label>
+            <textarea pInputTextarea formControlName="startBusterUnderTitle" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Début de Code Buster description</label>
+            <textarea pInputTextarea formControlName="startBusterDescription" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="section-separator"></div>
+
+          <div class="edit-field">
+            <label class="edit-label">Staff de Code Buster titre</label>
+            <textarea pInputTextarea formControlName="staffBusterTitle" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Staff de Code Buster sous titre</label>
+            <textarea pInputTextarea formControlName="staffBusterUnderTitle" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Staff de Code Buster description</label>
+            <textarea pInputTextarea formControlName="staffBusterDescription" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="section-separator"></div>
+
+          <div class="edit-field">
+            <label class="edit-label">Clients de Code Buster titre</label>
+            <textarea pInputTextarea formControlName="clientBusterTitle" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Clients de Code Buster sous titre</label>
+            <textarea pInputTextarea formControlName="clientBusterUnderTitle" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Clients de Code Buster description</label>
+            <textarea pInputTextarea formControlName="clientBusterDescription" class="cbs-textarea"></textarea>
+          </div>
+
+        </form>
+        <div class="edit-actions">
+          <button pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
+            class="edit-save p-button-outlined p-button-primary" (click)="updateSite(busterDescriptionForm)"
+            [disabled]="busterDescriptionForm.invalid"></button>
+        </div>
+      </div>
+    </p-panel>
+
+  </p-tabPanel>
+
+  <p-tabPanel header="La communauté des Busters">
+
+    <p-panel class="cbs-panel" header="Description des grades" [toggleable]="true">
+      <div class="edit-category">
+        <form [formGroup]="ranksForm" class="edit-form">
+
+          <div class="edit-field">
+            <label class="edit-label">Bronze</label>
+            <textarea pInputTextarea formControlName="bronzeDescription" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Silver</label>
+            <textarea pInputTextarea formControlName="silverDescription" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Gold</label>
+            <textarea pInputTextarea formControlName="goldDescription" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Diamond</label>
+            <textarea pInputTextarea formControlName="diamondDescription" class="cbs-textarea"></textarea>
+          </div>
+
+        </form>
+        <div class="edit-actions">
+          <button pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
+            class="edit-save p-button-outlined p-button-primary" (click)="updateSite(ranksForm)"
+            [disabled]="ranksForm.invalid"></button>
+        </div>
+      </div>
+
+    </p-panel>
+
+    <p-panel class="cbs-panel" header="Description des règle du jeu" [toggleable]="true">
+      <div class="edit-category">
+        <form [formGroup]="rulesForm" class="edit-form">
+
+          <div class="edit-field">
+            <label class="edit-label">La Passion du Dév - tu auras.</label>
+            <textarea autoResize="autoResize" pInputTextarea formControlName="devRule" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Ensemble - nous serons.</label>
+            <textarea pInputTextarea formControlName="togetherRule" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Une ambition d’être à la pointe - nous avons.</label>
+            <textarea pInputTextarea formControlName="ambitiousRule" class="cbs-textarea"></textarea>
+          </div>
+
+          <div class="edit-field">
+            <label class="edit-label">Prendre du plaisir - sans cesse.</label>
+            <textarea pInputTextarea formControlName="pleasureRule" class="cbs-textarea"></textarea>
+          </div>
+
+        </form>
+        <div class="edit-actions">
+          <button pButton type="button" icon="pi pi-save" iconPos="left" label="Save"
+            class="edit-save p-button-outlined p-button-primary" (click)="updateSite(rulesForm)"
+            [disabled]="rulesForm.invalid"></button>
+        </div>
+      </div>
+
+    </p-panel>
+  </p-tabPanel>
+
+  <p-tabPanel header="Deviens un Buster">
+
+  </p-tabPanel>
+
+  <p-tabPanel header="News">
+
+  </p-tabPanel>
+
+</p-tabView>

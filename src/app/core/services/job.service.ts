@@ -10,7 +10,7 @@ import { ResourcesService } from './resources.service';
 })
 export class JobService extends ResourcesService<Job> {
 
-  public labels: TableLabels[] = [
+  public labels: TableLabels<Job>[] = [
     { value: 'Title', key: 'title' }
   ];
 

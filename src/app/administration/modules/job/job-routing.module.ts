@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { JobsResolver } from 'src/app/shared/resolvers/jobs.resolver';
 import { JobComponent } from './components/job/job.component';
-import { JobsResolver } from './resolvers/jobs.resolver';
 
 const routes: Routes = [
   {

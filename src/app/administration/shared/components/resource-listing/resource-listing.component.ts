@@ -12,7 +12,7 @@ import { TableLabels } from '../../models/TableLabel.mode';
 export class ResourceListingComponent<T extends Resource> implements OnInit {
 
   @Input() resources: T[] = [];
-  public resourcesLabels: TableLabels[] = [];
+  public resourcesLabels: TableLabels<T>[] = [];
   @Input() resourcesActions: TableAction;
   @Input() resourceService: ResourcesService<T>;
 
@@ -20,6 +20,12 @@ export class ResourceListingComponent<T extends Resource> implements OnInit {
 
   ngOnInit(): void {
     this.resourcesLabels = this.resourceService.labels;
+    this.resources[0].selected = true;
+  }
+
+  public selectElement(ressource: T): void {
+    this.resources.forEach((t: T) => t.selected = false);
+    ressource.selected = true;
   }
 
 }

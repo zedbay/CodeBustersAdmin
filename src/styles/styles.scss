@@ -1,5 +1,71 @@
+@import "colors";
+
 body {
   margin: 0;
 }
 
-@import "./admin.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+@font-face {
+  font-family: "GothamBold";
+  src: url("../assets/fonts/GothamCondensed-Bold.otf") format("otf");
+}
+
+@font-face {
+  font-family: "GothamMedium";
+  src: url("../assets/fonts/GothamCondensed-Medium.otf") format("otf");
+}
+
+@font-face {
+  font-family: "GothamLight";
+  src: url("../assets/fonts/GothamCondensed-Light.otf") format("otf");
+}
+
+@font-face {
+  font-family: "GothamBook";
+  src: url("../assets/fonts/GothamCondensed-Book.otf") format("otf");
+}
+
+* {
+  font-family: "GothamBold", sans-serif;
+  outline: none !important;
+
+  a {
+    color: unset;
+    text-decoration: unset;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
+    margin: 0;
+  }
+
+  ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    color: $white;
+
+    li {
+      margin-left: 24px;
+      &.separator {
+        border: solid $white;
+        border-width: 0 0 0 1px;
+        padding-left: 24px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        color: $secondary;
+        text-shadow: 1px 1px 1px black;
+      }
+    }
+  }
+}
+
+@import "./design-system/index.scss";
+@import "./admin/index.scss";

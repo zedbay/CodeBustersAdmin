@@ -7,13 +7,14 @@
 
 .sidebar {
   height: 100vh;
-  top: 70px;
+  top: 60px;
   position: fixed;
 }
 
 .menu-bar {
   position: fixed;
   width: 100%;
+  z-index: 2;
 }
 
 .body {
@@ -21,4 +22,15 @@
   padding-top: 70px;
   display: block;
   height: 100vh;
+}
+
+:host ::ng-deep p-menubarsub {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+}
+
+.admin-logo {
+  cursor: pointer;
 }
