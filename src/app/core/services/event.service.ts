@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TableLabels } from 'src/app/administration/shared/models/TableLabel.mode';
+import { TableLabels } from 'src/app/modules/administration/shared/models/TableLabel.mode';
 import { Event } from 'src/app/shared/models/event';
 import { NetworkService } from './network.service';
 import { ResourcesService } from './resources.service';

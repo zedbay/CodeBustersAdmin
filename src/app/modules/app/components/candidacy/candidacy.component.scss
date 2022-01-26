@@ -1,0 +1,88 @@
+@import "constants";
+@import "colors";
+
+.success-candidacy-message {
+  color: $white;
+  padding: 96px;
+}
+
+.cbs-input {
+  border: solid $first-gray;
+  border-width: 0 0 1px 0;
+  background-color: transparent;
+  color: $white;
+  font-size: 18px;
+  margin-bottom: 48px;
+  min-width: 300px;
+  padding-bottom: 8px;
+
+  &::placeholder {
+    color: $white;
+  }
+}
+
+.file-input-container {
+  position: relative;
+  cursor: pointer;
+  .pi-file {
+    color: $white;
+    position: absolute;
+    right: 0px;
+    top: 4px;
+  }
+}
+
+.candidacy-container {
+  padding: 96px;
+  display: flex;
+
+  .candidacy-type-container {
+    padding-right: 96px;
+  }
+
+  .candidacy-form-container {
+    display: flex;
+    .candidacy-colum {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .candidacy-first-column {
+      padding-left: 96px;
+      border: solid $white;
+      border-width: 0 0 0 1px;
+    }
+
+    .candidacy-second-column {
+      padding-left: 96px;
+    }
+  }
+}
+
+.send-candidacy-container {
+  display: flex;
+  justify-content: center;
+
+  .send-candidacy-button {
+    border: solid $secondary;
+    color: $secondary;
+    border-width: 2px 2px 1px 1px;
+
+    p {
+      color: $secondary;
+    }
+  }
+}
+
+.job-manager {
+  margin: 48px 0 0 0;
+}
+
+.job-rank-container {
+  display: flex;
+  align-items: center;
+
+  .job-rank-img {
+    width: 96px;
+  }
+}

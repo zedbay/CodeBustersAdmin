@@ -1,0 +1,63 @@
+@import "colors";
+
+:host {
+  padding: 96px;
+  background-image: linear-gradient(
+    0deg,
+    hsl(249deg 47% 11%) 0%,
+    hsl(248deg 46% 11%) 11%,
+    hsl(246deg 44% 10%) 22%,
+    hsl(244deg 43% 9%) 33%,
+    hsl(242deg 41% 9%) 44%,
+    hsl(240deg 39% 8%) 56%,
+    hsl(236deg 41% 7%) 67%,
+    hsl(233deg 41% 6%) 78%,
+    hsl(231deg 39% 5%) 89%,
+    hsl(230deg 30% 4%) 100%
+  );
+}
+.question {
+  margin-bottom: 48px;
+}
+
+.answer {
+  cursor: pointer;
+  margin-bottom: 24px;
+
+  .pi {
+    margin-right: 12px;
+  }
+  &:hover,
+  &.answer-selected {
+    color: $secondary;
+  }
+}
+
+.contact-body-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 94px 0px;
+}
+
+.contact-form-container {
+  display: flex;
+  align-items: center;
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 48px;
+    border: solid 1px $white;
+    padding: 48px;
+
+    input {
+      background-color: transparent;
+      outline: none;
+      color: $white;
+      border: solid $white;
+      border-width: 0 0 1px 0;
+      margin-bottom: 24px;
+    }
+  }
+}

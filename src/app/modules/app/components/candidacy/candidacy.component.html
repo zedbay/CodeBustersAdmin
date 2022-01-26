@@ -1,0 +1,51 @@
+<h2 class="cbs-title side-margin-right">FORMULAIRE DE <br>CANDIDATURE</h2>
+<div class="separator-container-with-button">
+  <button class="cbs-button cbs-retour" (click)="return()">
+    <i class="pi pi-chevron-left"></i>
+    Retour
+  </button>
+</div>
+<ng-container *ngIf="displaySuccessMessage">
+  <p class="cbs-main-title success-candidacy-message">Candidature bien envoyé !</p>
+</ng-container>
+<ng-container *ngIf="!displaySuccessMessage">
+  <form [formGroup]="candidacyForm" class="candidacy-container">
+    <div class="candidacy-type-container">
+      <select formControlName="candidacyType" class="cbs-select">
+        <option *ngIf="job" value="{{ job.title }}">{{ job.title }}</option>
+        <ng-container *ngIf="!job">
+          <option *ngFor="let enum of candidacyTypes | keyvalue" value="{{ enum.value }}">{{ enum.value }}</option>
+        </ng-container>
+      </select>
+      <ng-container *ngIf="job && squad">
+        <p class="cbs-text job-manager">Managé par {{ squad.manager.firstName }} {{ squad.manager.lastName }}</p>
+        <div class="job-rank-container">
+          <p class="cbs-text">Grade</p>
+          <img class="job-rank-img" src="{{ rankService.getImgPathForRank(job.rank) }}" alt="{{ job.rank }}">
+        </div>
+      </ng-container>
+
+    </div>
+    <div class="candidacy-form-container">
+      <div class="candidacy-colum candidacy-first-column">
+        <input class="cbs-input" type="text" placeholder="Nom" formControlName="lastname">
+        <input class="cbs-input" type="text" placeholder="Mail" formControlName="mail">
+        <div class="file-input-container" (click)="uploadCV()">
+          <input class="cbs-input" type="text" placeholder="CV" formControlName="cv">
+          <i class="pi pi-file"></i>
+        </div>
+      </div>
+      <div class="candidacy-colum candidacy-second-column">
+        <input class="cbs-input" type="text" placeholder="Prénom" formControlName="firstname">
+        <input class="cbs-input" type="text" placeholder="N° Téléphone" formControlName="phone">
+        <input class="cbs-input" type="text" placeholder="Champs libre" formControlName="freeField">
+      </div>
+    </div>
+  </form>
+  <div class="send-candidacy-container">
+    <button class="cbs-button cbs-retour send-candidacy-button" (click)="sendContact()"
+      [disabled]="candidacyForm.invalid && cv">
+      <p class="cbs-second-title">Envoyer</p>
+    </button>
+  </div>
+</ng-container>

@@ -1,0 +1,57 @@
+<h2 class="cbs-title side-margin-right">{{ job.title }}</h2>
+<div class="separator-container-with-button">
+  <button class="cbs-button cbs-retour" routerLink="/busters">
+    <i class="pi pi-chevron-left"></i>
+    Retour
+  </button>
+</div>
+<div class="job-offer-container">
+
+  <div>
+    <div>
+      <img class="job-rank-img" src="{{ rankService.getImgPathForRank(job.rank) }}" alt="{{ job.rank }}">
+      <p class="cbs-text">Nous sommes organisés en squad et nous proposons à tous les Busters Bronze et Silver d'avoir
+        un accompagnement personalisé par son manager</p>
+      <p class="cbs-second-title">La squad qui recrute et son manager</p>
+      <p class="cbs-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima harum quasi, nemo alias
+        explicabo et
+        mollitia
+        ducimus delectus laudantium deserunt recusandae quas nobis eaque molestiae sint quia doloremque! Saepe, facere.
+      </p>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <p class="cbs-second-title">La communauté</p>
+      <p class="cbs-text">
+        Code Busters est une communauté de dévloppeurs avec une approche non plus basée par l'année d'obtention d'un
+        diplôme mais par la valeur ajoutée par ses membres. <br /><br />
+        Nous proposons des missions techniques qui permettent aux développeurs de découvrir différents environements
+        technologiques, différents organisations et méthodologie de travail mais aussi différents coeurs de métiers
+        (finance de marché, santé, énergie etc ...). <br /><br />
+        Nous mettons tout en oeuvre pour que la communauté des Busters soit un espace de partage entre passionées, et
+        que chacun puisse apprendre et assouvir sa soif de curiosité.
+      </p>
+    </div>
+    <div>
+      <p class="cbs-second-title">Missions</p>
+      <p class="cbs-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius laborum quidem delectus velit
+        voluptate vel ex
+        consectetur iusto unde ipsam! Quibusdam vitae cumque iste recusandae molestiae iusto laborum alias at.</p>
+    </div>
+    <div>
+
+    </div>
+  </div>
+  <div>
+    <p class="cbs-second-title">Compétences</p>
+    <p class="cbs-second-title">Localisation</p>
+    <img class="map-icon" src="{{ imgPath.map }}" alt="map-icon">
+    <p class="cbs-text">Paris, île de france</p>
+  </div>
+</div>
+<div class="job-offer-actions-container">
+  <button class="cbs-button cbs-action" (click)="candidacyForThisJob()">Postule
+    maintenant</button>
+</div>

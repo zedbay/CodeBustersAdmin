@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { TableLabels } from 'src/app/administration/shared/models/TableLabel.mode';
+import { Observable } from 'rxjs';
+import { TableLabels } from 'src/app/modules/administration/shared/models/TableLabel.mode';
 import { Contact } from 'src/app/shared/models/contact';
 import { NetworkService } from './network.service';
 import { ResourcesService } from './resources.service';
@@ -23,7 +24,23 @@ export class ContactService extends ResourcesService<Contact> {
     );
   }
 
+  public addRelationWithJob(contactId: number, jobId: number): Observable<boolean> {
+    return this.networkService.put(
+      `${this.endpoint}/${contactId}/job/${jobId}`
+    );
+  }
+
   public searchNameOnResource(contact: Contact): string {
     return contact.firstname;
+  }
+
+  public downloadCV(contact: Contact): Observable<File> {
+    return this.networkService.downloadFile(`${this.endpoint}/${contact.id}/cv?fileName=${contact.cv}`)
+  }
+
+  public uploadCV(contactId: number, file: File): Observable<Contact> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.networkService.post(`${this.endpoint}/${contactId}/cv`, formData);
   }
 }

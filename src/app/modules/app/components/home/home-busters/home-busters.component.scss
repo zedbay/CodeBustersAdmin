@@ -1,0 +1,65 @@
+@import "colors";
+@import "constants";
+@import "../home.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 0 $side-margin;
+  background-image: linear-gradient(
+    0deg,
+    hsl(230deg 30% 4%) 0%,
+    hsl(231deg 39% 5%) 13%,
+    hsl(234deg 41% 6%) 25%,
+    hsl(238deg 40% 7%) 37%,
+    hsl(241deg 40% 8%) 50%,
+    hsl(244deg 42% 9%) 63%,
+    hsl(246deg 44% 10%) 75%,
+    hsl(247deg 46% 10%) 87%,
+    hsl(249deg 47% 11%) 100%
+  );
+}
+
+.home-busters-content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 32px 0;
+
+  .logo {
+    max-width: 30%;
+  }
+
+  .home-busters-title {
+    color: $secondary;
+    margin-bottom: 8px;
+  }
+
+  .home-buster-undertitle {
+    margin-bottom: 16px;
+  }
+
+  .home-buster-description {
+    visibility: hidden;
+  }
+}
+
+// CATEGORY CONTAINER
+
+.home-busters-start-container {
+  max-width: 35%;
+}
+
+.home-buster-staff-container {
+  margin-bottom: 32px;
+}
+
+.home-busters-start-container,
+.home-buster-staff-container,
+.home-busters-client-container {
+  &:hover {
+    .home-buster-description {
+      visibility: visible;
+    }
+  }
+}

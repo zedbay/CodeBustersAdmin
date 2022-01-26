@@ -1,0 +1,19 @@
+.home-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .home-title-number {
+    margin-right: 32px;
+    font-size: 48px;
+  }
+
+  .home-title {
+    display: flex;
+    align-items: center;
+  }
+
+  .home-title-content {
+    font-size: 32px;
+  }
+}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { TableLabels } from 'src/app/administration/shared/models/TableLabel.mode';
+import { TableLabels } from 'src/app/modules/administration/shared/models/TableLabel.mode';
 import { Site } from 'src/app/shared/models/site';
 import { NetworkService } from './network.service';
 import { ResourcesService } from './resources.service';

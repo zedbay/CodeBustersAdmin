@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TableLabels } from 'src/app/administration/shared/models/TableLabel.mode';
+import { TableLabels } from 'src/app/modules/administration/shared/models/TableLabel.mode';
 import { NetworkService } from 'src/app/core/services/network.service';
 import { ResourcesService } from 'src/app/core/services/resources.service';
 import { Project } from 'src/app/shared/models/project';

@@ -1,0 +1,82 @@
+@import "colors";
+@import "constants";
+
+.search-container {
+  margin: 48px $side-margin-body;
+
+  .choose-rank-title {
+    border: solid $first-gray;
+    border-width: 0 0 1px 0;
+    padding-bottom: 16px;
+  }
+
+  .ranks-container {
+    display: flex;
+    align-items: center;
+
+    .rank-container {
+      display: flex;
+      align-items: center;
+      max-width: 40%;
+
+      .talent-rank-img {
+        width: 48px;
+        cursor: pointer;
+      }
+
+      .rank-title {
+        padding-right: 16px;
+        display: none;
+      }
+
+      .rank-description {
+        border: solid $white;
+        border-width: 0 0 0 1px;
+        padding: 16px;
+        display: none;
+      }
+
+      &.selected,
+      &:hover {
+        .rank-description,
+        .rank-title {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.jobs-container {
+  margin: 32px $side-margin-body;
+
+  .job-container {
+    padding: 6px 12px;
+
+    margin-bottom: 24px;
+    border: solid 1px $first-gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > * {
+      display: flex;
+      align-items: center;
+    }
+
+    .pi {
+      margin-right: 16px;
+      color: $white;
+      font-size: 24px;
+    }
+
+    .job-title:hover {
+      color: $secondary;
+      cursor: pointer;
+    }
+
+    .job-img {
+      width: 72px;
+    }
+  }
+}

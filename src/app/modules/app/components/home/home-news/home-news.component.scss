@@ -1,0 +1,33 @@
+@import "constants";
+@import "colors";
+
+:host {
+  display: flex;
+  margin: 0 $side-margin;
+  padding: $side-margin 0;
+}
+
+.home-news-content-container {
+  width: 50%;
+  padding: $side-margin;
+
+  .cbs-main-title {
+    font-size: $big-font-size-2;
+    margin: 16px 0;
+  }
+
+  .cbs-under-title {
+    font-size: $big-font-size-3;
+    border: solid $white;
+    border-width: 0 0 1px 0;
+    padding-bottom: 8px;
+  }
+}
+
+.home-news-img-container {
+  width: 50%;
+
+  img {
+    width: 100%;
+  }
+}

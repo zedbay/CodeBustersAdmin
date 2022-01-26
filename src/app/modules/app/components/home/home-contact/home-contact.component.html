@@ -1,0 +1,56 @@
+<div>
+  <h2><span>03. DEVIENS UN BUSTER</span></h2>
+  <button class="cbs-button cbs-savoir" routerLink="/busters">
+    EN SAVOIR
+    <i class="pi pi-plus"></i>
+  </button>
+</div>
+
+<div class="contact-body-container">
+
+
+  <ng-container *ngIf="results.length !== 3">
+
+    <div>
+      <p class="question cbs-second-title"><span>{{ selectedQuestion.number}} / 3</span> {{ selectedQuestion.title }}
+      </p>
+      <p *ngFor="let answer of selectedQuestion.answers" class="cbs-text answer"
+        [ngClass]="{ 'answer-selected': answer.selected}" (click)="selectAnswer(answer)">
+        <i class="pi" [ngClass]="answer.selected ? 'pi-circle-on' : 'pi-circle-off' "></i>
+        {{ answer.content }}
+      </p>
+    </div>
+
+    <button class="cbs-button cbs-progression" (click)="nextQuestion()" [disabled]="!atLeastOneAnswerIsSelected()"
+      [ngClass]="{'disabled': !atLeastOneAnswerIsSelected()}">
+      <div class="progress-bar" [ngClass]="{
+        'progress0': results.length === 0,
+        'progress1': results.length === 1,
+        'progress2': results.length === 2,
+        'progress3': results.length === 3
+      }"></div>
+      <div class="button-content">
+        Suivant
+        <i class="pi pi-chevron-right"></i>
+      </div>
+    </button>
+
+  </ng-container>
+
+
+  <div *ngIf="results.length === 3" class="contact-form-container">
+    <p class="cbs-under-title">
+      <span class="secondary-text">Tu sembles être pret pour<br /> rejoindre les Busters</span> <br />
+      Quelques infos sur toi ?
+    </p>
+    <form [formGroup]="contactForm" class="contact-form">
+      <input type="text" formControlName="firstname" placeholder="Prénom">
+      <input type="text" formControlName="lastname" placeholder="Nom">
+      <input type="email" formControlName="mail" placeholder="Mail">
+      <input type="text" formControlName="phone" placeholder="N° Téléphone">
+    </form>
+    <div></div>
+    <button (click)="sendContact()" class="cbs-button cbs-savoir">Envoyer</button>
+  </div>
+
+</div>

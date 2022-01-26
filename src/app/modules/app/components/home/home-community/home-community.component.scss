@@ -1,0 +1,50 @@
+@import "../home.scss";
+
+:host {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: 930px;
+  background-color: #07080d;
+}
+
+.home-title-container {
+  padding: 0 96px;
+}
+
+.hover-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+
+  .buster-hover {
+    height: 100%;
+
+    &.alex-hover {
+      width: 30%;
+    }
+
+    &.francois-hover {
+      width: 18%;
+    }
+
+    &.thomas-hover {
+      width: 15%;
+    }
+
+    &.antoine-hover {
+      width: 13%;
+    }
+
+    &.hedi-hover {
+      width: 24%;
+    }
+  }
+}
+
+.img-container {
+  position: absolute;
+  width: 100%;
+}

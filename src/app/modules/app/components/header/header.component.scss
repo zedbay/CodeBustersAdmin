@@ -1,0 +1,31 @@
+@import "colors";
+
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 96px;
+  margin-bottom: 48px;
+}
+
+.logo {
+  width: 125px;
+  height: 135px;
+}
+
+.header-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 18px;
+
+  .header-icon {
+    margin-left: 24px;
+    font-size: 24px;
+    &:hover {
+      cursor: pointer;
+      color: $secondary;
+      text-shadow: 1px 1px 1px $black;
+    }
+  }
+}
