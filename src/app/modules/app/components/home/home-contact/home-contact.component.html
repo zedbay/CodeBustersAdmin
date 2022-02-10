@@ -1,9 +1,6 @@
-<div>
-  <h2><span>03. DEVIENS UN BUSTER</span></h2>
-  <button class="cbs-button cbs-savoir" routerLink="/busters">
-    EN SAVOIR
-    <i class="pi pi-plus"></i>
-  </button>
+<div class="home-title-container">
+  <p class="cbs-big-title"><span class="indicator">03.</span><span class="title-content">DEVIENS UN BUSTER</span> </p>
+  <button class="cbs-button cbs-savoir" routerLink="/busters">EN SAVOIR<i class="pi pi-plus"></i></button>
 </div>
 
 <div class="contact-body-container">
@@ -12,9 +9,11 @@
   <ng-container *ngIf="results.length !== 3">
 
     <div>
-      <p class="question cbs-second-title"><span>{{ selectedQuestion.number}} / 3</span> {{ selectedQuestion.title }}
+      <p class="question cbs-main-title"><span class="cbs-text-color-secondary">{{ selectedQuestion.number}}/3</span>
+        {{
+        selectedQuestion.title }}
       </p>
-      <p *ngFor="let answer of selectedQuestion.answers" class="cbs-text answer"
+      <p *ngFor="let answer of selectedQuestion.answers" class="cbs-text cbs-text-color-gray answer"
         [ngClass]="{ 'answer-selected': answer.selected}" (click)="selectAnswer(answer)">
         <i class="pi" [ngClass]="answer.selected ? 'pi-circle-on' : 'pi-circle-off' "></i>
         {{ answer.content }}
@@ -52,5 +51,7 @@
     <div></div>
     <button (click)="sendContact()" class="cbs-button cbs-savoir">Envoyer</button>
   </div>
+
+  <img src="{{ imgPath.cup }}" alt="cup" class="img-cup">
 
 </div>

@@ -26,6 +26,25 @@ export class CommunityTalentComponent implements OnInit {
     [Rank.Silver]: { description: '' }
   };
 
+  public rankImgs: { imgPath: string, rank: Rank }[] = [
+    {
+      imgPath: imgPath.ranks.bronze,
+      rank: this.rank.Bronze
+    },
+    {
+      imgPath: imgPath.ranks.silver,
+      rank: this.rank.Silver
+    },
+    {
+      imgPath: imgPath.ranks.gold,
+      rank: this.rank.Gold
+    },
+    {
+      imgPath: imgPath.ranks.diamond,
+      rank: this.rank.Diamond
+    }
+  ];
+
   constructor(
   ) { }
 

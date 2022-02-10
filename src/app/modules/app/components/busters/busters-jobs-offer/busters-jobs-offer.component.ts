@@ -6,6 +6,13 @@ import { Job } from 'src/app/shared/models/job';
 import { Rank } from 'src/app/shared/models/rank';
 import { Site } from 'src/app/shared/models/site';
 
+interface Grade {
+  rank: Rank;
+  imgPath: string;
+  name: string;
+  description: string;
+}
+
 @Component({
   selector: 'app-busters-jobs-offer',
   templateUrl: './busters-jobs-offer.component.html',
@@ -14,12 +21,38 @@ import { Site } from 'src/app/shared/models/site';
 export class BustersJobsOfferComponent implements OnInit {
 
   public imgPath = imgPath;
-  rank: typeof Rank = Rank;
 
   public jobs: Job[] = this.activatedRoute.snapshot.data.jobs;
   public site: Site = this.activatedRoute.snapshot.data.site;
 
   public selectedRank: Rank = undefined;
+
+  public grades: Grade[] = [
+    {
+      rank: Rank.Bronze,
+      imgPath: imgPath.ranks.bronze,
+      name: 'Bronze',
+      description: this.site.bronzeDescription
+    },
+    {
+      rank: Rank.Silver,
+      imgPath: imgPath.ranks.silver,
+      name: 'Silver',
+      description: this.site.silverDescription
+    },
+    {
+      rank: Rank.Gold,
+      imgPath: imgPath.ranks.gold,
+      name: 'Gold',
+      description: this.site.goldDescription
+    },
+    {
+      rank: Rank.Diamond,
+      imgPath: imgPath.ranks.diamond,
+      name: 'Diamond',
+      description: this.site.diamondDescription
+    }
+  ];
 
   constructor(
     private activatedRoute: ActivatedRoute,

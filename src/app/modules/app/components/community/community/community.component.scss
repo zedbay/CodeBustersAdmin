@@ -1,14 +1,9 @@
 @import "colors";
 @import "constants";
 
-:host {
-  background-color: $primary;
-  display: block;
-  color: $white;
-}
-
 .became-buster-container {
   display: flex;
   justify-content: center;
-  margin: 64px 0 0 0;
+  margin: 48px 0 0 0;
+  margin-bottom: $side-margin;
 }

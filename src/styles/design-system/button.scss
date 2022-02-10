@@ -68,10 +68,14 @@
   }
 
   &.cbs-savoir {
-    border: solid 1px white;
-    color: white;
+    border: solid 1px $white;
+    color: $white;
 
     background-color: transparent;
+
+    .pi {
+      margin-left: 8px;
+    }
 
     &:hover {
       border-color: $secondary;
@@ -81,8 +85,8 @@
   }
 
   &.cbs-retour {
-    border: solid 1px white;
-    color: white;
+    border: solid 1px $white;
+    color: $white;
     padding: 1em 2em;
     background-color: $primary;
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from 'src/app/core/services/contact.service';
+import { imgPath } from 'src/app/shared/constants/imgPath';
 import { Answer, bustersQuestions, Question } from 'src/app/shared/content/questions.model';
 
 @Component({
@@ -22,6 +23,8 @@ export class HomeContactComponent implements OnInit {
     mail: ['', [Validators.required]],
     phone: ['', [Validators.required]]
   });
+
+  public imgPath = imgPath;
 
   constructor(
     private formBuilder: FormBuilder,

@@ -1,23 +1,41 @@
 @import "colors";
+@import "../home.scss";
+@import "constants";
 
 :host {
-  padding: 96px;
   background-image: linear-gradient(
-    0deg,
-    hsl(249deg 47% 11%) 0%,
-    hsl(248deg 46% 11%) 11%,
-    hsl(246deg 44% 10%) 22%,
-    hsl(244deg 43% 9%) 33%,
-    hsl(242deg 41% 9%) 44%,
-    hsl(240deg 39% 8%) 56%,
-    hsl(236deg 41% 7%) 67%,
-    hsl(233deg 41% 6%) 78%,
-    hsl(231deg 39% 5%) 89%,
+    10deg,
+    hsl(248deg 44% 11%) 0%,
+    hsl(247deg 44% 10%) 12%,
+    hsl(246deg 43% 10%) 22%,
+    hsl(246deg 43% 10%) 30%,
+    hsl(245deg 42% 10%) 37%,
+    hsl(244deg 41% 9%) 43%,
+    hsl(244deg 41% 9%) 47%,
+    hsl(243deg 40% 9%) 51%,
+    hsl(242deg 39% 8%) 54%,
+    hsl(241deg 39% 8%) 56%,
+    hsl(240deg 38% 8%) 58%,
+    hsl(238deg 39% 7%) 59%,
+    hsl(237deg 39% 7%) 61%,
+    hsl(236deg 40% 7%) 63%,
+    hsl(234deg 40% 6%) 65%,
+    hsl(233deg 40% 6%) 68%,
+    hsl(232deg 40% 6%) 71%,
+    hsl(232deg 39% 5%) 76%,
+    hsl(231deg 37% 5%) 82%,
+    hsl(230deg 34% 4%) 90%,
     hsl(230deg 30% 4%) 100%
   );
+  padding: $side-margin 0;
+  padding-left: $side-margin;
 }
 .question {
   margin-bottom: 48px;
+
+  span {
+    margin-right: 16px;
+  }
 }
 
 .answer {
@@ -36,28 +54,34 @@
 .contact-body-container {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  padding: 94px 0px;
-}
+  justify-content: space-between;
+  margin-right: -15%;
+  padding-left: $side-margin;
 
-.contact-form-container {
-  display: flex;
-  align-items: center;
-
-  .contact-form {
+  .contact-form-container {
     display: flex;
-    flex-direction: column;
-    margin: 0 0 0 48px;
-    border: solid 1px $white;
-    padding: 48px;
+    align-items: center;
+    flex: 1;
 
-    input {
-      background-color: transparent;
-      outline: none;
-      color: $white;
-      border: solid $white;
-      border-width: 0 0 1px 0;
-      margin-bottom: 24px;
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      margin: 0 0 0 48px;
+      border: solid 1px $white;
+      padding: 48px;
+
+      input {
+        background-color: transparent;
+        outline: none;
+        color: $white;
+        border: solid $white;
+        border-width: 0 0 1px 0;
+        margin-bottom: 24px;
+      }
     }
+  }
+
+  .img-cup {
+    width: 30%;
   }
 }

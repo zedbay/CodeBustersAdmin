@@ -21,8 +21,11 @@ import { HomeBustersComponent } from './components/home/home-busters/home-buster
 import { HomeCommunityComponent } from './components/home/home-community/home-community.component';
 import { HomeContactComponent } from './components/home/home-contact/home-contact.component';
 import { HomeNewsComponent } from './components/home/home-news/home-news.component';
-import { JobOfferComponent } from './components/job-offer/job-offer.component';
-import { NewsComponent } from './components/news/news.component';
+import { JobOfferComponent } from './components/busters/job-offer/job-offer.component';
+import { SincePipe } from './pipes/since.pipe';
+import { NewsComponent } from './components/news/news/news.component';
+import { NewsDisplayElementComponent } from './components/news/news-display-element/news-display-element.component';
+import { HomeNavigationIndicatorComponent } from './components/home/home-navigation-indicator/home-navigation-indicator.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { NewsComponent } from './components/news/news.component';
     HomeContactComponent,
     HomeNewsComponent,
     JobOfferComponent,
-    NewsComponent
+    NewsComponent,
+    SincePipe,
+    NewsDisplayElementComponent,
+    HomeNavigationIndicatorComponent
   ],
   imports: [
     CommonModule,

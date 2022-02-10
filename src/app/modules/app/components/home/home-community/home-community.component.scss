@@ -2,14 +2,15 @@
 
 :host {
   display: block;
-  position: relative;
   overflow: hidden;
   height: 930px;
+  position: relative;
   background-color: #07080d;
+  padding-top: $side-margin;
 }
 
 .home-title-container {
-  padding: 0 96px;
+  padding: 0 $side-margin;
 }
 
 .hover-container {

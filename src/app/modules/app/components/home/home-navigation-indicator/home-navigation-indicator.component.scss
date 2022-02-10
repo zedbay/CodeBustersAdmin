@@ -1,0 +1,28 @@
+@import "colors";
+@import "constants";
+
+:host {
+  display: flex;
+  border: solid red 1px;
+  width: $side-margin;
+  align-items: center;
+  justify-items: center;
+}
+
+.home-container-selection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+
+  .pi {
+    cursor: pointer;
+  }
+
+  .separator {
+    border: solid $white;
+    border-width: 0 0 0 1px;
+    height: 24px;
+  }
+}

@@ -1,0 +1,53 @@
+@import "constants";
+@import "colors";
+
+:host {
+  display: block;
+  margin-bottom: $side-margin;
+}
+
+.element-container {
+  padding: $side-margin $side-margin 0 0;
+  display: flex;
+
+  .element-illustration {
+    width: 800px;
+    margin-left: -350px;
+  }
+
+  .element-content {
+    width: 100%;
+  }
+
+  .cbs-main-title {
+    margin: 32px 0;
+  }
+}
+
+.other-news-container {
+  margin-right: $side-margin;
+  margin-left: $side-margin;
+
+  .news-container {
+    width: 100%;
+    display: flex;
+
+    .news {
+      opacity: 90%;
+      &:hover {
+        cursor: pointer;
+        opacity: 100%;
+      }
+      &:nth-child(2) {
+        margin: 0 16px;
+      }
+    }
+
+    .news-illustration {
+      max-width: 100%;
+      border-radius: 2px;
+
+      background-color: $tertiary;
+    }
+  }
+}

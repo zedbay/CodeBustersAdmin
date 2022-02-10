@@ -2,25 +2,37 @@
 @import "constants";
 
 :host {
-  background-color: $primary;
   display: flex;
   min-height: 20vh;
+  border: solid $secondary-dark;
+  border-width: 1px 0 0 0;
+  padding: 0 $side-margin;
 }
 
 .footer-link {
+  margin-bottom: 16px;
   &:hover {
     cursor: pointer;
     color: $secondary;
   }
 }
 
+.footer-email {
+  margin-bottom: 32px;
+}
+
 .footer-container {
-  margin: 0 $side-margin-body;
+  margin: 0 $side-margin;
   color: $white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+
+.footer-mention {
+  margin-top: 16px;
+  text-align: center;
 }
 
 .social-media-icons-container {
@@ -29,8 +41,9 @@
 
   .pi {
     color: $secondary;
-    font-size: $font-size-2;
+    font-size: $font-size-0;
     opacity: 0.8;
+    margin: 0 16px;
 
     &:hover {
       cursor: pointer;

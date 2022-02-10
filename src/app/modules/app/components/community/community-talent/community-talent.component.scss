@@ -1,8 +1,47 @@
 @import "colors";
 @import "constants";
 
-:host {
-  display: block;
+.talent-description-container {
+  margin: 0 $side-margin;
+  text-align: center;
+
+  .cbs-under-title {
+    margin-bottom: 24px;
+  }
+}
+
+.talent-container {
+  margin-right: 0;
+}
+
+.talent-img-container {
+  display: flex;
+  flex: 1;
+  border: solid $first-gray;
+  border-width: 0 0 1px 0;
+
+  .rank-name {
+    margin-bottom: 16px;
+  }
+
+  .talent-rank {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -15px;
+
+    &:last-child {
+      margin-right: $side-margin;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .talent-rank-img {
+    width: 100%;
+    margin-bottom: -20%;
+  }
 }
 
 .talent-rank-container {
@@ -10,36 +49,54 @@
   flex-direction: column;
 
   .rank-description {
-    margin: 3em $side-margin-body 0 0;
+    margin: 32px $side-margin 0 0;
   }
 }
 
-.talent-img-container {
-  display: flex;
-  flex: 1;
-  border: solid $white;
-  border-width: 0 0 1px 0;
+.talent-selector-container {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
 
-  .talent-rank {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: -0.75em;
-
-    &:last-child {
-      margin-right: $side-margin-body;
-    }
-    &:hover {
-      cursor: pointer;
-    }
-
-    .pi {
-      font-size: 1.5em;
-      cursor: pointer;
-    }
+  .background {
+    background-color: $first-gray;
+    z-index: 1;
+    position: absolute;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
   }
-  .talent-rank-img {
-    width: 100%;
+
+  .base {
+    background-color: $primary;
+    z-index: 2;
+    position: absolute;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .selected {
+    background-color: $first-gray;
+    z-index: 3;
+    position: absolute;
+    border-radius: 50%;
+    top: 8px;
+    left: 8px;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.selected-rank {
+  .background,
+  .selected {
+    background-color: $white;
+  }
+  .rank-name {
+    color: $white;
   }
 }

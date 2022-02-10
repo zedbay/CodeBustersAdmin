@@ -1,6 +1,11 @@
 @import "constants";
 @import "colors";
 
+:host {
+  display: block;
+  margin-bottom: $side-margin;
+}
+
 .success-candidacy-message {
   color: $white;
   padding: 96px;
@@ -33,7 +38,7 @@
 }
 
 .candidacy-container {
-  padding: 96px;
+  padding: $side-margin $side-margin 48px $side-margin;
   display: flex;
 
   .candidacy-type-container {
@@ -49,7 +54,7 @@
 
     .candidacy-first-column {
       padding-left: 96px;
-      border: solid $white;
+      border: solid $first-gray;
       border-width: 0 0 0 1px;
     }
 
@@ -76,6 +81,16 @@
 
 .job-manager {
   margin: 48px 0 0 0;
+  border: solid $first-gray;
+  border-width: 0 0 1px 0;
+  padding-bottom: 8px;
+}
+
+.cbs-select {
+  border: solid $first-gray;
+  border-width: 0 0 1px 0;
+  padding-bottom: 8px;
+  width: 100%;
 }
 
 .job-rank-container {

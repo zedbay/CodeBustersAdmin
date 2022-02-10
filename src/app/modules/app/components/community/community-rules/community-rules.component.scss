@@ -1,2 +1,48 @@
 @import "colors";
 @import "constants";
+
+:host {
+  margin-top: $side-margin;
+  display: block;
+
+  .pi-shield {
+    font-size: 2em;
+    margin-right: 32px;
+    position: relative;
+
+    .number-indicator {
+      position: absolute;
+      left: 0.55em;
+      top: 0.35em;
+      font-size: 0.6em;
+    }
+  }
+
+  .rules-container {
+    position: relative;
+
+    .rules-container-background {
+      opacity: 0.1;
+      position: absolute;
+      left: 30%;
+      top: -10%;
+      width: 40%;
+      height: 120%;
+    }
+
+    & > * {
+      border: solid $first-gray;
+      border-width: 0 0 1px 0;
+      padding: 32px 0;
+
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+
+  .rule-title {
+    display: flex;
+    align-items: center;
+  }
+}

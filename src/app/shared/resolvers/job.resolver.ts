@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { JobService } from 'src/app/core/services/job.service';
+import { SquadService } from 'src/app/core/services/squad.service';
 import { Job } from '../models/job';
 
 @Injectable({

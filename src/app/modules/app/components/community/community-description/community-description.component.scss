@@ -2,36 +2,30 @@
 @import "colors";
 
 .principles {
+  padding: $side-margin;
   display: flex;
-  padding: 4em $side-margin-body;
-  margin-top: -40px;
-  list-style: none;
+  width: 100%;
 
   .principle {
     flex: 1;
-    padding: 0 2em;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    .principle-img {
-      height: 15em;
-    }
-
-    h4 {
-      margin: 1em 2em;
-    }
-
-    p {
-      text-align: center;
-      font-size: 1em;
-      font-weight: 500;
-      margin: 0;
-    }
+    padding: 0 48px;
+    text-align: center;
 
     &:nth-child(2) {
-      border: solid $white;
+      border: solid $first-gray;
       border-width: 0 1px;
     }
+
+    .cbs-second-title {
+      margin: 16px 0 32px 0;
+    }
+  }
+
+  .principle-img {
+    max-width: 100%;
+    margin: -10% 0;
   }
 }

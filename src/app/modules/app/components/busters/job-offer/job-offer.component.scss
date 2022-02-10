@@ -1,0 +1,71 @@
+@import "constants";
+@import "colors";
+
+:host {
+  display: block;
+  margin-bottom: $side-margin;
+}
+
+.cbs-big-title {
+  margin-right: $side-margin;
+}
+
+.job-offer-container {
+  padding: 0 $side-margin;
+  display: flex;
+
+  & > * {
+    flex: 6;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    &:nth-child(1) {
+      flex: 4;
+    }
+
+    &:nth-child(2) {
+      padding: 0 $side-margin;
+    }
+
+    &:last-child {
+      flex: 0;
+    }
+  }
+
+  .cbs-main-title {
+    margin: 64px 0 32px 0;
+  }
+
+  .job-img {
+    position: relative;
+
+    .manager-img {
+      position: absolute;
+      top: 20%;
+      left: 40%;
+      height: 60%;
+      border-radius: 40%;
+      border: solid $secondary 2px;
+    }
+    .job-rank-img {
+      width: 70%;
+    }
+  }
+
+  .map-icon {
+    width: 30%;
+    margin-top: -10%;
+  }
+}
+
+.job-offer-actions-container {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.skill {
+  margin: 8px 0;
+}

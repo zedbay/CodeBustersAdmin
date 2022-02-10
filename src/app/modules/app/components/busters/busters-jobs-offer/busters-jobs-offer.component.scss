@@ -2,12 +2,13 @@
 @import "constants";
 
 .search-container {
-  margin: 48px $side-margin-body;
+  margin: $side-margin $side-margin 16px $side-margin;
 
-  .choose-rank-title {
-    border: solid $first-gray;
+  .cbs-main-title {
+    border: solid $second-gray;
     border-width: 0 0 1px 0;
     padding-bottom: 16px;
+    margin-bottom: 8px;
   }
 
   .ranks-container {
@@ -17,11 +18,10 @@
     .rank-container {
       display: flex;
       align-items: center;
-      max-width: 40%;
+      max-width: 50%;
 
       .talent-rank-img {
         width: 48px;
-        cursor: pointer;
       }
 
       .rank-title {
@@ -30,7 +30,7 @@
       }
 
       .rank-description {
-        border: solid $white;
+        border: solid $second-gray;
         border-width: 0 0 0 1px;
         padding: 16px;
         display: none;
@@ -48,7 +48,7 @@
 }
 
 .jobs-container {
-  margin: 32px $side-margin-body;
+  margin: 0 $side-margin;
 
   .job-container {
     padding: 6px 12px;
@@ -58,25 +58,34 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-radius: 2px;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $secondary;
+
+      .cbs-big-title {
+        color: $secondary;
+      }
+    }
 
     & > * {
       display: flex;
       align-items: center;
-    }
 
-    .pi {
-      margin-right: 16px;
-      color: $white;
-      font-size: 24px;
-    }
-
-    .job-title:hover {
-      color: $secondary;
-      cursor: pointer;
+      &:nth-child(2) {
+        flex: 1;
+        justify-content: flex-end;
+        padding-right: 64px;
+      }
     }
 
     .job-img {
       width: 72px;
+    }
+
+    .job-illustration {
+      width: 56px;
     }
   }
 }

@@ -11,7 +11,7 @@
   font-family: "GothamMedium", sans-serif;
 }
 
-.secondary-text {
+.cbs-secondary-text {
   color: $secondary;
   font-size: $font-size-4;
   font-family: "GothamLight", sans-serif;
@@ -41,8 +41,12 @@
   text-align: center;
 }
 
-.cbs-title {
+// TEXT SIZE
+
+.cbs-big-title {
   color: $white;
+  font-weight: bold;
+  font-size: $font-size-0;
   font-family: "GothamBold", sans-serif;
 }
 
@@ -62,4 +66,24 @@
   color: $white;
   font-size: $font-size-3;
   font-family: "GothamLight", sans-serif;
+}
+
+// TEXT COLOR
+
+.cbs-text-color-secondary {
+  color: $secondary;
+}
+
+.cbs-text-color-gray {
+  color: $second-gray;
+}
+
+.cbs-text-color-white {
+  color: $white;
+}
+
+.cbs-text-color-hover-secondary {
+  &:hover {
+    color: $secondary;
+  }
 }

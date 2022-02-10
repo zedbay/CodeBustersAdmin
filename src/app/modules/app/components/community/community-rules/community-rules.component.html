@@ -1,41 +1,19 @@
 <div class="separator-container-with-title">
-  <h3 class="cbs-title  cbs-second-title center-title">NOS REGLES DU JEU</h3>
+  <p class="cbs-main-title center-title">NOS REGLES DU JEU</p>
 </div>
 <ul class="rules-container">
-  <li class="flex-double-container">
-    <div class="flex-element rule-title-container">
-      <h4>La Passion du Dév - tu auras.</h4>
+  <img class="rules-container-background" src="{{ imgPath.logoWithoutBackground }}" alt="cbs-logo">
+  <li class="flex-double-container" *ngFor="let rule of rules; let i = index">
+    <div class="flex-element">
+      <p class="cbs-main-title cbs-text-color-hover-secondary rule-title">
+        <i class="pi pi-shield">
+          <span class="number-indicator">{{ i + 1 }}</span>
+        </i>
+        {{ rule.title }}
+      </p>
     </div>
-    <p class="flex-element  cbs-text">
-      {{ site.devRule }}
+    <p class="flex-element cbs-text cbs-text-color-gray">
+      {{ rule.content }}
     </p>
   </li>
-
-  <li class="flex-double-container">
-    <div class="flex-element rule-title-container">
-      <h4>Ensemble - nous serons.</h4>
-    </div>
-    <p class="flex-element cbs-text">
-      {{ site.togetherRule }}
-    </p>
-  </li>
-
-  <li class="flex-double-container">
-    <div class="flex-element rule-title-container">
-      <h4>Une ambition d’être à la pointe - nous avons.</h4>
-    </div>
-    <p class="flex-element cbs-text">
-      {{ site.ambitiousRule }}
-    </p>
-  </li>
-
-  <li class="flex-double-container">
-    <div class="flex-element rule-title-container">
-      <h4>Prendre du plaisir - sans cesse.</h4>
-    </div>
-    <p class="flex-element cbs-text">
-      {{ site.pleasureRule }}
-    </p>
-  </li>
-
 </ul>

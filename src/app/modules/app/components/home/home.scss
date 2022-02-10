@@ -1,19 +1,25 @@
+@import "constants";
+
 .home-title-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
-  .home-title-number {
-    margin-right: 32px;
-    font-size: 48px;
+  .cbs-big-title {
+    position: relative;
+
+    .indicator {
+      position: absolute;
+      font-weight: lighter;
+    }
+
+    .title-content {
+      margin-left: $side-margin;
+    }
   }
 
-  .home-title {
-    display: flex;
-    align-items: center;
-  }
-
-  .home-title-content {
-    font-size: 32px;
+  .cbs-button {
+    margin-top: 16px;
+    margin-left: $side-margin;
   }
 }

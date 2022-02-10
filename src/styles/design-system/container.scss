@@ -1,8 +1,42 @@
 @import "colors";
 @import "constants";
 
+.header-with-content-container {
+  display: flex;
+  align-items: center;
+  padding: 0 $side-margin;
+
+  .header-content {
+    flex: 1;
+    margin: 0 $side-margin;
+
+    .cbs-second-title {
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin-bottom: 8px;
+
+      .title-img {
+        position: absolute;
+        width: 75px;
+        left: -80px;
+      }
+    }
+  }
+
+  .right-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    .chrono-img {
+      width: 80px;
+    }
+  }
+}
+
 .separator-container-with-button {
-  border: solid $white 1px;
+  border: solid $first-gray 1px;
   border-width: 1px 0 0 0;
   margin-top: 48px;
   height: 1px;
@@ -15,13 +49,13 @@
 }
 
 .separator-container-with-title {
-  border: solid $white;
+  border: solid $first-gray;
   border-width: 0 0 1px 0;
   height: 1px;
-  margin-bottom: 5em;
+  margin-bottom: 64px;
   text-align: center;
 
-  .cbs-title {
+  & > * {
     background-color: $primary;
     display: inline;
     position: relative;
@@ -31,22 +65,14 @@
 }
 
 .separator-container-with-left-title {
-  border: solid $white;
+  border: solid $first-gray;
   border-width: 0 0 1px 0;
   height: 1px;
-  margin: 0 $side-margin-body;
-
-  .cbs-title {
-    background-color: $primary;
-    display: inline;
-    position: relative;
-    top: -0.5em;
-    padding: 0 1em;
-  }
+  margin: 0 $side-margin;
 }
 
 .flex-double-container {
-  margin: 0 $side-margin-body;
+  margin: 0 $side-margin;
   display: flex;
   align-items: center;
 

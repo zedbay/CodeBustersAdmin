@@ -1,7 +1,6 @@
-@import "colors";
 @import "constants";
 
 :host {
-  background-color: $primary;
   display: block;
+  margin-bottom: $side-margin;
 }

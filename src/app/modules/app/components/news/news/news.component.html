@@ -1,0 +1,26 @@
+<p class="cbs-big-title side-margin-right">NEWS</p>
+<div class="separator-container-with-button">
+  <button class="cbs-button cbs-retour" routerLink="">
+    <i class="pi pi-chevron-left"></i>
+    Retour
+  </button>
+</div>
+<div class="sections-container">
+  <div class="sections-illustrations">
+    <div class="section-illustration" *ngFor="let section of sections">
+      <p class="cbs-main-title">{{ section.title }}</p>
+      <img src="{{ section.imgLink }}" alt="news" class="section-img">
+    </div>
+  </div>
+  <div class="sections-contents">
+    <div class="section-content" *ngFor="let section of sections">
+      <div class="elements-container">
+        <div *ngFor="let element of section.elements" class="element" (click)="displayElement(element)">
+          <p class="cbs-main-title cbs-text-color-secondary">{{ element.name }}</p>
+          <p class="cbs-under-title cbs-text-color-gray"><i class="pi pi-clock"></i>{{ element.createdDate | since }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

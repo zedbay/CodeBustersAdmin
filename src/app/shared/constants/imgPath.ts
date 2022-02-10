@@ -1,7 +1,9 @@
 export const imgPath = {
+  buster: 'assets/buster.jpg',
   logo: 'assets/logo/logo.png',
   logoWithoutBackground: 'assets/logo/logo_transparent.png',
   calendar: 'assets/home/calendar.png',
+  chrono: 'assets/home/chrono.png',
   sweat: 'assets/home/sweat.png',
   hat: 'assets/home/hat.png',
   earth: 'assets/home/earth.png',
@@ -9,6 +11,8 @@ export const imgPath = {
   friends: 'assets/home/friends.png',
   rubiks: 'assets/home/rubiks.png',
   map: 'assets/home/map.png',
+  cap: 'assets/home/cap.png',
+  cup: 'assets/home/cup.png',
   ranks: {
     bronze: 'assets/ranks/bronze.png',
     diamond: 'assets/ranks/diamond.png',

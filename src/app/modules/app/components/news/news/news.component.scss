@@ -1,0 +1,116 @@
+@import "colors";
+@import "constants";
+
+:host {
+  display: block;
+  margin-bottom: $side-margin;
+}
+
+.sections-container {
+  margin-top: $side-margin;
+  padding: 0 $side-margin;
+  display: flex;
+
+  .sections-illustrations {
+    display: flex;
+    flex-direction: column;
+
+    .section-illustration {
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .section-img {
+        height: 80%;
+      }
+    }
+  }
+
+  .sections-contents {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .section-content {
+      height: 300px;
+      border: solid $first-gray;
+      border-width: 1px 0 0 0;
+
+      .elements-container {
+        display: flex;
+        margin-top: 64px;
+
+        .element {
+          flex: 1;
+          padding: 16px 32px;
+          margin: 0 16px;
+          border: solid $first-gray 1px;
+          border-radius: 2px;
+
+          &:hover {
+            cursor: pointer;
+            border-color: $secondary;
+          }
+
+          .cbs-main-title {
+            margin-bottom: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// // .section {
+// //   min-height: 400px;
+// //   display: flex;
+// //   flex-direction: column;
+
+// //   .section-list {
+// //     margin: 16px $side-margin;
+// //     display: flex;
+// //     align-items: center;
+// //     flex: 1;
+// //   }
+
+// //   .section-img {
+// //     width: 300px;
+// //     margin-right: 32px;
+// //   }
+// // }
+
+// // .elements-container {
+// //   flex: 1;
+// //   display: flex;
+// //   justify-content: center;
+// //   align-items: center;
+
+// //   .element {
+// //     border: solid $first-gray 1px;
+// //     flex: 1;
+// //     padding: 24px;
+// //     cursor: pointer;
+
+// //     &:hover {
+// //       border-color: $secondary;
+// //     }
+
+// //     .cbs-main-title {
+// //       margin-bottom: 16px;
+// //       color: $secondary;
+// //     }
+
+// //     .pi {
+// //       margin-right: 8px;
+// //     }
+
+// //     &:last-child {
+// //       margin-left: 16px;
+// //     }
+
+// //     &:first-child {
+// //       margin-right: 16px;
+// //     }
+// //   }
+// // }
