@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TableLabels } from 'src/app/modules/administration/shared/models/TableLabel.mode';
-import { Job } from 'src/app/shared/models/job';
+import { Job, NeededRelation } from 'src/app/shared/models/job';
 import { NetworkService } from './network.service';
 import { ResourcesService } from './resources.service';
 
@@ -23,8 +23,12 @@ export class JobService extends ResourcesService<Job> {
     );
   }
 
+  public updateTechnoRelation(jobId: number, technoId: number, needed: NeededRelation): Observable<boolean> {
+    return this.networkService.put(`${this.endpoint}/${jobId}/techno/${technoId}`, needed);
+  }
+
   public addTechnoInJob(jobId: number, technoId: number): Observable<boolean> {
-    return this.networkService.put(`${this.endpoint}/${jobId}/techno/${technoId}`);
+    return this.networkService.post(`${this.endpoint}/${jobId}/techno/${technoId}`, { skillCap: 0 });
   }
 
   public removeTechnoInJob(jobId: number, technoId: number): Observable<boolean> {

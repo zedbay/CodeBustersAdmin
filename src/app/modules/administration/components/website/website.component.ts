@@ -13,6 +13,18 @@ export class WebsiteComponent implements OnInit {
 
   public site: Site = this.activeRoute.snapshot.data.site;
 
+  public communityDescriptionForm: FormGroup = this.formBuilder.group({
+    communityDescriptionTitle1: [this.site.communityDescriptionTitle1, [Validators.required]],
+    communityDescriptionUnderTitle1: [this.site.communityDescriptionUnderTitle1, [Validators.required]],
+    communityDescriptionText1: [this.site.communityDescriptionText1, [Validators.required]],
+    communityDescriptionTitle2: [this.site.communityDescriptionTitle2, [Validators.required]],
+    communityDescriptionUnderTitle2: [this.site.communityDescriptionUnderTitle2, [Validators.required]],
+    communityDescriptionText2: [this.site.communityDescriptionText2, [Validators.required]],
+    communityDescriptionTitle3: [this.site.communityDescriptionTitle3, [Validators.required]],
+    communityDescriptionUnderTitle3: [this.site.communityDescriptionUnderTitle3, [Validators.required]],
+    communityDescriptionText3: [this.site.communityDescriptionText3, [Validators.required]],
+  });
+
   public busterDescriptionForm: FormGroup = this.formBuilder.group({
     startBusterTitle: [this.site.startBusterTitle, [Validators.required]],
     startBusterUnderTitle: [this.site.startBusterUnderTitle, [Validators.required]],

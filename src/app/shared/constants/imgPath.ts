@@ -13,6 +13,15 @@ export const imgPath = {
   map: 'assets/home/map.png',
   cap: 'assets/home/cap.png',
   cup: 'assets/home/cup.png',
+  border: {
+    silver: 'assets/border/bronze-border.png',
+    bronze: 'assets/border/silver-border.png'
+  },
+  level: {
+    one: 'assets/level/25.png',
+    two: 'assets/level/50.png',
+    three: 'assets/level/75.png'
+  },
   ranks: {
     bronze: 'assets/ranks/bronze.png',
     diamond: 'assets/ranks/diamond.png',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ResourceComponent } from 'src/app/modules/administration/shared/components/resource/resource.component';
 import { TableAction } from 'src/app/modules/administration/shared/models/TableActions.model';
 import { ClientService } from 'src/app/core/services/client.service';
@@ -19,11 +19,13 @@ export class ClientComponent extends ResourceComponent<Client> {
 
   constructor(
     public activeRoute: ActivatedRoute,
-    public clientService: ClientService
+    public clientService: ClientService,
+    public router: Router
   ) {
     super(
       activeRoute,
-      clientService
+      clientService,
+      router
     );
   }
 

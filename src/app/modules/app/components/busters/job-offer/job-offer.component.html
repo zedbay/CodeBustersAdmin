@@ -29,15 +29,13 @@
         <img class="manager-img" src="{{ imgPath.buster }}" alt="buster">
       </div>
 
-      <p class="cbs-text cbs-text-color-gray">Nous sommes organisés en squad et nous proposons à tous les Busters Bronze
+      <p class="cbs-text cbs-text-color-gray cbs-text-justify">Nous sommes organisés en squad et nous proposons à tous
+        les Busters Bronze
         et Silver d'avoir
         un accompagnement personalisé par son manager</p>
       <p class="cbs-main-title">La squad qui recrute et son manager</p>
-      <p class="cbs-text cbs-text-color-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima harum
-        quasi, nemo alias
-        explicabo et
-        mollitia
-        ducimus delectus laudantium deserunt recusandae quas nobis eaque molestiae sint quia doloremque! Saepe, facere.
+      <p class="cbs-text cbs-text-color-gray cbs-text-justify">
+        {{ job.squad.description }}
       </p>
     </div>
   </div>
@@ -45,7 +43,7 @@
   <div>
     <div>
       <p class="cbs-main-title">La communauté</p>
-      <p class="cbs-text cbs-text-color-gray">
+      <p class="cbs-text cbs-text-color-gray cbs-text-justify">
         Code Busters est une communauté de dévloppeurs avec une approche non plus basée par l'année d'obtention d'un
         diplôme mais par la valeur ajoutée par ses membres. <br /><br />
         Nous proposons des missions techniques qui permettent aux développeurs de découvrir différents environements
@@ -55,22 +53,19 @@
         que chacun puisse apprendre et assouvir sa soif de curiosité.
       </p>
     </div>
-    <div>
+    <div class="full-width">
       <p class="cbs-main-title">Missions</p>
-      <p class="cbs-text cbs-text-color-gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius laborum
-        quidem delectus velit
-        voluptate vel ex
-        consectetur iusto unde ipsam! Quibusdam vitae cumque iste recusandae molestiae iusto laborum alias at.</p>
-    </div>
-    <div>
-
+      <p class="cbs-text cbs-text-color-gray cbs-text-justify">{{ job.description }}</p>
     </div>
   </div>
   <div>
     <p class="cbs-main-title">Compétences</p>
-    <p *ngFor="let technologie of job.technologies" class="cbs-second-title cbs-text-color-gray skill">{{
-      technologie.name }}
-    </p>
+    <ng-container *ngFor="let technologie of job.technologies">
+      <img src="{{ getSkillCapImg(technologie) }}" alt="skill-cap">
+      <p class="cbs-second-title cbs-text-color-gray  skill">{{
+        technologie.name }}
+      </p>
+    </ng-container>
     <p class="cbs-main-title">Localisation</p>
     <img class="map-icon" src="{{ imgPath.map }}" alt="map-icon">
     <p class="cbs-secondary-text cbs-text-color-gray">Paris, île de france</p>

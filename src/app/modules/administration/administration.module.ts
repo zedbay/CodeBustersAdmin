@@ -19,7 +19,7 @@ import { PanelModule } from 'primeng/panel';
   declarations: [
     AdministrationComponent,
     WebsiteComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     CommonModule,

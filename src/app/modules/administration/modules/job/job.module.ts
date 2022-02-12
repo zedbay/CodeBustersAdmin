@@ -9,12 +9,15 @@ import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { TabViewModule } from 'primeng/tabview';
+import { JobEditTechnologiesComponent } from './components/job-edit/job-edit-technologies/job-edit-technologies.component';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
   declarations: [
     JobComponent,
-    JobEditComponent
+    JobEditComponent,
+    JobEditTechnologiesComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +27,8 @@ import { TabViewModule } from 'primeng/tabview';
     ReactiveFormsModule,
     FormsModule,
     InputTextModule,
-    TabViewModule
+    TabViewModule,
+    TableModule
   ]
 })
 export class JobModule { }

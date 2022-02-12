@@ -10,7 +10,15 @@ export interface Job extends Resource {
   description: string;
   createdDate: string;
   rank: Rank;
+  localisation: string;
 
   squad: Squad;
   technologies: Techno[];
+}
+
+export class NeededRelation extends Resource {
+
+  createdDate?: string;
+  skillCap?: number;
+
 }

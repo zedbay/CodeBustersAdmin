@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ResourceComponent } from 'src/app/modules/administration/shared/components/resource/resource.component';
 import { TableAction } from 'src/app/modules/administration/shared/models/TableActions.model';
 import { EventService } from 'src/app/core/services/event.service';
@@ -19,9 +19,10 @@ export class EventComponent extends ResourceComponent<Event> {
 
   constructor(
     public activeRoute: ActivatedRoute,
-    public eventService: EventService
+    public eventService: EventService,
+    public router: Router
   ) {
-    super(activeRoute, eventService);
+    super(activeRoute, eventService, router);
   }
 
 }

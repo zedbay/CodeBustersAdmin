@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ResourceComponent } from 'src/app/modules/administration/shared/components/resource/resource.component';
 import { TableAction } from 'src/app/modules/administration/shared/models/TableActions.model';
 import { JobService } from 'src/app/core/services/job.service';
@@ -19,12 +19,18 @@ export class JobComponent extends ResourceComponent<Job>{
 
   constructor(
     public activeRoute: ActivatedRoute,
-    public jobService: JobService
+    public jobService: JobService,
+    public router: Router
   ) {
     super(
       activeRoute,
-      jobService
+      jobService,
+      router
     );
+  }
+
+  test(ressourceId: number) {
+
   }
 
 }

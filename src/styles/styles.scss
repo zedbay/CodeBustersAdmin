@@ -28,7 +28,6 @@ body {
 
 * {
   font-family: "GothamBold", sans-serif;
-  outline: none !important;
 
   a {
     color: unset;
@@ -61,10 +60,13 @@ body {
       &:hover {
         cursor: pointer;
         color: $secondary;
-        text-shadow: 1px 1px 1px black;
       }
     }
   }
+}
+
+.full-width {
+  width: 100%;
 }
 
 @import "./design-system/index.scss";

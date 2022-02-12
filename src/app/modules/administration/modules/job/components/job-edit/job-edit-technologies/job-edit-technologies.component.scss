@@ -1,0 +1,37 @@
+@import "colors";
+
+.edit-tables-container {
+  display: flex;
+
+  .edit-link-table {
+    td {
+      padding: 9px 9px 10px 9px;
+    }
+
+    .editable-column-header {
+      text-align: center;
+      color: #0e89ec;
+    }
+  }
+
+  app-resource-listing {
+    flex: 1;
+  }
+}
+
+.cbs-table-input {
+  border: none;
+  background-color: none;
+  border-radius: 5px;
+  text-align: center;
+  padding: 8px;
+
+  &:hover {
+    background-color: #e8ecef;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: #e8ecef;
+  }
+}

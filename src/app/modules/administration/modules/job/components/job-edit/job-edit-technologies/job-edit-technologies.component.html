@@ -1,0 +1,29 @@
+<div class="edit-category">
+
+  <div class="edit-tables-container">
+
+    <p-table [value]="technologies" class="edit-link-table">
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="editable-column-header">Skill cap</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-element>
+        <tr>
+          <td>
+            <input (focusout)="modifyTechnoRelation($event.target['value'], element)"
+              value="{{ element?.NEEDED?.skillCap }}" class="cbs-table-input" type="number">
+          </td>
+        </tr>
+      </ng-template>
+
+    </p-table>
+
+    <app-resource-listing [resourceService]="technoService" [resources]="technologies"
+      [resourcesActions]="technologiesListingAction">
+    </app-resource-listing>
+  </div>
+
+  <app-resource-search [resourceService]="technoService" actionLabel="Add Technology"
+    (selectionEmitter)="addTechno($event)"></app-resource-search>
+</div>

@@ -21,4 +21,14 @@ export class Site extends Resource {
   clientBusterTitle: string;
   clientBusterUnderTitle: string;
   clientBusterDescription: string;
+
+  communityDescriptionTitle1: string;
+  communityDescriptionUnderTitle1: string;
+  communityDescriptionText1: string;
+  communityDescriptionTitle2: string;
+  communityDescriptionUnderTitle2: string;
+  communityDescriptionText2: string;
+  communityDescriptionTitle3: string;
+  communityDescriptionUnderTitle3: string;
+  communityDescriptionText3: string;
 }

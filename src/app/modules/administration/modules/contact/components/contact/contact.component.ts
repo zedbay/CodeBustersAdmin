@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ResourceComponent } from 'src/app/modules/administration/shared/components/resource/resource.component';
 import { TableAction } from 'src/app/modules/administration/shared/models/TableActions.model';
 import { ContactService } from 'src/app/core/services/contact.service';
@@ -19,9 +19,10 @@ export class ContactComponent extends ResourceComponent<Contact> {
 
   constructor(
     public activeRoute: ActivatedRoute,
-    public contactService: ContactService
+    public contactService: ContactService,
+    public router: Router
   ) {
-    super(activeRoute, contactService);
+    super(activeRoute, contactService, router);
   }
 
 }

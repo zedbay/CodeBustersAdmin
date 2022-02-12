@@ -21,7 +21,8 @@ export class JobEditComponent extends ResourceEditComponent<Job> implements OnIn
     title: ['', [Validators.required]],
     underTitle: ['', [Validators.required]],
     description: ['', [Validators.required]],
-    rank: ['', [Validators.required]]
+    rank: ['', [Validators.required]],
+    localisation: ['', [Validators.required]]
   });
 
   public jobSquadForm: FormGroup = this.formBuilder.group({
@@ -49,6 +50,7 @@ export class JobEditComponent extends ResourceEditComponent<Job> implements OnIn
       this.resourceForm.controls.underTitle.setValue('');
       this.resourceForm.controls.description.setValue('');
       this.resourceForm.controls.rank.setValue(Rank.Bronze);
+      this.resourceForm.controls.localisation.setValue('');
       this.resetJobSquadForm();
     }
   }
@@ -58,6 +60,7 @@ export class JobEditComponent extends ResourceEditComponent<Job> implements OnIn
     this.resourceForm.controls.underTitle.setValue(this._resource.underTitle);
     this.resourceForm.controls.description.setValue(this._resource.description);
     this.resourceForm.controls.rank.setValue(this._resource.rank);
+    this.resourceForm.controls.localisation.setValue(this._resource.localisation);
     if (this._resource.squad) {
       this.setJobSquadForm(this._resource.squad);
     }

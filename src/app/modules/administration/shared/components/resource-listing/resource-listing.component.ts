@@ -20,7 +20,6 @@ export class ResourceListingComponent<T extends Resource> implements OnInit {
 
   ngOnInit(): void {
     this.resourcesLabels = this.resourceService.labels;
-    this.resources[0].selected = true;
   }
 
   public selectElement(ressource: T): void {

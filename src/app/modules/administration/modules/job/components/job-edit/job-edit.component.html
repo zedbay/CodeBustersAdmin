@@ -16,6 +16,10 @@
           </div>
           <div class="double-field-container">
             <div class="edit-field">
+              <label class="edit-label">Localisation</label>
+              <input class="edit-input" formControlName="localisation" type="text" pInputText />
+            </div>
+            <div class="edit-field">
               <label class="edit-label">Rank</label>
               <app-rank-selector formControlName="rank"></app-rank-selector>
             </div>
@@ -62,14 +66,8 @@
         </div>
       </p-tabPanel>
 
-      <p-tabPanel header="Technologies">
-        <div class="edit-category">
-          <app-resource-listing [resourceService]="technoService" [resources]="_resource.technologies"
-            [resourcesActions]="technologiesListingAction">
-          </app-resource-listing>
-          <app-resource-search [resourceService]="technoService" actionLabel="Add Technology"
-            (selectionEmitter)="addTechno($event)"></app-resource-search>
-        </div>
+      <p-tabPanel [selected]="true" header="Technologies">
+        <app-job-edit-technologies [technologies]="_resource.technologies"></app-job-edit-technologies>
       </p-tabPanel>
 
     </ng-container>
