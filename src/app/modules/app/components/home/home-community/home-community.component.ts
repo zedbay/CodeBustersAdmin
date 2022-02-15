@@ -29,4 +29,8 @@ export class HomeCommunityComponent implements OnInit {
     this.selectedImgPath = this.busterImgPath[busterName];
   }
 
+  public easterEggs() {
+    window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley');
+  }
+
 }

@@ -1,13 +1,17 @@
 <div class="home-title-container">
   <p class="cbs-big-title"><span class="indicator">02.</span><span class="title-content">LA COMMUNAUTE DES
       BUSTERS</span></p>
-  <button class="cbs-button cbs-savoir">EN SAVOIR <i class="pi pi-plus"></i></button>
+  <button class="cbs-button cbs-savoir" routerLink="/community">EN SAVOIR <i class="pi pi-plus"></i></button>
 </div>
-<div class="hover-container" (mouseout)="selectBuster('Default')">
-  <div class="buster-hover alex-hover" (mouseover)="selectBuster('Alex')"></div>
-  <div class="buster-hover francois-hover" (mouseover)="selectBuster('Francois')"></div>
-  <div class="buster-hover thomas-hover" (mouseover)="selectBuster('Thomas')"></div>
-  <div class="buster-hover antoine-hover" (mouseover)="selectBuster('Antoine')"></div>
-  <div class="buster-hover hedi-hover" (mouseover)="selectBuster('Hedi')"></div>
+
+<div class="img-container">
+  <div class="easterEggs" (click)="easterEggs()"></div>
+  <div class="hover-container" (mouseout)="selectBuster('Default')">
+    <div class="buster-hover alex-hover" (mouseover)="selectBuster('Alex')"></div>
+    <div class="buster-hover francois-hover" (mouseover)="selectBuster('Francois')"></div>
+    <div class="buster-hover thomas-hover" (mouseover)="selectBuster('Thomas')"></div>
+    <div class="buster-hover antoine-hover" (mouseover)="selectBuster('Antoine')"></div>
+    <div class="buster-hover hedi-hover" (mouseover)="selectBuster('Hedi')"></div>
+  </div>
+  <img src="{{ selectedImgPath }}" alt="busters-community">
 </div>
-<img class="img-container" src="{{ selectedImgPath }}" alt="busters-community">

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { imgPath } from 'src/app/shared/constants/imgPath';
+import { Site } from 'src/app/shared/models/site';
 
 interface Principle {
   title: string,
@@ -17,28 +19,32 @@ export class CommunityDescriptionComponent implements OnInit {
 
   public imgPath = imgPath;
 
+  public site: Site = this.activeRoute.snapshot.data.site;
+
   public principles: Principle[] = [
     {
-      title: 'DE DEV A DEV',
-      underTitle: '\"Un développeur, c\'est avant tout un problem solver.\"',
-      content: "Il doit comprendre des problématiques technico-fonctionnelles parfois complexes, être à jour sur les technologies et outils qui existent.C’est un métier exigeant et nous pensons que seuls les Dévs peuvent se challenger entre eux.Nous pensons qu’il n’y a rien de mieux qu’un dévs pour manager et accompagner dans sa carrière un autre Dév.",
+      title: this.site.communityDescriptionTitle1,
+      underTitle: this.site.communityDescriptionUnderTitle1,
+      content: this.site.communityDescriptionText1,
       img: imgPath.cog
     },
     {
-      title: 'JAMAIS SEUL',
-      underTitle: '\"Un dév ne peut travailler seul.\"',
-      img: imgPath.friends,
-      content: 'Pour confronter ses idées, progresser, partager ses dernières découvertes mais aussi les derniers bugs résolus. Les Busters peuvent entrer en contact facilement(#Discord), se retrouver pour travailler ensemble, ou juste boire des coups pour échanger sur un problème ou une techno.'
+      title: this.site.communityDescriptionTitle2,
+      underTitle: this.site.communityDescriptionUnderTitle2,
+      content: this.site.communityDescriptionText2,
+      img: imgPath.friends
     },
     {
-      title: 'GRANDIR ENSEMBLE',
-      underTitle: '\"Plus l\'équipe est petite, plus l\'accompagnement est précis.\"',
       img: imgPath.rubiks,
-      content: 'Nous avons choisi de créer des squads petites et homogènes qui permettent un échange plus facile entre Busters d’une même squad et génère une progression plus rapide de tous les Busters.'
+      title: this.site.communityDescriptionTitle3,
+      underTitle: this.site.communityDescriptionUnderTitle3,
+      content: this.site.communityDescriptionText3
     }
   ];
 
-  constructor() { }
+  constructor(
+    private activeRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
   }
