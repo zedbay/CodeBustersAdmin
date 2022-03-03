@@ -26,6 +26,8 @@ import { SincePipe } from './pipes/since.pipe';
 import { NewsComponent } from './components/news/news/news.component';
 import { NewsDisplayElementComponent } from './components/news/news-display-element/news-display-element.component';
 import { HomeNavigationIndicatorComponent } from './components/home/home-navigation-indicator/home-navigation-indicator.component';
+import { CarouselModule } from 'primeng/carousel';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { HomeNavigationIndicatorComponent } from './components/home/home-navigat
     RouterModule,
     ToastModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CarouselModule
   ]
 })
 export class AppModule { }

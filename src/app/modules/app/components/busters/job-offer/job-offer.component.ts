@@ -4,18 +4,22 @@ import { RankService } from 'src/app/core/services/rank.service';
 import { SquadService } from 'src/app/core/services/squad.service';
 import { imgPath } from 'src/app/shared/constants/imgPath';
 import { Job, NeededRelation } from 'src/app/shared/models/job';
+import { Rank } from 'src/app/shared/models/rank';
 import { Squad } from 'src/app/shared/models/squad';
 import { Techno } from 'src/app/shared/models/techno';
 
 @Component({
   selector: 'app-job-offer',
   templateUrl: './job-offer.component.html',
-  styleUrls: ['./job-offer.component.scss']
+  styleUrls: ['./job-offer.component.scss'],
 })
 export class JobOfferComponent implements OnInit {
 
   public job: Job = this.route.snapshot.data.job;
   public imgPath = imgPath;
+  public ranks = Rank;
+
+  public jobIsForAManager: boolean = this.job.rank === Rank.Diamond || this.job.rank === Rank.Gold;
 
   constructor(
     private route: ActivatedRoute,

@@ -1,26 +1,43 @@
 <div class="home-title-container">
-  <p class="cbs-big-title"><span class="indicator">01.</span><span class="title-content">CODE BUSTERS</span> </p>
+  <p class="cbs-big-title"><span class="indicator">01.</span><span class="title-content">CODE
+      BUSTERS</span> </p>
 </div>
-<div class="home-busters-content-container">
-  <div class="home-busters-start-container">
-    <p class="cbs-main-title cbs-text-color-secondary home-busters-title">{{ site.startBusterTitle }}</p>
-    <p class="cbs-second-title home-buster-undertitle">{{ site.startBusterUnderTitle }}</p>
-    <p class="cbs-text cbs-text-color-gray cbs-text-justify home-buster-description">{{ site.startBusterDescription }}
-    </p>
-  </div>
-  <img src="{{  imgPath.logoWithoutBackground }}" class="logo">
-  <div>
-    <div class="home-buster-staff-container">
-      <p class="cbs-main-title cbs-text-color-secondary home-busters-title">{{ site.staffBusterTitle }}</p>
-      <p class="cbs-second-title home-buster-undertitle">{{ site.staffBusterUnderTitle }}</p>
-      <p class="cbs-text cbs-text-color-gray cbs-text-justify home-buster-description">{{ site.staffBusterDescription
-        }}</p>
+<div class="home-flex-container">
+  <app-home-navigation-indicator [selectedContainer]="homeContainer.Busters"></app-home-navigation-indicator>
+  <div class="home-busters-content-container">
+    <div [@opacityDown]="!startBusterHover && (staffBusterHover || clientBusterHover)"
+      (mouseenter)="startBusterHover=true" (mouseleave)="startBusterHover=false" class="home-busters-start-container">
+      <p class="cbs-main-title cbs-text-color-secondary cbs-center-right home-busters-title"
+        [@textZoomIn]="startBusterHover">{{
+        site.startBusterTitle }}</p>
+      <p class="cbs-second-title cbs-center-right home-buster-undertitle">{{ site.startBusterUnderTitle }}</p>
+      <p [@fadeIn]="startBusterHover" class=" cbs-text cbs-text-color-gray cbs-text-justify home-buster-description">{{
+        site.startBusterDescription }}
+      </p>
     </div>
-    <div class="home-busters-client-container">
-      <p class="cbs-main-title cbs-text-color-secondary home-busters-title">{{ site.clientBusterTitle }}</p>
-      <p class="cbs-second-title home-buster-undertitle">{{ site.clientBusterUnderTitle }}</p>
-      <p class="cbs-text cbs-text-color-gray cbs-text-justify home-buster-description">{{ site.clientBusterDescription
-        }}</p>
+    <img [@opacityDown]="clientBusterHover || startBusterHover || staffBusterHover"
+      src="{{  imgPath.logoWithoutBackground }}" class="logo">
+    <div>
+      <div [@opacityDown]="!staffBusterHover && (clientBusterHover || startBusterHover)"
+        (mouseenter)="staffBusterHover=true" (mouseleave)="staffBusterHover=false" class="home-buster-staff-container">
+        <p class="cbs-main-title cbs-text-color-secondary home-busters-title " [@textZoomIn]="staffBusterHover">{{
+          site.staffBusterTitle }}</p>
+        <p class="cbs-second-title home-buster-undertitle">{{ site.staffBusterUnderTitle }}</p>
+        <p [@fadeIn]="staffBusterHover" class="cbs-text cbs-text-color-gray cbs-text-justify home-buster-description">{{
+          site.staffBusterDescription
+          }}</p>
+      </div>
+      <div [@opacityDown]="!clientBusterHover && (staffBusterHover || startBusterHover)"
+        (mouseenter)="clientBusterHover=true" (mouseleave)="clientBusterHover=false"
+        class="home-busters-client-container">
+        <p class="cbs-main-title cbs-text-color-secondary home-busters-title" [@textZoomIn]="clientBusterHover">{{
+          site.clientBusterTitle }}</p>
+        <p class="cbs-second-title home-buster-undertitle">{{ site.clientBusterUnderTitle }}</p>
+        <p [@fadeIn]="clientBusterHover" class="cbs-text cbs-text-color-gray cbs-text-justify home-buster-description">
+          {{
+          site.clientBusterDescription
+          }}</p>
+      </div>
     </div>
   </div>
 </div>

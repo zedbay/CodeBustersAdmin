@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from 'src/app/core/services/contact.service';
 import { imgPath } from 'src/app/shared/constants/imgPath';
 import { Answer, bustersQuestions, Question } from 'src/app/shared/content/questions.model';
+import { HomeContainer } from '../homeContainer.enum';
 
 @Component({
   selector: 'app-home-contact',
@@ -14,6 +15,8 @@ export class HomeContactComponent implements OnInit {
   public questions: Question[] = bustersQuestions;
 
   public selectedQuestion: Question;
+
+  public homeContainer = HomeContainer;
 
   public results: string[] = [];
 

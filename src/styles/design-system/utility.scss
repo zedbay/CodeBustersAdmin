@@ -1,0 +1,9 @@
+@import "../constants.scss";
+
+.side-margin-right {
+  margin: 0 0 0 $side-margin;
+}
+
+.side-margin-top {
+  margin-top: $side-margin !important;
+}

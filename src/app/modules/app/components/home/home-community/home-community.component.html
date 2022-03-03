@@ -1,10 +1,13 @@
 <div class="home-title-container">
-  <p class="cbs-big-title"><span class="indicator">02.</span><span class="title-content">LA COMMUNAUTE DES
+  <p class="cbs-big-title"><span class="indicator">02.</span><span class="title-content">LA COMMUNAUTE
+      DES
       BUSTERS</span></p>
   <button class="cbs-button cbs-savoir" routerLink="/community">EN SAVOIR <i class="pi pi-plus"></i></button>
 </div>
 
 <div class="img-container">
+  <app-home-navigation-indicator [selectedContainer]="homeContainer.Community" class="home-navigation">
+  </app-home-navigation-indicator>
   <div class="easterEggs" (click)="easterEggs()"></div>
   <div class="hover-container" (mouseout)="selectBuster('Default')">
     <div class="buster-hover alex-hover" (mouseover)="selectBuster('Alex')"></div>

@@ -15,8 +15,8 @@
   <div class="sections-contents">
     <div class="section-content" *ngFor="let section of sections">
       <div class="elements-container">
-        <div *ngFor="let element of section.elements" class="element" (click)="displayElement(element)">
-          <p class="cbs-main-title cbs-text-color-secondary">{{ element.name }}</p>
+        <div *ngFor="let element of section.elements" class="element" (click)="section.callToAction(element)">
+          <p class="cbs-main-title cbs-text-color-secondary cbs-font-size-2">{{ element.name }}</p>
           <p class="cbs-under-title cbs-text-color-gray"><i class="pi pi-clock"></i>{{ element.createdDate | since }}
           </p>
         </div>

@@ -1,19 +1,18 @@
 <div class="separator-container-with-title">
   <p class="cbs-main-title center-title">NOS REGLES DU JEU</p>
 </div>
-<ul class="rules-container">
+<div class="rules-container">
   <img class="rules-container-background" src="{{ imgPath.logoWithoutBackground }}" alt="cbs-logo">
-  <li class="flex-double-container" *ngFor="let rule of rules; let i = index">
+  <div class="flex-double-container rule" *ngFor="let rule of rules; let i = index">
     <div class="flex-element">
-      <p class="cbs-main-title cbs-text-color-hover-secondary rule-title">
-        <i class="pi pi-shield">
-          <span class="number-indicator">{{ i + 1 }}</span>
-        </i>
+      <p class="cbs-main-title cbs-font-size-2 rule-title">
+        <img class="picto-rule" src="{{ rule.pictoPath }}" alt="{{ rule.pictoPath }}">
+        <img class="picto-rule picto-hover" src="{{ rule.pictoPathHover }}" alt="{{  rule.pictoPathHover }}">
         {{ rule.title }}
       </p>
     </div>
     <p class="flex-element cbs-text cbs-text-color-gray">
       {{ rule.content }}
     </p>
-  </li>
-</ul>
+  </div>
+</div>

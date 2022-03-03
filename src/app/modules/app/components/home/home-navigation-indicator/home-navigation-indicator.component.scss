@@ -2,11 +2,16 @@
 @import "constants";
 
 :host {
-  display: flex;
-  border: solid red 1px;
-  width: $side-margin;
   align-items: center;
   justify-items: center;
+  margin-right: $side-margin;
+}
+
+.home-container-separator {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background-color: $first-gray;
 }
 
 .home-container-selection {
@@ -14,15 +19,55 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 25px;
+  position: relative;
+}
 
-  .pi {
-    cursor: pointer;
+.home-container-selector {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+
+  &.selected-container,
+  &:hover {
+    .background {
+      background-color: $white;
+    }
   }
 
-  .separator {
-    border: solid $white;
-    border-width: 0 0 0 1px;
-    height: 24px;
+  &:nth-child(2) {
+    margin: 64px 0;
+  }
+
+  .background {
+    background-color: $first-gray;
+    z-index: 1;
+    position: absolute;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  }
+
+  .base {
+    background-color: $primary;
+    z-index: 2;
+    position: absolute;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .selected {
+    background-color: $white;
+    z-index: 3;
+    position: absolute;
+    border-radius: 50%;
+    top: 8px;
+    left: 8px;
+    width: 14px;
+    height: 14px;
   }
 }

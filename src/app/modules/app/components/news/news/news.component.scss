@@ -33,9 +33,10 @@
     flex: 1;
 
     .section-content {
-      height: 300px;
+      height: calc(300px - 2em);
       border: solid $first-gray;
       border-width: 1px 0 0 0;
+      margin-top: 2em;
 
       .elements-container {
         display: flex;
@@ -46,7 +47,12 @@
           padding: 16px 32px;
           margin: 0 16px;
           border: solid $first-gray 1px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
           border-radius: 2px;
+          text-align: center;
 
           &:hover {
             cursor: pointer;

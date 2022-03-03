@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { imgPath } from 'src/app/shared/constants/imgPath';
+import { HomeContainer } from '../homeContainer.enum';
 
 type BusterName = 'Antoine' | 'Alex' | 'Francois' | 'Hedi' | 'Thomas' | 'Default';
 
@@ -9,6 +10,7 @@ type BusterName = 'Antoine' | 'Alex' | 'Francois' | 'Hedi' | 'Thomas' | 'Default
   styleUrls: ['./home-community.component.scss']
 })
 export class HomeCommunityComponent implements OnInit {
+
 
   private busterImgPath: { [key in BusterName]: string } = {
     'Antoine': imgPath.homeCommunity.antoine,
@@ -20,6 +22,9 @@ export class HomeCommunityComponent implements OnInit {
   };
 
   public selectedImgPath: string = this.busterImgPath.Default;
+
+  public homeContainer = HomeContainer;
+
 
   constructor() { }
 

@@ -9,5 +9,5 @@ export class Project extends Resource {
   workers: Buster[];
   rank: Rank;
   description: string;
-  createdDate?: string;
+  createdDate: string;
 }

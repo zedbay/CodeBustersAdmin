@@ -1,9 +1,13 @@
 @import "colors";
+@import "constants";
 
 .cbs-button {
   display: flex;
   align-items: center;
   padding: 12px 16px;
+
+  font-family: "GothamMedium";
+  font-size: $font-size-3;
 
   &.cbs-action {
     color: $secondary;
@@ -30,40 +34,10 @@
     border: solid $secondary;
     border-width: 1px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 0em;
-    opacity: 0.8;
 
-    &:hover {
-      opacity: 1;
-    }
-
-    .progress-bar {
-      border: solid 1px $secondary;
-      align-self: flex-start;
-
-      &.progress0 {
-        visibility: hidden;
-      }
-
-      &.progress1 {
-        width: 33%;
-      }
-
-      &.progress2 {
-        width: 66%;
-      }
-
-      &.progress3 {
-        width: 100%;
-      }
-    }
-
-    .button-content {
-      display: flex;
-      align-items: center;
-      padding: 1em 2em;
+    .pi {
+      margin-left: 8px;
     }
   }
 
@@ -87,11 +61,10 @@
   &.cbs-retour {
     border: solid 1px $white;
     color: $white;
-    padding: 1em 2em;
     background-color: $primary;
 
     .pi {
-      margin-right: 1em;
+      margin-right: 16px;
     }
 
     &:hover {

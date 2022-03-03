@@ -1,11 +1,15 @@
-<div class="home-news-content-container">
-  <p class="cbs-main-title">New Job</p>
-  <p class="cbs-big-title">Plusieurs Squad a rejoindre</p>
-  <button class="cbs-button cbs-savoir" routerLink="/busters">
-    EN SAVOIR
-    <i class="pi pi-plus"></i>
-  </button>
-</div>
-<div class="home-news-img-container">
-  <img src="{{ imgPath.hat }}" alt="{{ imgPath.hat }}">
-</div>
+<p-carousel [value]="homeContainers" [autoplayInterval]="4000" [showIndicators]=false>
+  <ng-template let-item pTemplate="item">
+    <div class="home-news-content-container">
+      <div>
+        <p class="cbs-main-title">{{ item.title }}</p>
+        <p class="cbs-big-title">{{ item.underTitle }}</p>
+        <button class="cbs-button cbs-savoir" (click)="item.callToAction(item.elementId)">
+          EN SAVOIR
+          <i class="pi pi-plus"></i>
+        </button>
+      </div>
+      <img src="{{ item.imgPath }}" alt="{{ item.imgPath }}">
+    </div>
+  </ng-template>
+</p-carousel>

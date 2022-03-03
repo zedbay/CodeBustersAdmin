@@ -7,6 +7,11 @@ export class Site extends Resource {
   goldDescription?: string;
   diamondDescription?: string;
 
+  bronzeShortDescription: string;
+  silverShortDescription: string;
+  goldShortDescription: string;
+  diamondShortDescription: string;
+
   devRule: string;
   togetherRule: string;
   ambitiousRule: string;

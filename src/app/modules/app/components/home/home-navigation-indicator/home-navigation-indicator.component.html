@@ -1,15 +1,28 @@
 <div class="home-container-selection">
 
-  <i class="pi" [ngClass]="isContainerSelected(HomeContainer.Busters) ? 'pi-circle-on' : 'pi-circle-off' "
-    (click)="selectContainer(HomeContainer.Busters)"></i>
+  <div class="home-container-selector" [ngClass]="{ 'selected-container': selectedContainer === HomeContainer.Busters}"
+    (click)="selectContainer(HomeContainer.Busters)">
+    <span class="background"></span>
+    <span class="base"></span>
+    <span class="selected" *ngIf="selectedContainer === HomeContainer.Busters"></span>
+  </div>
 
-  <div class="separator"></div>
+  <div class="home-container-selector"
+    [ngClass]="{ 'selected-container': selectedContainer === HomeContainer.Community}"
+    (click)="selectContainer(HomeContainer.Community)">
+    <span class="background"></span>
+    <span class="base"></span>
+    <span class="selected" *ngIf="selectedContainer === HomeContainer.Community"></span>
+  </div>
 
-  <i class="pi" [ngClass]="isContainerSelected(HomeContainer.Community) ? 'pi-circle-on' : 'pi-circle-off' "
-    (click)="selectContainer(HomeContainer.Community)"></i>
+  <div class="home-container-selector" [ngClass]="{ 'selected-container': selectedContainer === HomeContainer.Contact}"
+    (click)="selectContainer(HomeContainer.Contact)">
+    <span class="background"></span>
+    <span class="base"></span>
+    <span class="selected" *ngIf="selectedContainer === HomeContainer.Contact"></span>
+  </div>
 
-  <div class="separator"></div>
+  <div class="home-container-separator"></div>
 
-  <i class="pi" (click)="selectContainer(HomeContainer.Contact)"
-    [ngClass]="isContainerSelected(HomeContainer.Contact) ? 'pi-circle-on' : 'pi-circle-off' "></i>
+
 </div>

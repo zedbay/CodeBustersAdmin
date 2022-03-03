@@ -21,22 +21,27 @@
   </button>
 </div>
 <div class="job-offer-container">
-
   <div>
     <div>
-      <div class="job-img">
-        <img class="job-rank-img" src="{{ rankService.getImgPathForRank(job.rank) }}" alt="{{ job.rank }}">
+      <img *ngIf="jobIsForAManager" class="job-rank-img" src="{{ rankService.getImgPathForRank(job.rank) }}"
+        alt="{{ job.rank }}">
+      <div *ngIf="!jobIsForAManager" class="job-rank-img-container">
+        <img class="border-img" src="{{ job.rank === ranks.Bronze ? imgPath.border.bronze :  imgPath.border.silver }}"
+          alt="rank-border">
         <img class="manager-img" src="{{ imgPath.buster }}" alt="buster">
+        <img class="border-img-abs"
+          src="{{ job.rank === ranks.Bronze ? imgPath.border.bronze :  imgPath.border.silver }}" alt="rank-border">
       </div>
-
       <p class="cbs-text cbs-text-color-gray cbs-text-justify">Nous sommes organisés en squad et nous proposons à tous
         les Busters Bronze
         et Silver d'avoir
         un accompagnement personalisé par son manager</p>
-      <p class="cbs-main-title">La squad qui recrute et son manager</p>
-      <p class="cbs-text cbs-text-color-gray cbs-text-justify">
-        {{ job.squad.description }}
-      </p>
+      <ng-container *ngIf="!jobIsForAManager">
+        <p class="cbs-main-title">La squad qui recrute et son manager</p>
+        <p class="cbs-text cbs-text-color-gray cbs-text-justify">
+          {{ job.squad.description }}
+        </p>
+      </ng-container>
     </div>
   </div>
 

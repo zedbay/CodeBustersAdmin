@@ -38,20 +38,9 @@
     margin: 64px 0 32px 0;
   }
 
-  .job-img {
-    position: relative;
-
-    .manager-img {
-      position: absolute;
-      top: 20%;
-      left: 40%;
-      height: 60%;
-      border-radius: 40%;
-      border: solid $secondary 2px;
-    }
-    .job-rank-img {
-      width: 70%;
-    }
+  .job-rank-img {
+    width: 100%;
+    margin-bottom: -10%;
   }
 
   .map-icon {
@@ -69,4 +58,28 @@
 .skill {
   text-align: center;
   margin: -16px 0 16px 0;
+}
+
+.job-rank-img-container {
+  position: relative;
+  margin-top: 32px;
+
+  .border-img {
+    width: 100%;
+    visibility: hidden;
+  }
+
+  .manager-img {
+    height: 85%;
+    position: absolute;
+    right: 11%;
+    top: 10%;
+  }
+
+  .border-img-abs {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+  }
 }

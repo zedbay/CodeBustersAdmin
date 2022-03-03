@@ -5,21 +5,42 @@
   margin-top: $side-margin;
   display: block;
 
-  .pi-shield {
-    font-size: 2em;
-    margin-right: 32px;
-    position: relative;
-
-    .number-indicator {
-      position: absolute;
-      left: 0.55em;
-      top: 0.35em;
-      font-size: 0.6em;
-    }
-  }
-
   .rules-container {
     position: relative;
+
+    .rule {
+      z-index: 2;
+      position: relative;
+
+      .rule-title {
+        display: flex;
+        align-items: center;
+
+        .picto-rule {
+          width: 38px;
+          margin-right: 16px;
+        }
+
+        .picto-hover {
+          display: none;
+        }
+      }
+
+      &:hover {
+        .rule-title,
+        .cbs-text {
+          color: $secondary;
+        }
+
+        .picto-rule {
+          display: none;
+        }
+
+        .picto-hover {
+          display: block !important;
+        }
+      }
+    }
 
     .rules-container-background {
       opacity: 0.1;
@@ -28,21 +49,11 @@
       top: -10%;
       width: 40%;
       height: 120%;
+      z-index: 1;
     }
 
     & > * {
-      border: solid $first-gray;
-      border-width: 0 0 1px 0;
       padding: 32px 0;
-
-      &:last-child {
-        border: none;
-      }
     }
-  }
-
-  .rule-title {
-    display: flex;
-    align-items: center;
   }
 }

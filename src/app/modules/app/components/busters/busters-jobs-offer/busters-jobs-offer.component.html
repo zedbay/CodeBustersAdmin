@@ -2,10 +2,16 @@
   <p class="cbs-main-title">Choisis ton rôle</p>
   <div class="ranks-container">
     <p class="cbs-text" (click)="selectedRank = undefined">Grades</p>
-    <div *ngFor="let grade of grades" class="rank-container" [ngClass]="{'selected': selectedRank === grade.rank}">
-      <img class="talent-rank-img" src="{{ grade.imgPath }}" alt="{{ grade.rank}}" (click)="selectedRank = grade.rank">
-      <p class="cbs-second-title rank-title">{{ grade.name }}</p>
-      <p class="cbs-text cbs-text-color-gray rank-description">{{ grade.description }}</p>
+    <div (mouseenter)="currentHoverRank = grade.rank" (mouseleave)="currentHoverRank = undefined"
+      *ngFor="let grade of grades" class="rank-container" [ngClass]="{'selected': selectedRank === grade.rank}">
+      <img [@zoomIn]="currentHoverRank === grade.rank" class="talent-rank-img" src="{{ grade.imgPath }}"
+        alt="{{ grade.rank}}" (click)="selectedRank = grade.rank">
+      <div [@collapse]="currentHoverRank !== grade.rank" class="rank-description-container">
+        <p class="cbs-second-title rank-title">{{ grade.name }}</p>
+        <p class="cbs-text cbs-text-color-gray rank-description">{{
+          grade.description }}</p>
+      </div>
+
     </div>
   </div>
 </div>
@@ -13,16 +19,16 @@
   <ng-container *ngFor="let job of jobs">
     <div class="job-container" *ngIf="!selectedRank  ||  selectedRank === job.rank" routerLink="{{ job.id }}">
       <div>
-        <img class="talent-rank-img" src="{{ rankService.getImgPathForRank(job.rank) }}" alt="gold" class="job-img">
-        <p class="cbs-big-title">{{ job.title }}</p>
+        <img src="{{ rankService.getImgPathForRank(job.rank) }}" alt="gold" class="job-img">
+        <p class="cbs-big-title cbs-font-size-1">{{ job.title }}</p>
       </div>
       <div>
         <img class="job-illustration" src="{{ imgPath.cap }}" alt="cap">
-        <p class="cbs-second-title cbs-text-color-gray">{{ job.description }}</p>
+        <p class="cbs-second-title cbs-text-color-gray cbs-font-size-2">{{ job.description }}</p>
       </div>
       <div>
         <img class="job-img" src="{{ imgPath.chrono }}" alt="chrono">
-        <p class="cbs-second-title cbs-text-color-gray">{{ job.createdDate | since }}</p>
+        <p class="cbs-second-title cbs-text-color-gray cbs-font-size-3">{{ job.createdDate | since }}</p>
       </div>
     </div>
   </ng-container>

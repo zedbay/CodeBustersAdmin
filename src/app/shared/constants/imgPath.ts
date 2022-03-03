@@ -1,4 +1,5 @@
 export const imgPath = {
+  linkedinLogo: 'assets/linkedin.png',
   buster: 'assets/buster.jpg',
   logo: 'assets/logo/logo.png',
   logoWithoutBackground: 'assets/logo/logo_transparent.png',
@@ -14,8 +15,8 @@ export const imgPath = {
   cap: 'assets/home/cap.png',
   cup: 'assets/home/cup.png',
   border: {
-    silver: 'assets/border/bronze-border.png',
-    bronze: 'assets/border/silver-border.png'
+    silver: 'assets/border/silver-border.png',
+    bronze: 'assets/border/bronze-border.png'
   },
   level: {
     one: 'assets/level/25.png',
@@ -35,5 +36,15 @@ export const imgPath = {
     hedi: 'assets/community/hedi.png',
     thomas: 'assets/community/thomas.png',
     background: 'assets/community/background.png'
+  },
+  picto: {
+    picto1: 'assets/picto/picto1.png',
+    picto2: 'assets/picto/picto2.png',
+    picto3: 'assets/picto/picto3.png',
+    picto4: 'assets/picto/picto4.png',
+    pictohover1: 'assets/picto/picto1_hover.png',
+    pictohover2: 'assets/picto/picto2_hover.png',
+    pictohover3: 'assets/picto/picto3_hover.png',
+    pictohover4: 'assets/picto/picto4_hover.png'
   }
 }

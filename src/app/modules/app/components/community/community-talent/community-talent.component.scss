@@ -20,8 +20,17 @@
   border: solid $first-gray;
   border-width: 0 0 1px 0;
 
-  .rank-name {
-    margin-bottom: 16px;
+  .rank-name-container {
+    position: relative;
+    height: 3em;
+    margin-bottom: 1em;
+    .rank-name {
+      margin-bottom: 1em;
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+    }
   }
 
   .talent-rank {
@@ -30,6 +39,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: -15px;
+    flex: 1;
 
     &:last-child {
       margin-right: $side-margin;
@@ -38,9 +48,24 @@
       cursor: pointer;
     }
   }
-  .talent-rank-img {
+
+  .img-rank-container {
     width: 100%;
-    margin-bottom: -20%;
+    position: relative;
+    margin-bottom: -30%;
+
+    .talent-rank-img-hidden {
+      width: 100%;
+      visibility: hidden;
+    }
+    .talent-rank-img {
+      position: absolute;
+      width: 80%;
+      margin-bottom: -20%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 }
 
@@ -58,6 +83,12 @@
   width: 30px;
   height: 30px;
   font-size: 16px;
+
+  &:hover {
+    .background {
+      background-color: $white;
+    }
+  }
 
   .background {
     background-color: $first-gray;
@@ -98,5 +129,13 @@
   }
   .rank-name {
     color: $white;
+  }
+}
+
+.rank-description-container {
+  position: relative;
+  height: $side-margin;
+  .cbs-text {
+    position: absolute;
   }
 }

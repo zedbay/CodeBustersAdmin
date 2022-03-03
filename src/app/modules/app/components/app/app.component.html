@@ -1,12 +1,12 @@
-<div class="video-container">
-  <video *ngIf="test" #video controls muted=true (ended)="test = false" (canplay)="playVideo()" class="video-element"
-    autoplay=true allow="autoplay">
+<div *ngIf="showApp" class="video-container">
+  <video *ngIf="showApp" [@fadeInOnEnter] [@fadeOutOnLeave] #video controls muted=true (canplay)="playVideo()"
+    class="video-element" autoplay=true allow="autoplay">
     <source src="{{ videoPath.home }}">
   </video>
 </div>
 
-<ng-container *ngIf="!test">
+<div *ngIf="!showApp" [@fadeInOnEnter] [@fadeOutOnLeave]>
   <app-header class="header"></app-header>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
-</ng-container>
+</div>

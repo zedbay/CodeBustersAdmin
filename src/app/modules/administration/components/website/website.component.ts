@@ -42,6 +42,10 @@ export class WebsiteComponent implements OnInit {
     silverDescription: [this.site.silverDescription, [Validators.required]],
     goldDescription: [this.site.goldDescription, [Validators.required]],
     diamondDescription: [this.site.diamondDescription, [Validators.required]],
+    bronzeShortDescription: [this.site.bronzeShortDescription, [Validators.required]],
+    silverShortDescription: [this.site.silverShortDescription, [Validators.required]],
+    goldShortDescription: [this.site.goldShortDescription, [Validators.required]],
+    diamondShortDescription: [this.site.diamondShortDescription, [Validators.required]]
   });
 
   public rulesForm: FormGroup = this.formBuilder.group({

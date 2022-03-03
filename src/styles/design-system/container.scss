@@ -78,13 +78,5 @@
 
   .flex-element {
     flex: 1;
-
-    &:first-child {
-      padding-right: 1em;
-    }
-
-    &:last-child {
-      padding-left: 1em;
-    }
   }
 }

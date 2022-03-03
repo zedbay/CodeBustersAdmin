@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { HomeContainer } from '../homeContainer.enum';
 
-export enum HomeContainer {
-  Busters,
-  Community,
-  Contact
-}
 
 @Component({
   selector: 'app-home-navigation-indicator',
@@ -13,22 +10,24 @@ export enum HomeContainer {
 })
 export class HomeNavigationIndicatorComponent implements OnInit {
 
+  @Input() selectedContainer: HomeContainer;
+
+  public anchors: { [key in HomeContainer]: string } = {
+    [HomeContainer.Busters]: 'home-busters',
+    [HomeContainer.Community]: 'home-community',
+    [HomeContainer.Contact]: 'home-contact'
+  }
+
   public HomeContainer = HomeContainer;
 
-  public selectedContainer: HomeContainer = HomeContainer.Busters;
+  constructor(
+    private scroller: ViewportScroller
+  ) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   public selectContainer(container: HomeContainer): void {
-    this.selectedContainer = container;
+    this.scroller.scrollToAnchor(this.anchors[container]);
   }
-
-  public isContainerSelected(container: HomeContainer): boolean {
-    return this.selectedContainer === container;
-  }
-
 
 }

@@ -15,6 +15,14 @@
   width: 100%;
   position: relative;
 
+  .home-navigation {
+    position: absolute;
+    left: $side-margin;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+
   .easterEggs {
     width: 2%;
     height: 3%;

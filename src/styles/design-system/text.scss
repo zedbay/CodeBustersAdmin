@@ -1,7 +1,7 @@
 @import "colors";
 @import "constants";
 
-// CONTENT TEXT
+// TEXT PRECONFIG
 
 .cbs-text {
   color: $white;
@@ -17,41 +17,8 @@
   font-family: "GothamLight", sans-serif;
 }
 
-// LINK
-
-.cbs-link {
-  color: $white;
-  font-family: "GothamMedium", sans-serif;
-  font-size: $font-size-2;
-  .cbs-link-action {
-    border: solid $white;
-    border-width: 0 0 1px 0;
-    margin-left: 4px;
-
-    &:hover {
-      color: $secondary;
-      border-color: $secondary;
-    }
-  }
-}
-
-// TITLE
-
-.center-title {
-  text-align: center;
-}
-
-// TEXT FORMATING
-
-.cbs-text-justify {
-  text-align: justify;
-}
-
-// TEXT SIZE
-
 .cbs-big-title {
   color: $white;
-  font-weight: bold;
   font-size: $font-size-0;
   font-family: "GothamBold", sans-serif;
 }
@@ -74,6 +41,50 @@
   font-family: "GothamLight", sans-serif;
 }
 
+// TEST FONT_FAMILY
+.cbs-gotham-light {
+  font-family: "GothamLight", sans-serif;
+}
+
+.cbs-gotham-bold {
+  font-family: "GothamBold", sans-serif;
+}
+
+.cbs-gotham-medium {
+  font-family: "GothamMedium", sans-serif;
+}
+
+.cbs-gotham-book {
+  font-family: "GothamBook", sans-serif;
+}
+// TEXT FORMATING
+
+.cbs-text-justify {
+  text-align: justify;
+}
+
+// TEXT SIZE
+
+.cbs-font-size-0 {
+  font-size: $font-size-0;
+}
+
+.cbs-font-size-1 {
+  font-size: $font-size-1 !important;
+}
+
+.cbs-font-size-2 {
+  font-size: $font-size-2;
+}
+
+.cbs-font-size-3 {
+  font-size: $font-size-3;
+}
+
+.cbs-font-size-4 {
+  font-size: $font-size-4;
+}
+
 // TEXT COLOR
 
 .cbs-text-color-secondary {
@@ -92,4 +103,20 @@
   &:hover {
     color: $secondary;
   }
+}
+
+// TEXT LINE HEIGHT
+
+.cbs-line-height-1 {
+  line-height: 2em;
+}
+
+// TITLE POSITION
+
+.center-title {
+  text-align: center;
+}
+
+.cbs-center-right {
+  text-align: right;
 }

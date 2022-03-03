@@ -1,33 +1,32 @@
 @import "colors";
+@import "constants";
 
 body {
   margin: 0;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
-
 @font-face {
   font-family: "GothamBold";
-  src: url("../assets/fonts/GothamCondensed-Bold.otf") format("otf");
+  src: url("../assets/fonts/GothamCond-Bold.woff") format("woff");
 }
 
 @font-face {
   font-family: "GothamMedium";
-  src: url("../assets/fonts/GothamCondensed-Medium.otf") format("otf");
+  src: url("../assets/fonts/GothamCond-Medium.woff") format("woff");
 }
 
 @font-face {
   font-family: "GothamLight";
-  src: url("../assets/fonts/GothamCondensed-Light.otf") format("otf");
+  src: url("../assets/fonts/GothamCond-Light.woff") format("woff");
 }
 
 @font-face {
   font-family: "GothamBook";
-  src: url("../assets/fonts/GothamCondensed-Book.otf") format("otf");
+  src: url("../assets/fonts/GothamCond-Book.woff") format("woff");
 }
 
 * {
-  font-family: "GothamBold", sans-serif;
+  scroll-behavior: smooth;
 
   a {
     color: unset;

@@ -13,17 +13,30 @@
     <div class="talent-img-container">
       <div class="talent-rank" *ngFor="let rankImg of rankImgs"
         [ngClass]="{ 'selected-rank': selectedRank === rankImg.rank }">
-        <img class="talent-rank-img" src="{{ rankImg.imgPath }}" alt="bronze" (click)="selectRank(rankImg.rank)">
-        <p class="cbs-second-title cbs-text-color-gray rank-name">{{ rankImg.rank }}</p>
+        <div class="img-rank-container">
+          <img class="talent-rank-img-hidden" src="{{ rankImg.imgPath }}" alt="bronze">
+          <img [@widthIn]="selectedRank === rankImg.rank" class="talent-rank-img" src="{{ rankImg.imgPath }}"
+            alt="bronze" (click)="selectRank(rankImg.rank)">
+        </div>
+        <div class="rank-name-container">
+          <p class="cbs-second-title cbs-text-color-gray rank-name" [@zoomIn]="selectedRank === rankImg.rank">{{
+            rankImg.rank }}</p>
+        </div>
+
         <div class="talent-selector-container" (click)="selectRank(rankImg.rank)">
           <span class="background"></span>
           <span class="base"></span>
-          <span class="selected" *ngIf="selectedRank === rankImg.rank"></span>
+          <span class="selected" *ngIf="selectedRank === rankImg.rank" [@zoomInOnEnter] [@zoomOutOnLeave]></span>
         </div>
       </div>
     </div>
-    <p class="cbs-text cbs-text-color-gray rank-description">
-      {{ rankOptions[selectedRank].description }}
-    </p>
+    <div class="rank-description-container">
+      <ng-container *ngFor="let rank of ranks | keyvalue">
+        <p [@fadeInOnEnter] [@fadeOutOnLeave] *ngIf="selectedRank === rank.key"
+          class="cbs-text cbs-text-color-gray rank-description">{{
+          rankOptions[rank.key].description }}</p>
+      </ng-container>
+    </div>
+
   </div>
 </div>
