@@ -64,6 +64,20 @@
     &:hover {
       cursor: pointer;
     }
+
+    @media screen and (max-width: $screen-md) {
+      justify-content: flex-end;
+      height: 100%;
+      padding-bottom: -20px !important;
+
+      &:first-child {
+        @include cbsSideMargin(0, 0, 0, 1);
+      }
+
+      &:last-child {
+        @include cbsSideMargin(0, 1, 0, 0);
+      }
+    }
   }
 
   .img-rank-container {
@@ -92,6 +106,10 @@
 
   .rank-description {
     margin: 32px $side-margin 0 0;
+
+    @media screen and (max-width: $screen-md) {
+      @include cbsSideMargin(1, 1, 1, 1);
+    }
   }
 }
 
@@ -154,5 +172,20 @@
   height: $side-margin;
   .cbs-text {
     position: absolute;
+  }
+
+  @media screen and (max-width: $screen-md) {
+    @include cbsSideMargin(0, 0, 1, 0);
+
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px !important;
+
+    .cbs-text {
+      // position: static !important;
+      text-align: center;
+    }
   }
 }

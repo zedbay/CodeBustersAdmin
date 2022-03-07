@@ -34,11 +34,9 @@
   @media screen and (max-width: $screen-md) {
     flex-direction: column;
     .principle {
-      &:nth-child(2) {
-        border-width: 1px 0;
-        @include cbsSideMargin(1, 0, 0, 0);
-        @include cbsSidePadding(0, 0, 1, 0);
-      }
+      border: solid $first-gray;
+      border-width: 0 0 1px 0 !important;
+      @include cbsSidePadding(0, 0, 1, 0);
     }
   }
 }
