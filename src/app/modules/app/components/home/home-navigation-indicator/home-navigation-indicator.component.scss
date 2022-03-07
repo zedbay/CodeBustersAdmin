@@ -5,6 +5,10 @@
   align-items: center;
   justify-items: center;
   margin-right: $side-margin;
+
+  @media screen and (max-width: $screen-md) {
+    display: none;
+  }
 }
 
 .home-container-separator {

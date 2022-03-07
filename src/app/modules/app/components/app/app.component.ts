@@ -3,6 +3,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { NavigationEnd, Router } from '@angular/router';
 import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
 import { filter } from 'rxjs/operators';
+import { screenSize, ScreenSizeType } from 'src/app/shared/constants/screenSize';
 import { videoPath } from 'src/app/shared/constants/videoPath';
 import { environment } from '../../../../../environments/environment';
 
@@ -35,7 +36,10 @@ export class AppComponent implements OnInit {
       .pipe(
         filter((e) => e instanceof NavigationEnd),
       )
-      .subscribe(() => this.scroller.scrollToAnchor('header'))
+      .subscribe(() => {
+        const anchor: string = window.innerWidth > screenSize[ScreenSizeType.MD] ? 'header' : 'anchor-point';
+        this.scroller.scrollToAnchor(anchor);
+      })
   }
 
   public playVideo() {

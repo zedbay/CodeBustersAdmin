@@ -1,7 +1,7 @@
-<p-carousel [value]="homeContainers" [autoplayInterval]="4000" [showIndicators]=false>
+<p-carousel class="cbs-carousel" [value]="homeContainers" [autoplayInterval]="4000" [showIndicators]=false>
   <ng-template let-item pTemplate="item">
     <div class="home-news-content-container">
-      <div>
+      <div class="home-news-content">
         <p class="cbs-main-title">{{ item.title }}</p>
         <p class="cbs-big-title">{{ item.underTitle }}</p>
         <button class="cbs-button cbs-savoir" (click)="item.callToAction(item.elementId)">

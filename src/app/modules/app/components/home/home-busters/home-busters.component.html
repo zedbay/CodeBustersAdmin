@@ -1,6 +1,5 @@
 <div class="home-title-container">
-  <p class="cbs-big-title"><span class="indicator">01.</span><span class="title-content">CODE
-      BUSTERS</span> </p>
+  <p class="cbs-big-title"><span class="indicator">01.</span><span class="title-content">CODE BUSTERS</span> </p>
 </div>
 <div class="home-flex-container">
   <app-home-navigation-indicator [selectedContainer]="homeContainer.Busters"></app-home-navigation-indicator>
@@ -17,7 +16,7 @@
     </div>
     <img [@opacityDown]="clientBusterHover || startBusterHover || staffBusterHover"
       src="{{  imgPath.logoWithoutBackground }}" class="logo">
-    <div>
+    <div class="home-busters-content">
       <div [@opacityDown]="!staffBusterHover && (clientBusterHover || startBusterHover)"
         (mouseenter)="staffBusterHover=true" (mouseleave)="staffBusterHover=false" class="home-buster-staff-container">
         <p class="cbs-main-title cbs-text-color-secondary home-busters-title " [@textZoomIn]="staffBusterHover">{{

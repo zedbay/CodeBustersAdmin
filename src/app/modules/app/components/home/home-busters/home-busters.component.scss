@@ -1,11 +1,13 @@
 @import "colors";
 @import "constants";
 @import "../home.scss";
+@import "mixin";
 
 :host {
   display: flex;
   flex-direction: column;
-  padding: $side-margin;
+  overflow: hidden;
+  @include cbsSidePadding(1, 1, 1, 1);
 }
 
 .home-busters-content-container {
@@ -29,12 +31,37 @@
   .home-buster-description {
     visibility: hidden;
   }
-}
 
-// CATEGORY CONTAINER
+  .home-busters-start-container {
+    max-width: 35%;
+  }
 
-.home-busters-start-container {
-  max-width: 35%;
+  @media screen and (max-width: $screen-md) {
+    flex-direction: column;
+
+    .home-buster-description {
+      visibility: visible;
+    }
+
+    .logo {
+      order: 1;
+      max-width: 80%;
+    }
+
+    .home-busters-start-container {
+      order: 2;
+      max-width: 100%;
+      text-align: left;
+
+      .cbs-center-right {
+        text-align: left;
+      }
+    }
+
+    .home-busters-content {
+      order: 3;
+    }
+  }
 }
 
 .home-buster-staff-container {

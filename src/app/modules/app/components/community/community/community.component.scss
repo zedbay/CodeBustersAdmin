@@ -1,9 +1,10 @@
 @import "colors";
 @import "constants";
+@import "mixin";
 
 .became-buster-container {
   display: flex;
   justify-content: center;
   margin: 48px 0 0 0;
-  margin-bottom: $side-margin;
+  @include cbsSideMargin(0, 0, 1, 0);
 }

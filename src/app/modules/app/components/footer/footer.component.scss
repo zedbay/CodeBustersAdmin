@@ -1,12 +1,15 @@
 @import "colors";
 @import "constants";
+@import "mixin";
 
 :host {
   display: flex;
   min-height: 20vh;
   border: solid $secondary-dark;
   border-width: 1px 0 0 0;
-  padding: 0 $side-margin;
+
+  @include cbsSidePadding(0.3, 1, 0, 1);
+  overflow: hidden;
 }
 
 .footer-link {
@@ -22,7 +25,8 @@
 }
 
 .footer-container {
-  margin: 0 $side-margin;
+  // margin: 0 $side-margin;
+  overflow: hidden;
   color: $white;
   display: flex;
   justify-content: space-between;
@@ -59,4 +63,26 @@
 .linkedin-logo {
   width: 32px;
   cursor: pointer;
+}
+
+@media screen and (max-width: $screen-md) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+
+    .footer-links {
+      order: 2;
+    }
+
+    .footer-contact {
+      order: 1;
+    }
+
+    .footer-logos {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+    }
+  }
 }

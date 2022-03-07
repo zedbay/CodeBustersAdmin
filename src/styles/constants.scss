@@ -1,16 +1,49 @@
 $side-margin: 112px;
 
-$big-font-size-1: 64px;
-$big-font-size-2: 48px;
-$big-font-size-3: 32px;
-
 $font-size-0: 60px;
 $font-size-1: 50px;
 $font-size-2: 32px;
 $font-size-3: 22px;
 $font-size-4: 18px;
 
+$font-size-0-xs: 60px;
+$font-size-0-sm: 60px;
+$font-size-0-md: 60px;
+$font-size-0-lg: 60px;
+
+$font-size-1-xs: 60px;
+$font-size-1-sm: 60px;
+$font-size-1-md: 18px;
+$font-size-1-lg: 18px;
+
+$font-size-2-xs: 60px;
+$font-size-2-sm: 60px;
+$font-size-2-md: 60px;
+$font-size-2-lg: 60px;
+
+$font-size-3-xs: 60px;
+$font-size-3-sm: 60px;
+$font-size-3-md: 60px;
+$font-size-3-lg: 60px;
+
+$font-size-4-xs: 18px;
+$font-size-4-sm: 18px;
+$font-size-4-md: 18px;
+$font-size-4-lg: 18px;
+
 $font-weight-1: 900;
 $font-weight-2: 700;
 $font-weight-3: 600;
 $font-weight-4: 500;
+
+$screen-xs: 0px;
+$screen-sm: 840px;
+$screen-md: 1024px;
+$screen-lg: 1440px;
+
+$side-margin-xs: 24px;
+$side-margin-sm: 48px;
+$side-margin-md: 68px;
+$side-margin-lg: 120px;
+$screen-size-margin: $screen-xs $side-margin-xs, $screen-sm $side-margin-sm, $screen-md $side-margin-md,
+  $screen-lg $side-margin-lg;

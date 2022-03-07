@@ -1,29 +1,36 @@
 @import "colors";
 @import "constants";
+@import "mixin";
 
 :host {
-  width: 100%;
   display: flex;
+  position: relative;
+  z-index: 2;
+
   justify-content: space-between;
-  padding: 24px $side-margin;
-  margin-bottom: $side-margin;
+  @include cbsSideMargin(0, 0, 1, 0);
+  @include cbsSidePadding(0, 1, 0.5, 1);
+
+  @media screen and (max-width: $screen-md) {
+    // position: fixed;
+  }
 }
 
 .logo {
-  width: 125px;
-  height: 135px;
+  @include cbsSize(125px, 135px);
+  cursor: pointer;
 }
 
 .header-links {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-size: 18px;
-  overflow: hidden;
 
   .header-icon {
     margin-left: 24px;
     font-size: 32px;
+    order: 2;
+
     &:hover {
       cursor: pointer;
       color: $secondary;
@@ -31,7 +38,32 @@
     }
   }
 
-  span {
+  .links-container {
     display: flex;
+    order: 1;
+  }
+}
+
+.header-vertical {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+
+  .header-icon {
+    order: 1;
+  }
+
+  .links-container {
+    z-index: 3;
+    order: 2;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    text-align: right;
+    width: 100vh;
+
+    .link {
+      @include cbsSideMargin(0, 0, 0.2, 0);
+    }
   }
 }

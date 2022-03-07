@@ -1,17 +1,29 @@
 @import "colors";
 @import "constants";
+@import "mixin";
 
-.talent-description-container {
-  margin: 0 $side-margin;
-  text-align: center;
-
-  .cbs-under-title {
-    margin-bottom: 24px;
-  }
+:host {
+  overflow: hidden;
+  display: block;
 }
 
 .talent-container {
   margin-right: 0;
+
+  display: flex;
+  @media screen and (max-width: $screen-md) {
+    flex-direction: column;
+    @include cbsSideMargin(1, 0, 0, 0);
+  }
+
+  .talent-description-container {
+    @include cbsSideMargin(0, 1, 0, 1);
+    text-align: center;
+
+    .cbs-under-title {
+      margin-bottom: 24px;
+    }
+  }
 }
 
 .talent-img-container {
@@ -24,6 +36,7 @@
     position: relative;
     height: 3em;
     margin-bottom: 1em;
+
     .rank-name {
       margin-bottom: 1em;
       position: absolute;
@@ -43,6 +56,10 @@
 
     &:last-child {
       margin-right: $side-margin;
+
+      @media screen and (max-width: $screen-md) {
+        @include cbsSideMargin(0, 0, 0, 0);
+      }
     }
     &:hover {
       cursor: pointer;

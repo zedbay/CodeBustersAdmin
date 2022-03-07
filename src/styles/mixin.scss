@@ -1,0 +1,29 @@
+@import "constants";
+
+@mixin cbsSidePadding($factorTop, $factorRight, $factorBottom, $factorLeft) {
+  @each $screen-size, $side-margin in $screen-size-margin {
+    @media screen and (min-width: $screen-size) {
+      padding: calc($factorTop * $side-margin) calc($factorRight * $side-margin) calc($factorBottom * $side-margin)
+        calc($factorLeft * $side-margin);
+    }
+  }
+}
+
+@mixin cbsSideMargin($factorTop, $factorRight, $factorBottom, $factorLeft) {
+  @each $screen-size, $side-margin in $screen-size-margin {
+    @media screen and (min-width: $screen-size) {
+      margin: calc($factorTop * $side-margin) calc($factorRight * $side-margin) calc($factorBottom * $side-margin)
+        calc($factorLeft * $side-margin);
+    }
+  }
+}
+
+@mixin cbsSize($widtPixel, $heightPixel) {
+  $size: $screen-xs 0.6, $screen-sm 0.7, $screen-md 0.8, $screen-lg 1;
+  @each $screen-size, $factor in $size {
+    @media screen and (min-width: $screen-size) {
+      width: calc($widtPixel * $factor);
+      height: calc($heightPixel * $factor);
+    }
+  }
+}

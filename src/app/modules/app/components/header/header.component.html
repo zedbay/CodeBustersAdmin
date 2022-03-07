@@ -1,10 +1,10 @@
-<img src="{{ imgPath.logoWithoutBackground }}" alt="logo" class="logo">
-<ul class="header-links" id="header">
-  <span *ngIf="visible" [@fadeInOnEnter] [@fadeOutOnLeave] [@slideInRightOnEnter] [@slideOutRightOnLeave]>
-    <li class="cbs-second-title" routerLink="">CODE BUSTERS</li>
-    <li class="cbs-second-title" routerLink="/community">LA COMMUNAUTE DES BUSTERS</li>
-    <li class="cbs-second-title" routerLink="/busters">DEVIENS UN BUSTER</li>
-    <li routerLink="/news" class="separator cbs-second-title">NEWS</li>
+<img src="{{ imgPath.logoWithoutBackground }}" (click)="scrollToAnchor()" routerLink="" alt="logo" class="logo">
+<ul [ngClass]="{ 'header-vertical': !isHorizontal }" class="header-links" id="header">
+  <span class="links-container" *ngIf="visible">
+    <li class="cbs-second-title  link" routerLink="">CODE BUSTERS</li>
+    <li class="cbs-second-title link" routerLink="/community">LA COMMUNAUTE DES BUSTERS</li>
+    <li class="cbs-second-title link" routerLink="/busters">DEVIENS UN BUSTER</li>
+    <li routerLink="/news" class="cbs-second-title link">NEWS</li>
   </span>
   <i [ngClass]="visible ? 'pi-times' : 'pi-bars'" class="pi header-icon" (click)="toggleVisibility()"></i>
 </ul>

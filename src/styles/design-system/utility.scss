@@ -1,7 +1,31 @@
 @import "../constants.scss";
+@import "mixin";
 
 .side-margin-right {
-  margin: 0 0 0 $side-margin;
+  @include cbsSideMargin(0, 0, 0, 1);
+}
+
+$screen-xs: 0px;
+$screen-sm: 840px;
+$screen-md: 1024px;
+$screen-lg: 1440px;
+
+.hide-on-screen-sm {
+  @media screen and (max-width: $screen-sm) {
+    display: none;
+  }
+}
+
+.hide-on-screen-md {
+  @media screen and (max-width: $screen-md) {
+    display: none;
+  }
+}
+
+.hide-on-screen-lg {
+  @media screen and (max-width: $screen-lg) {
+    display: none;
+  }
 }
 
 .side-margin-top {

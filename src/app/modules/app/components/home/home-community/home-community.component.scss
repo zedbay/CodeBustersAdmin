@@ -1,19 +1,28 @@
 @import "../home.scss";
+@import "mixin";
+@import "constants";
 
 :host {
   display: block;
   position: relative;
   background-color: #07080d;
-  padding-top: $side-margin;
+  @include cbsSidePadding(1, 0, 0, 0);
+  overflow: hidden;
 }
 
 .home-title-container {
+  @include cbsSidePadding(0, 1, 0, 1);
   padding: 0 $side-margin;
 }
 
 .img-container {
   width: 100%;
   position: relative;
+
+  @media screen and (max-width: $screen-md) {
+    right: 43%;
+    width: 152%;
+  }
 
   .home-navigation {
     position: absolute;
@@ -31,6 +40,11 @@
     bottom: 7%;
     right: 25%;
     z-index: 3;
+
+    @media screen and (max-width: $screen-md) {
+      width: 1%;
+      height: 1%;
+    }
   }
 
   .hover-container {
