@@ -6,7 +6,7 @@ import { filter } from 'rxjs/operators';
 import { imgPath } from 'src/app/shared/constants/imgPath';
 import { screenSize, ScreenSizeType } from 'src/app/shared/constants/screenSize';
 
-const durationAnim = 400;
+const durationAnim = 200;
 
 @Component({
   selector: 'app-header',

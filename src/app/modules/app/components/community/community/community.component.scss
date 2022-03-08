@@ -5,6 +5,5 @@
 .became-buster-container {
   display: flex;
   justify-content: center;
-  margin: 48px 0 0 0;
-  @include cbsSideMargin(0, 0, 1, 0);
+  @include cbsSideMargin(0.6, 0, 1, 0);
 }

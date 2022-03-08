@@ -1,14 +1,16 @@
 @import "colors";
 @import "constants";
+@import "mixin";
 
 :host {
   display: block;
-  margin-bottom: $side-margin;
+  @include cbsSideMargin(0, 0, 1, 0);
+  overflow: hidden;
 }
 
 .sections-container {
-  margin-top: $side-margin;
-  padding: 0 $side-margin;
+  @include cbsSideMargin(1, 0, 0, 0);
+  @include cbsSidePadding(0, 1, 0, 0);
   display: flex;
 
   .sections-illustrations {

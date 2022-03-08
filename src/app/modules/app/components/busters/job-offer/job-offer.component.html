@@ -1,5 +1,5 @@
 <div class="header-with-content-container">
-  <p class="cbs-big-title">{{ job.title | titlecase }}</p>
+  <p class="cbs-big-title side-margin-left">{{ job.title | titlecase }}</p>
   <div class="header-content">
     <p class="cbs-second-title">
       <img class="title-img" src="{{ imgPath.cap }}" alt="hat">
@@ -9,7 +9,7 @@
       Managé par {{ job.squad.manager?.firstName }} {{ job.squad.manager?.lastName }}
     </p>
   </div>
-  <div class="right-content">
+  <div class="header-right-content">
     <img class="chrono-img" src="{{ imgPath.chrono }}" alt="chrono">
     <p class="cbs-text">{{ job.createdDate | since}}</p>
   </div>
@@ -20,8 +20,9 @@
     Retour
   </button>
 </div>
+
 <div class="job-offer-container">
-  <div>
+  <div class="job-offer-section">
     <div>
       <img *ngIf="jobIsForAManager" class="job-rank-img" src="{{ rankService.getImgPathForRank(job.rank) }}"
         alt="{{ job.rank }}">
@@ -45,7 +46,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="job-offer-section job-offer-second-section">
     <div>
       <p class="cbs-main-title">La communauté</p>
       <p class="cbs-text cbs-text-color-gray cbs-text-justify">
@@ -63,19 +64,26 @@
       <p class="cbs-text cbs-text-color-gray cbs-text-justify">{{ job.description }}</p>
     </div>
   </div>
-  <div>
-    <p class="cbs-main-title">Compétences</p>
-    <ng-container *ngFor="let technologie of job.technologies">
-      <img src="{{ getSkillCapImg(technologie) }}" alt="skill-cap">
-      <p class="cbs-second-title cbs-text-color-gray  skill">{{
-        technologie.name }}
-      </p>
-    </ng-container>
-    <p class="cbs-main-title">Localisation</p>
-    <img class="map-icon" src="{{ imgPath.map }}" alt="map-icon">
-    <p class="cbs-secondary-text cbs-text-color-gray">Paris, île de france</p>
+
+  <div class="job-offer-section">
+    <p class="cbs-main-title full-width">Compétences</p>
+    <div class="skills-container">
+      <div class="skill-element" *ngFor="let technologie of job.technologies">
+        <img src="{{ getSkillCapImg(technologie) }}" alt="skill-cap">
+        <p class="cbs-second-title cbs-text-color-gray  skill">{{
+          technologie.name }}
+        </p>
+      </div>
+    </div>
+    <p class="cbs-main-title full-width">Localisation</p>
+    <div class="localisation-container">
+      <img class="map-icon" src="{{ imgPath.map }}" alt="map-icon">
+      <p class="cbs-secondary-text cbs-text-color-gray">Paris, île de france</p>
+    </div>
+
   </div>
 </div>
+
 <div class="job-offer-actions-container">
   <button class="cbs-button cbs-action" (click)="candidacyForThisJob()">Postule
     maintenant</button>

@@ -1,9 +1,10 @@
 @import "constants";
 @import "colors";
+@import "mixin";
 
 :host {
   display: block;
-  margin-bottom: $side-margin;
+  @include cbsSideMargin(0, 0, 1, 0);
 }
 
 .element-container {
@@ -25,8 +26,7 @@
 }
 
 .other-news-container {
-  margin-right: $side-margin;
-  margin-left: $side-margin;
+  @include cbsSideMargin(0, 1, 0, 1);
 
   .news-container {
     width: 100%;
@@ -48,6 +48,18 @@
       border-radius: 2px;
 
       background-color: $tertiary;
+    }
+  }
+
+  @media screen and (max-width: $screen-md) {
+    .news-container {
+      flex-direction: column;
+
+      .news {
+        &:nth-child(2) {
+          @include cbsSideMargin(1, 0, 1, 0);
+        }
+      }
     }
   }
 }

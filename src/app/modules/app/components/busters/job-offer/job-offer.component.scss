@@ -1,36 +1,45 @@
 @import "constants";
 @import "colors";
+@import "mixin";
 
 :host {
   display: block;
-  margin-bottom: $side-margin;
-}
-
-.cbs-big-title {
-  margin-right: $side-margin;
+  @include cbsSideMargin(0, 0, 1, 0);
 }
 
 .job-offer-container {
-  padding: 0 $side-margin;
+  @include cbsSidePadding(0, 1, 0, 1);
   display: flex;
 
-  & > * {
+  .job-offer-section {
     flex: 6;
-    padding: 8px 16px;
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    .localisation-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
     &:nth-child(1) {
       flex: 4;
     }
 
-    &:nth-child(2) {
-      padding: 0 $side-margin;
+    &.job-offer-second-section {
+      @include cbsSideMargin(0, 1, 0, 1);
     }
 
     &:last-child {
       flex: 0;
+    }
+  }
+
+  .skills-container {
+    .skill {
+      text-align: center;
+      margin: -16px 0 16px 0;
     }
   }
 
@@ -55,11 +64,6 @@
   justify-content: center;
 }
 
-.skill {
-  text-align: center;
-  margin: -16px 0 16px 0;
-}
-
 .job-rank-img-container {
   position: relative;
   margin-top: 32px;
@@ -81,5 +85,31 @@
     width: 100%;
     position: absolute;
     right: 0;
+  }
+}
+
+@media screen and (max-width: $screen-md) {
+  .job-offer-second-section {
+    margin: 0 !important;
+  }
+
+  .localisation-container {
+    flex-direction: row !important;
+  }
+
+  .job-offer-container {
+    flex-direction: column;
+  }
+  .skills-container {
+    display: flex;
+    width: 100%;
+
+    .skill-element {
+      max-width: 33%;
+
+      img {
+        width: 100%;
+      }
+    }
   }
 }

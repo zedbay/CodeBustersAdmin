@@ -80,7 +80,7 @@ export class CandidacyComponent implements OnInit {
       .pipe(
         mergeMap((contact: Contact) => {
           return forkJoin([
-            this.contactService.uploadCV(contact.id, this.cv),
+            this.cv ? this.contactService.uploadCV(contact.id, this.cv) : of({}),
             this.job ? this.contactService.addRelationWithJob(contact.id, this.job.id) : of({})
           ]);
         }),

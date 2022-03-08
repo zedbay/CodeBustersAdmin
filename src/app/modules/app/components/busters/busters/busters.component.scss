@@ -1,6 +1,7 @@
 @import "constants";
+@import "mixin";
 
-:host {
+.contact-link {
   display: block;
-  margin-bottom: $side-margin;
+  @include cbsSideMargin(0, 1, 1, 1);
 }

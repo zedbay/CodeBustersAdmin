@@ -43,9 +43,7 @@
     </div>
   </form>
   <div class="send-candidacy-container">
-    <button class="cbs-button cbs-retour send-candidacy-button" (click)="sendContact()"
-      [disabled]="candidacyForm.invalid && cv">
-      <p class="cbs-second-title">Envoyer</p>
+    <button class="cbs-button cbs-action" (click)="sendContact()" [disabled]="candidacyForm.invalid">Envoyer
     </button>
   </div>
 </ng-container>

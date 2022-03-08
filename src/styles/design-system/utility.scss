@@ -5,10 +5,13 @@
   @include cbsSideMargin(0, 0, 0, 1);
 }
 
-$screen-xs: 0px;
-$screen-sm: 840px;
-$screen-md: 1024px;
-$screen-lg: 1440px;
+.side-margin-left {
+  @include cbsSideMargin(0, 1, 0, 0);
+}
+
+.side-margin-top {
+  margin-top: $side-margin !important;
+}
 
 .hide-on-screen-sm {
   @media screen and (max-width: $screen-sm) {
@@ -28,6 +31,6 @@ $screen-lg: 1440px;
   }
 }
 
-.side-margin-top {
-  margin-top: $side-margin !important;
+.full-width {
+  width: 100%;
 }

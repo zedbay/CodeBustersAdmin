@@ -8,3 +8,4 @@
   </span>
   <i [ngClass]="visible ? 'pi-times' : 'pi-bars'" class="pi header-icon" (click)="toggleVisibility()"></i>
 </ul>
+<div [@fadeInOnEnter] [@fadeOutOnLeave] class="header-background" *ngIf="visible && !isHorizontal"></div>
