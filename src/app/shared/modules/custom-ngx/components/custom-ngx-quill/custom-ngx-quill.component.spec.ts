@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResourceEditComponent } from './resource-edit.component';
+import { CustomNgxQuillComponent } from './custom-ngx-quill.component';
 
-describe('ResourceEditComponent', () => {
-  let component: ResourceEditComponent;
-  let fixture: ComponentFixture<ResourceEditComponent>;
+describe('CustomNgxQuillComponent', () => {
+  let component: CustomNgxQuillComponent;
+  let fixture: ComponentFixture<CustomNgxQuillComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResourceEditComponent ]
+      declarations: [ CustomNgxQuillComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResourceEditComponent);
+    fixture = TestBed.createComponent(CustomNgxQuillComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

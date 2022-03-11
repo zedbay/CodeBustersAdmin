@@ -10,7 +10,7 @@
           </div>
           <div class="edit-field">
             <label class="edit-label">Description</label>
-            <textarea pInputTextarea formControlName="description"></textarea>
+            <app-custom-ngx-quill formControlName="description"></app-custom-ngx-quill>
           </div>
         </form>
         <div class="edit-actions">
@@ -51,6 +51,9 @@
             </div>
           </form>
           <div class="edit-actions">
+            <button pButton type="button" icon="pi pi-directions" iconPos="left" label="Go To Manager"
+              class="p-button-outlined p-button-secondary" [routerLink]="['/admin']"
+              [queryParams]="{ resourceId: _resource.manager.id }"></button>
             <button pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Manager"
               class="edit-save p-button-outlined p-button-danger"
               (click)="removeManagement(_resource.manager.id)"></button>

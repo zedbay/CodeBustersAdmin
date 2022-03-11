@@ -14,6 +14,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { BusterProfilPictureComponent } from './components/buster-profil-picture/buster-profil-picture.component';
 import { CalendarModule } from 'primeng/calendar';
+import { CustomNgxModule } from 'src/app/shared/modules/custom-ngx/custom-ngx.module';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CalendarModule } from 'primeng/calendar';
     SquadModule,
     TabViewModule,
     InputTextareaModule,
-    CalendarModule
+    CalendarModule,
+    CustomNgxModule
   ],
   exports: [
     BusterComponent

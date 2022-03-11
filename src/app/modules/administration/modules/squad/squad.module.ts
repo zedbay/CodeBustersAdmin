@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { TabViewModule } from 'primeng/tabview';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CustomNgxModule } from 'src/app/shared/modules/custom-ngx/custom-ngx.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     FormsModule,
     AutoCompleteModule,
     TabViewModule,
-    InputTextareaModule
+    InputTextareaModule,
+    CustomNgxModule
   ],
   exports: []
 })

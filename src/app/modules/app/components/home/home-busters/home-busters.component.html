@@ -7,8 +7,7 @@
     <div [@opacityDown]="!startBusterHover && (staffBusterHover || clientBusterHover)"
       (mouseenter)="startBusterHover=true" (mouseleave)="startBusterHover=false" class="home-busters-start-container">
       <p class="cbs-main-title cbs-text-color-secondary cbs-center-right home-busters-title"
-        [@textZoomIn]="startBusterHover">{{
-        site.startBusterTitle }}</p>
+        [@textZoomIn]="startBusterHover">{{ site.startBusterTitle }}</p>
       <p class="cbs-second-title cbs-center-right home-buster-undertitle">{{ site.startBusterUnderTitle }}</p>
       <p [@fadeIn]="startBusterHover" class=" cbs-text cbs-text-color-gray cbs-text-justify home-buster-description">{{
         site.startBusterDescription }}

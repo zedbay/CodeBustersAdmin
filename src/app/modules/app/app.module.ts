@@ -27,6 +27,8 @@ import { NewsComponent } from './components/news/news/news.component';
 import { NewsDisplayElementComponent } from './components/news/news-display-element/news-display-element.component';
 import { HomeNavigationIndicatorComponent } from './components/home/home-navigation-indicator/home-navigation-indicator.component';
 import { CarouselModule } from 'primeng/carousel';
+import { QuillModule } from 'ngx-quill'
+import { CustomNgxModule } from '../../shared/modules/custom-ngx/custom-ngx.module';
 
 
 @NgModule({
@@ -53,6 +55,7 @@ import { CarouselModule } from 'primeng/carousel';
     HomeNavigationIndicatorComponent
   ],
   imports: [
+    CustomNgxModule,
     CommonModule,
     AppRoutingModule,
     AdministrationModule,
@@ -61,7 +64,13 @@ import { CarouselModule } from 'primeng/carousel';
     ToastModule,
     ReactiveFormsModule,
     FormsModule,
-    CarouselModule
+    CarouselModule,
+    QuillModule.forRoot({
+      customOptions: [{
+        import: 'formats/font',
+        whitelist: ['GothamBold']
+      }]
+    })
   ]
 })
 export class AppModule { }

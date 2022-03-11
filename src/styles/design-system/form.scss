@@ -1,8 +1,47 @@
 @import "colors";
+@import "constants";
+
+$min-width-element: 250px;
+$margin-element: 24px;
 
 .cbs-select {
   border: none;
   background-color: transparent;
   color: $secondary;
-  font-size: 18px;
+  font-size: $font-size-4;
+  border: solid $first-gray;
+  border-width: 0 0 1px 0;
+  padding-bottom: 8px;
+  margin: $margin-element 0;
+  min-width: $min-width-element;
+}
+
+.cbs-input {
+  border: solid $first-gray;
+  border-width: 0 0 1px 0;
+  background-color: transparent;
+  color: $white;
+  font-size: $font-size-4;
+  margin: $margin-element 0;
+  min-width: $min-width-element;
+  padding-bottom: 8px;
+
+  &::placeholder {
+    color: $white;
+  }
+}
+
+.cbs-file-input {
+  position: relative;
+  &,
+  .cbs-input {
+    cursor: pointer;
+    width: 100%;
+  }
+  .pi-file {
+    color: $white;
+    position: absolute;
+    right: 0px;
+    top: calc($margin-element + 4px);
+  }
 }

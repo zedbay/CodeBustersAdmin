@@ -4,48 +4,29 @@
 
 :host {
   display: block;
-  overflow: hidden;
   @include cbsSideMargin(0, 0, 1, 0);
-}
-
-.success-candidacy-message {
-  color: $white;
-  @include cbsSidePadding(1, 1, 1, 1);
-}
-
-.cbs-input {
-  border: solid $first-gray;
-  border-width: 0 0 1px 0;
-  background-color: transparent;
-  color: $white;
-  font-size: $font-size-3;
-  margin-bottom: 48px;
-  min-width: 300px;
-  padding-bottom: 8px;
-
-  &::placeholder {
-    color: $white;
-  }
-}
-
-.file-input-container {
-  position: relative;
-  cursor: pointer;
-  .pi-file {
-    color: $white;
-    position: absolute;
-    right: 0px;
-    top: 4px;
-  }
 }
 
 .candidacy-container {
   @include cbsSidePadding(1, 1, 0.5, 1);
   display: flex;
+  overflow: hidden;
+  justify-content: center;
 
   .candidacy-type-container {
-    @include cbsSidePadding(0, 0, 0, 1);
-    @include cbsSideMargin(1, 0, 1, 0);
+    @include cbsSidePadding(0, 0, 0, 0);
+    @include cbsSideMargin(0, 0.5, 0, 0);
+    display: flex;
+    flex-direction: column;
+
+    .job-rank-container {
+      display: flex;
+      align-items: center;
+
+      .job-rank-img {
+        width: 96px;
+      }
+    }
   }
 
   .candidacy-form-container {
@@ -56,14 +37,13 @@
     }
 
     .candidacy-first-column {
-      @include cbsSidePadding(0, 1, 0, 1);
+      @include cbsSidePadding(0, 1, 0, 0.5);
       border: solid $first-gray;
       border-width: 0 0 0 1px;
     }
 
     .candidacy-second-column {
-      padding-left: 96px;
-      @include cbsSidePadding(0, 1, 0, 1);
+      @include cbsSidePadding(0, 1, 0, 0);
     }
   }
 }
@@ -71,32 +51,18 @@
 .send-candidacy-container {
   display: flex;
   justify-content: center;
-}
 
-.job-manager {
-  margin: 48px 0 0 0;
-  border: solid $first-gray;
-  border-width: 0 0 1px 0;
-  padding-bottom: 8px;
-}
-
-.cbs-select {
-  border: solid $first-gray;
-  border-width: 0 0 1px 0;
-  padding-bottom: 8px;
-  width: 100%;
-}
-
-.job-rank-container {
-  display: flex;
-  align-items: center;
-
-  .job-rank-img {
-    width: 96px;
+  .success-candidacy-message {
+    color: $white;
+    @include cbsSidePadding(1, 1, 1, 1);
   }
 }
 
 @media screen and (max-width: $screen-md) {
+  .candidacy-type-container {
+    margin-right: 0 !important;
+    padding: 16px !important;
+  }
   .candidacy-form-container {
     flex-direction: column;
   }
@@ -106,10 +72,14 @@
 
   .candidacy-first-column {
     border-width: 0 0 0 0 !important;
-    @include cbsSideMargin(1, 0, 0, 0);
+    padding: 0 16px !important;
   }
 
-  .file-input-container {
+  .candidacy-second-column {
+    padding: 0 16px !important;
+  }
+
+  .cbs-file-input {
     display: none;
   }
 }

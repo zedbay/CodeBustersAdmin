@@ -27,7 +27,7 @@
 
           <div class="edit-field">
             <label class="edit-label">Description</label>
-            <input class="edit-input" formControlName="description" type="text" pInputText />
+            <app-custom-ngx-quill formControlName="description"></app-custom-ngx-quill>
           </div>
 
         </form>
@@ -54,6 +54,9 @@
               </div>
             </form>
             <div class="edit-actions">
+              <button pButton type="button" icon="pi pi-directions" iconPos="left" label="Go To Squad"
+                class="p-button-outlined p-button-secondary" [routerLink]="['/admin/squad']"
+                [queryParams]="{ resourceId: _resource.squad.id }"></button>
               <button pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Squad"
                 class="edit-save p-button-outlined p-button-danger"
                 (click)="removeOfferInSquad(_resource.squad.id)"></button>

@@ -13,9 +13,7 @@ import { Buster } from 'src/app/shared/models/buster';
 import { Event } from 'src/app/shared/models/event';
 import { Job } from 'src/app/shared/models/job';
 import { Project } from 'src/app/shared/models/project';
-import { News, NewsId } from '../models/news.mode';
-
-
+import { News, NewsId, typeNewsToCallToAction } from '../models/news.mode';
 
 @Injectable({
   providedIn: 'root'
@@ -26,31 +24,24 @@ export class NewsDisplayResolver implements Resolve<News> {
     jobId: (jobId: number) => this.jobService
       .read(jobId)
       .pipe(
-        map((job: Job) => this.objectToNews['jobId'](job))
+        map((job: Job) => typeNewsToCallToAction.Job.tranformToNews(job))
       ),
     busterId: (busterId: number) => this.busterService
       .read(busterId)
       .pipe(
-        map((buster: Buster) => this.objectToNews['busterId'](buster))
+        map((buster: Buster) => typeNewsToCallToAction.Buster.tranformToNews(buster))
       ),
     eventId: (eventId: number) => this.eventService
       .read(eventId)
       .pipe(
-        map((event: Event) => this.objectToNews['eventId'](event))
+        map((event: Event) => typeNewsToCallToAction.Event.tranformToNews(event))
       ),
     projectId: (projectId: number) => this.projectService
       .read(projectId)
       .pipe(
-        map((project: Project) => this.objectToNews['projectId'](project))
+        map((project: Project) => typeNewsToCallToAction.Project.tranformToNews(project))
       )
   }
-
-  public objectToNews: { [key in NewsId]: (element: any) => News } = {
-    jobId: (job: Job) => ({ content: job.description, title: job.title }),
-    busterId: (buster: Buster) => ({ content: buster.description, title: `${buster.firstName} ${buster.lastName}` }),
-    eventId: (event: Event) => ({ content: event.name, title: event.name }),
-    projectId: (project: Project) => ({ content: project.description, title: project.name })
-  };
 
   constructor(
     private busterService: BusterService,

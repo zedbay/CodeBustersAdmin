@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TabViewModule } from 'primeng/tabview';
+import { CustomNgxModule } from 'src/app/shared/modules/custom-ngx/custom-ngx.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { TabViewModule } from 'primeng/tabview';
     InputTextModule,
     ReactiveFormsModule,
     FormsModule,
-    TabViewModule
+    TabViewModule,
+    CustomNgxModule
   ]
 })
 export class EventModule { }

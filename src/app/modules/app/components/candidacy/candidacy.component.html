@@ -18,7 +18,8 @@
         </ng-container>
       </select>
       <ng-container *ngIf="job && squad">
-        <p class="cbs-text job-manager">Managé par {{ squad.manager.firstName }} {{ squad.manager.lastName }}</p>
+        <input disabled=true class="cbs-input" type="text"
+          value="Managé par {{ squad.manager.firstName }} {{ squad.manager.lastName }}">
         <div class="job-rank-container">
           <p class="cbs-text">Grade</p>
           <img class="job-rank-img" src="{{ rankService.getImgPathForRank(job.rank) }}" alt="{{ job.rank }}">
@@ -30,7 +31,7 @@
       <div class="candidacy-colum candidacy-first-column">
         <input class="cbs-input" type="text" placeholder="Nom" formControlName="lastname">
         <input class="cbs-input" type="text" placeholder="Mail" formControlName="mail">
-        <div class="file-input-container" (click)="uploadCV()">
+        <div class="cbs-file-input" (click)="uploadCV()">
           <input class="cbs-input" type="text" placeholder="CV" formControlName="cv">
           <i class="pi pi-file"></i>
         </div>

@@ -25,6 +25,22 @@ body {
   src: url("../assets/fonts/GothamCond-Book.woff") format("woff");
 }
 
+quill-editor {
+  display: block;
+}
+
+/* Set dropdown font-families */
+
+[quill-editor-toolbar] .ql-font span[data-label="GothamBold"]::before {
+  font-family: "GothamBold", sans-serif;
+}
+
+/* Set content font-families */
+
+.ql-font-GothamBold {
+  font-family: "GothamBold", sans-serif;
+}
+
 * {
   scroll-behavior: smooth;
 

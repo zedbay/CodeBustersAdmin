@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { imgPath } from 'src/app/shared/constants/imgPath';
-import { News } from '../../../models/news.mode';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SiteService } from 'src/app/core/services/site.service';
+import { News, NewsTypeLiteral, typeNewsToCallToAction, typeNewsToProperties } from '../../../models/news.mode';
 
 @Component({
   selector: 'app-news-display-element',
@@ -10,16 +10,27 @@ import { News } from '../../../models/news.mode';
 })
 export class NewsDisplayElementComponent implements OnInit {
 
-  public imgPath = imgPath;
-
   public news: News = this.activatedRoute.snapshot.data.data;
+  public lastNews: News[] = [];
 
   constructor(
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private siteService: SiteService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    console.log(this.activatedRoute.snapshot.data.data)
+    this.siteService.getRandomNews().subscribe(
+      (r: { type: NewsTypeLiteral }[]) => this.lastNews = r.map((e) => typeNewsToCallToAction[e.type].tranformToNews(e as any))
+    );
+  }
+
+  public goTo(n: News) {
+    const queryParams = {
+      [typeNewsToProperties[n.newsType].queryParam]: n.objectId
+    };
+    this.router.navigate(['news', { skipLocationChange: true }]).then(
+      () => this.router.navigate(['/news/display'], { queryParams }));
   }
 
 }

@@ -49,6 +49,7 @@ export class SquadEditComponent extends ResourceEditComponent<Squad> implements 
   protected onChangeResource(squad: Squad): void {
     this.resourceForm.controls.name.setValue(squad.name);
     this.resourceForm.controls.description.setValue(squad.description);
+    this.initManagerForm(squad.manager);
   }
 
   private initManagerForm(manager: Buster) {
@@ -56,6 +57,7 @@ export class SquadEditComponent extends ResourceEditComponent<Squad> implements 
     this.managerForm.controls.lastName.setValue(manager.lastName);
     this.managerForm.controls.email.setValue(manager.email);
     this.managerForm.controls.rank.setValue(manager.rank);
+    console.log(this._resource);
   }
 
   public removeManagement(busterId: number) {

@@ -8,20 +8,17 @@
 }
 
 .element-container {
-  padding: $side-margin $side-margin 0 0;
+  @include cbsSidePadding(1, 1, 0, 0);
   display: flex;
+  overflow: hidden;
 
   .element-illustration {
     width: 800px;
     margin-left: -350px;
   }
 
-  .element-content {
+  .quill-view-container {
     width: 100%;
-  }
-
-  .cbs-main-title {
-    margin: 32px 0;
   }
 }
 
@@ -34,28 +31,58 @@
 
     .news {
       opacity: 90%;
+      width: 100%;
+
+      p {
+        padding: 0 8px;
+      }
+
       &:hover {
         cursor: pointer;
         opacity: 100%;
       }
       &:nth-child(2) {
-        margin: 0 16px;
+        margin: 0 32px;
+      }
+
+      .news-illustration-container {
+        width: 100%;
+        padding-bottom: 100%;
+        position: relative;
+        background-color: $tertiary;
+        border-radius: 4px;
+
+        .news-illustration {
+          position: absolute;
+          max-height: 100%;
+          max-width: 100%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
       }
     }
+  }
+}
 
-    .news-illustration {
-      max-width: 100%;
-      border-radius: 2px;
+@media screen and (max-width: $screen-md) {
+  .element-container {
+    flex-direction: column;
+    @include cbsSidePadding(1, 1, 1, 1);
 
-      background-color: $tertiary;
+    .element-illustration {
+      width: 100%;
+      margin-left: 0;
     }
   }
-
-  @media screen and (max-width: $screen-md) {
+  .other-news-container {
     .news-container {
       flex-direction: column;
 
       .news {
+        &:nth-child(1) {
+          margin-top: 48px;
+        }
         &:nth-child(2) {
           @include cbsSideMargin(1, 0, 1, 0);
         }

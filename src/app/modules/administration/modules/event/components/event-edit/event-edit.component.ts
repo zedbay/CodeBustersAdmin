@@ -12,7 +12,8 @@ import { Event } from 'src/app/shared/models/event';
 export class EventEditComponent extends ResourceEditComponent<Event> implements OnInit {
 
   public resourceForm: FormGroup = this.formBuilder.group({
-    name: ['', [Validators.required]]
+    name: ['', [Validators.required]],
+    description: ['', [Validators.required]]
   });
 
   constructor(
@@ -27,9 +28,11 @@ export class EventEditComponent extends ResourceEditComponent<Event> implements 
 
   protected onChangeCreateMode(): void {
     this.resourceForm.controls.name.setValue('');
+    this.resourceForm.controls.description.setValue('');
   }
 
   protected onChangeResource(event: Event): void {
+    this.resourceForm.controls.description.setValue(event.description);
     this.resourceForm.controls.name.setValue(event.name);
   }
 

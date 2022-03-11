@@ -3,7 +3,7 @@
   <div class="header-content">
     <p class="cbs-second-title">
       <img class="title-img" src="{{ imgPath.cap }}" alt="hat">
-      {{ job.description | titlecase }}
+      {{ job.underTitle | titlecase }}
     </p>
     <p class="cbs-under-title cbs-text-color-gray">
       Managé par {{ job.squad.manager?.firstName }} {{ job.squad.manager?.lastName }}
@@ -29,7 +29,7 @@
       <div *ngIf="!jobIsForAManager" class="job-rank-img-container">
         <img class="border-img" src="{{ job.rank === ranks.Bronze ? imgPath.border.bronze :  imgPath.border.silver }}"
           alt="rank-border">
-        <img class="manager-img" src="{{ imgPath.buster }}" alt="buster">
+        <img class="manager-img" [src]="managerImg" alt="buster">
         <img class="border-img-abs"
           src="{{ job.rank === ranks.Bronze ? imgPath.border.bronze :  imgPath.border.silver }}" alt="rank-border">
       </div>
@@ -39,9 +39,7 @@
         un accompagnement personalisé par son manager</p>
       <ng-container *ngIf="!jobIsForAManager">
         <p class="cbs-main-title">La squad qui recrute et son manager</p>
-        <p class="cbs-text cbs-text-color-gray cbs-text-justify">
-          {{ job.squad.description }}
-        </p>
+        <app-custom-ngx-quill-view [content]="job.squad.description"></app-custom-ngx-quill-view>
       </ng-container>
     </div>
   </div>
@@ -61,7 +59,7 @@
     </div>
     <div class="full-width">
       <p class="cbs-main-title">Missions</p>
-      <p class="cbs-text cbs-text-color-gray cbs-text-justify">{{ job.description }}</p>
+      <app-custom-ngx-quill-view [content]="job.description"></app-custom-ngx-quill-view>
     </div>
   </div>
 

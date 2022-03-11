@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TabViewModule } from 'primeng/tabview';
 import { JobEditTechnologiesComponent } from './components/job-edit/job-edit-technologies/job-edit-technologies.component';
 import { TableModule } from 'primeng/table';
+import { CustomNgxModule } from 'src/app/shared/modules/custom-ngx/custom-ngx.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { TableModule } from 'primeng/table';
     FormsModule,
     InputTextModule,
     TabViewModule,
-    TableModule
+    TableModule,
+    CustomNgxModule
   ]
 })
 export class JobModule { }

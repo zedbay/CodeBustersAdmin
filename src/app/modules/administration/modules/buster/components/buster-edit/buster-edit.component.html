@@ -44,7 +44,7 @@
 
           <div class="edit-field">
             <label class="edit-label">Description</label>
-            <textarea pInputTextarea formControlName="description"></textarea>
+            <app-custom-ngx-quill formControlName="description"></app-custom-ngx-quill>
           </div>
 
 
@@ -78,6 +78,9 @@
               </div>
             </form>
             <div class="edit-actions">
+              <button *ngIf="_resource.squad" pButton type="button" icon="pi pi-directions" iconPos="left"
+                label="Go To Squad" class="p-button-outlined p-button-secondary" [routerLink]="['/admin/squad']"
+                [queryParams]="{ resourceId: _resource.squad.id }"></button>
               <button *ngIf="_resource.squad" pButton type="button" icon="pi pi-minus" iconPos="left"
                 label="Remove Membership" class="edit-save p-button-outlined p-button-danger"
                 (click)="removeMembershipOfSquad(_resource.squad.id)"></button>
@@ -105,6 +108,9 @@
           </form>
 
           <div class="edit-actions">
+            <button *ngIf="_resource.currentClient" pButton type="button" icon="pi pi-directions" iconPos="left"
+              label="Go To Client" class="p-button-outlined p-button-secondary" [routerLink]="['/admin/client']"
+              [queryParams]="{ resourceId: _resource.currentClient.id }"></button>
             <button *ngIf="_resource.currentClient" pButton type="button" icon="pi pi-minus" iconPos="left"
               label="Remove Current Client" class="edit-save p-button-outlined p-button-danger"
               (click)="removeCurrentClient(_resource.currentClient.id)"></button>

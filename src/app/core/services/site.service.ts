@@ -22,6 +22,10 @@ export class SiteService extends ResourcesService<Site> {
     );
   }
 
+  public getRandomNews(): Observable<any[]> {
+    return this.networkService.get(`${this.endpoint}/lastNews`);
+  }
+
   public getSiteConfig(): Observable<Site> {
     return this.list().pipe(
       map((configs: Site[]) => configs[0])

@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { ResourcesService } from 'src/app/core/services/resources.service';
 import { Resource } from 'src/app/shared/models/ressource';
 
+
 @Component({
   selector: 'app-resource-edit',
   templateUrl: './resource-edit.component.html',

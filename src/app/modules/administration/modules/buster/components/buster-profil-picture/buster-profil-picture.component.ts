@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BusterService } from 'src/app/core/services/buster.service';
+import { PicturesService } from 'src/app/core/services/pictures.service';
 import { Buster } from 'src/app/shared/models/buster';
 
 @Component({
@@ -23,7 +24,7 @@ export class BusterProfilPictureComponent implements OnInit {
 
   constructor(
     private busterService: BusterService,
-    private sanitizer: DomSanitizer
+    private pictureService: PicturesService
   ) { }
 
   ngOnInit(): void {
@@ -37,15 +38,7 @@ export class BusterProfilPictureComponent implements OnInit {
 
   public downloadProfilePicture(): void {
     this.busterService.downloadProfilPicture(this.buster.id, this.buster.profilPictureName).subscribe(
-      (res: any) => {
-        const ab = new ArrayBuffer(res.data.length);
-        const view = new Uint8Array(ab);
-        for (let i = 0; i < res.data.length; i++) {
-          view[i] = res.data[i];
-        }
-        const img = new Blob([ab], { type: res.ContentType });
-        this.imgToShow = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(img));
-      }
+      (res: any) => this.imgToShow = this.pictureService.transformBlobToPictureUrl(res)
     );
   }
 

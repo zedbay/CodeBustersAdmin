@@ -5,12 +5,21 @@
     <p-tabPanel header="Main informations">
       <div class="edit-category">
         <form [formGroup]="resourceForm" class="edit-form">
+
           <div class="double-field-container">
             <div class="edit-field">
               <label class="edit-label">Name</label>
               <input class="edit-input" formControlName="name" type="text" pInputText />
             </div>
           </div>
+
+          <div class="double-field-container">
+            <div class="edit-field">
+              <label class="edit-label">Description</label>
+              <app-custom-ngx-quill formControlName="description"></app-custom-ngx-quill>
+            </div>
+          </div>
+
         </form>
         <div class="edit-actions">
           <button *ngIf="_createMode" pButton type="button" icon="pi pi-plus" iconPos="left" label="Create"
