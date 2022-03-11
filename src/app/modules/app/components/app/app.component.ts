@@ -1,11 +1,11 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
 import { filter } from 'rxjs/operators';
 import { screenSize, ScreenSizeType } from 'src/app/shared/constants/screenSize';
 import { videoPath } from 'src/app/shared/constants/videoPath';
-import { environment } from '../../../../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -22,14 +22,16 @@ export class AppComponent implements OnInit {
 
   public videoPath = videoPath;
 
-  public showApp = environment.showVideoAtStart;
+  public showApp;
 
   public videoIsReady = false;
 
   constructor(
     private scroller: ViewportScroller,
     private router: Router
-  ) { }
+  ) {
+    this.showApp = window.innerWidth > screenSize[ScreenSizeType.MD] && environment.showVideoAtStart;
+  }
 
   ngOnInit(): void {
     this.router.events

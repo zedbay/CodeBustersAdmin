@@ -1,11 +1,13 @@
-<img src="{{ imgPath.logoWithoutBackground }}" (click)="scrollToAnchor()" routerLink="" alt="logo" class="logo">
-<ul [ngClass]="{ 'header-vertical': !isHorizontal }" class="header-links" id="header">
-  <span class="links-container" *ngIf="visible">
-    <li class="cbs-second-title  link" routerLink="">CODE BUSTERS</li>
-    <li class="cbs-second-title link" routerLink="/community">LA COMMUNAUTE DES BUSTERS</li>
-    <li class="cbs-second-title link" routerLink="/busters">DEVIENS UN BUSTER</li>
-    <li routerLink="/news" class="cbs-second-title link">NEWS</li>
-  </span>
-  <i [ngClass]="visible ? 'pi-times' : 'pi-bars'" class="pi header-icon" (click)="toggleVisibility()"></i>
-</ul>
-<div [@fadeInOnEnter] [@fadeOutOnLeave] class="header-background" *ngIf="visible && !isHorizontal"></div>
+<div id="header">
+  <img src="{{ imgPath.logoWithoutBackground }}" (click)="scrollToAnchor()" routerLink="" alt="logo" class="logo">
+  <ul [ngClass]="{ 'header-vertical': !isHorizontal }" class="header-links">
+    <span class="links-container" *ngIf="visible">
+      <li class="cbs-second-title  link" routerLink="">CODE BUSTERS</li>
+      <li class="cbs-second-title link" routerLink="/community">LA COMMUNAUTE DES BUSTERS</li>
+      <li class="cbs-second-title link" routerLink="/busters">DEVIENS UN BUSTER</li>
+      <li routerLink="/news" class="cbs-second-title link">NEWS</li>
+    </span>
+    <i [ngClass]="visible ? 'pi-times' : 'pi-bars'" class="pi header-icon" (click)="toggleVisibility()"></i>
+  </ul>
+  <div [@fadeInOnEnter] [@fadeOutOnLeave] class="header-background" *ngIf="visible && !isHorizontal"></div>
+</div>
