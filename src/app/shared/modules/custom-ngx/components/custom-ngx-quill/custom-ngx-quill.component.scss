@@ -1,12 +1,1 @@
-@import "colors";
-
-.custom-ngx-quill-editor {
-  h1,
-  h2,
-  h3,
-  h4,
-  p,
-  span {
-    font-family: "GothamMedium", sans-serif !important;
-  }
-}
+@import "../custom-ngx-quill.scss";

@@ -7,6 +7,11 @@
   @include cbsSideMargin(0, 0, 1, 0);
 }
 
+.chrono-img,
+.title-img {
+  @include colorPngToWhite();
+}
+
 .job-offer-container {
   @include cbsSidePadding(0, 1, 0, 1);
   display: flex;

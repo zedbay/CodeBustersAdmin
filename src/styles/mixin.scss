@@ -27,3 +27,20 @@
     }
   }
 }
+
+// https://codepen.io/sosuke/pen/Pjoqqp <= MAGIE NOIR
+// Prefix with " brightness(0) saturate(100%) " to color png firstly into black
+@mixin colorPngToSecondary {
+  filter: brightness(0) saturate(100%) invert(76%) sepia(18%) saturate(1344%) hue-rotate(336deg) brightness(87%)
+    contrast(89%);
+}
+
+@mixin colorPngToPrimary {
+  filter: brightness(0) saturate(100%) invert(6%) sepia(70%) saturate(888%) hue-rotate(217deg) brightness(103%)
+    contrast(102%);
+}
+
+@mixin colorPngToWhite {
+  filter: brightness(0) saturate(100%) invert(99%) sepia(60%) saturate(0%) hue-rotate(243deg) brightness(105%)
+    contrast(102%);
+}
