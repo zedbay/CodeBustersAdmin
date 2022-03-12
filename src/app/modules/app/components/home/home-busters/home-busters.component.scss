@@ -35,33 +35,6 @@
   .home-busters-start-container {
     max-width: 35%;
   }
-
-  @media screen and (max-width: $screen-md) {
-    flex-direction: column;
-
-    .home-buster-description {
-      visibility: visible;
-    }
-
-    .logo {
-      order: 1;
-      max-width: 80%;
-    }
-
-    .home-busters-start-container {
-      order: 2;
-      max-width: 100%;
-      text-align: left;
-
-      .cbs-center-right {
-        text-align: left;
-      }
-    }
-
-    .home-busters-content {
-      order: 3;
-    }
-  }
 }
 
 .home-buster-staff-container {
@@ -74,6 +47,36 @@
   &:hover {
     .home-buster-description {
       visibility: visible;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-md) {
+  .home-busters-content-container {
+    flex-direction: column;
+
+    .home-buster-description {
+      visibility: visible;
+    }
+
+    .logo {
+      order: 1;
+      max-width: 70%;
+    }
+
+    .home-busters-start-container {
+      order: 2;
+      max-width: 100%;
+      text-align: left;
+      margin-bottom: 32px;
+
+      .cbs-center-right {
+        text-align: left;
+      }
+    }
+
+    .home-busters-content {
+      order: 3;
     }
   }
 }

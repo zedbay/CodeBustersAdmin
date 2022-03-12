@@ -45,7 +45,8 @@
     .principle {
       border: solid $first-gray;
       border-width: 0 0 1px 0 !important;
-      @include cbsSidePadding(0, 0, 1, 0);
+      padding-bottom: 32px !important;
+      margin-left: 0px;
     }
   }
 }

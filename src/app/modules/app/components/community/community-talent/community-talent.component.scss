@@ -9,12 +9,7 @@
 
 .talent-container {
   margin-right: 0;
-
   display: flex;
-  @media screen and (max-width: $screen-md) {
-    flex-direction: column;
-    @include cbsSideMargin(1, 0, 0, 0);
-  }
 
   .talent-description-container {
     @include cbsSideMargin(0, 1, 0, 1);
@@ -29,8 +24,15 @@
 .talent-img-container {
   display: flex;
   flex: 1;
-  border: solid $first-gray;
-  border-width: 0 0 1px 0;
+  position: relative;
+
+  .rank-line {
+    width: 100%;
+    border: solid $first-gray;
+    bottom: 0;
+    border-width: 0 0 1px 0;
+    position: absolute;
+  }
 
   .rank-name-container {
     position: relative;
@@ -56,27 +58,9 @@
 
     &:last-child {
       margin-right: $side-margin;
-
-      @media screen and (max-width: $screen-md) {
-        @include cbsSideMargin(0, 0, 0, 0);
-      }
     }
     &:hover {
       cursor: pointer;
-    }
-
-    @media screen and (max-width: $screen-md) {
-      justify-content: flex-end;
-      height: 100%;
-      padding-bottom: -20px !important;
-
-      &:first-child {
-        @include cbsSideMargin(0, 0, 0, 1);
-      }
-
-      &:last-child {
-        @include cbsSideMargin(0, 1, 0, 0);
-      }
     }
   }
 
@@ -173,10 +157,37 @@
   .cbs-text {
     position: absolute;
   }
+}
 
-  @media screen and (max-width: $screen-md) {
+@media screen and (max-width: $screen-md) {
+  .talent-container {
+    flex-direction: column;
+    @include cbsSideMargin(1, 0, 0, 0);
+  }
+
+  .talent-img-container {
+    margin: 0 !important;
+    .rank-line {
+      bottom: 14px;
+    }
+
+    .talent-rank {
+      justify-content: flex-end;
+      height: 100%;
+      padding-bottom: -20px !important;
+
+      &:first-child {
+        @include cbsSideMargin(0, 0, 0, 1);
+      }
+
+      &:nth-child(4) {
+        @include cbsSideMargin(0, 1, 0, 0);
+      }
+    }
+  }
+
+  .rank-description-container {
     @include cbsSideMargin(0, 0, 1, 0);
-
     text-align: center;
     display: flex;
     align-items: center;
@@ -184,7 +195,6 @@
     height: 200px !important;
 
     .cbs-text {
-      // position: static !important;
       text-align: center;
     }
   }

@@ -29,12 +29,14 @@
           <span class="selected" *ngIf="selectedRank === rankImg.rank" [@zoomInOnEnter] [@zoomOutOnLeave]></span>
         </div>
       </div>
+      <div class="rank-line"></div>
     </div>
     <div class="rank-description-container">
       <ng-container *ngFor="let rank of ranks | keyvalue">
         <p [@fadeInOnEnter] [@fadeOutOnLeave] *ngIf="selectedRank === rank.key"
           class="cbs-text cbs-text-color-gray rank-description">{{
           rankOptions[rank.key].description }}</p>
+
       </ng-container>
     </div>
   </div>

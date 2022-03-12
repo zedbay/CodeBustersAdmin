@@ -17,7 +17,7 @@ const duration = 300;
     fadeInOnEnterAnimation({ duration }),
     fadeOutOnLeaveAnimation({ duration }),
     trigger('zoomIn', [
-      state('false', style({ fontSize: AUTO_STYLE })),
+      state('false', style({ fontSize: '32px' })),
       state('true', style({ fontSize: '40px' })),
       transition('false => true', animate(duration + 'ms ease-in')),
       transition('true => false', animate(100 + 'ms ease-out'))

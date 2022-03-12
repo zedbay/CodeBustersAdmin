@@ -76,12 +76,14 @@
     }
   }
   .other-news-container {
+    margin-top: 48px;
     .news-container {
       flex-direction: column;
 
       .news {
+        border: solid red 1px;
         &:nth-child(1) {
-          margin-top: 48px;
+          margin-top: 24px;
         }
         &:nth-child(2) {
           @include cbsSideMargin(1, 0, 1, 0);

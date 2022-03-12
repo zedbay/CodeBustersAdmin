@@ -15,6 +15,12 @@
     .rule {
       z-index: 2;
       position: relative;
+      @include cbsSideMargin(0, 1, 0, 1);
+      display: flex;
+
+      & > * {
+        flex: 1;
+      }
 
       @media screen and (max-width: $screen-md) {
         display: flex;
