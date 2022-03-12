@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:vps": "ng build --configuration=production && cd ./dist && cp -R ./cbs-app /var/wwww && systemctl restart nginx"
   },
   "private": true,
   "dependencies": {
