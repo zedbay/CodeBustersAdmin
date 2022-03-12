@@ -29,8 +29,9 @@ export class NewsDisplayElementComponent implements OnInit {
     const queryParams = {
       [typeNewsToProperties[n.newsType].queryParam]: n.objectId
     };
-    this.router.navigate(['news', { skipLocationChange: true }]).then(
-      () => this.router.navigate(['/news/display'], { queryParams }));
+    this.router.navigate(['/']).then(
+      () => this.router.navigate(['/news/display'], { queryParams })
+    );
   }
 
 }

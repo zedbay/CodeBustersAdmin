@@ -50,13 +50,14 @@
         align-items: center;
 
         .section-element {
-          border: solid $white 1px;
+          border: solid $first-gray 1px;
           flex: 1;
           height: 150px;
           display: flex;
           flex-direction: column;
           justify-content: center;
           cursor: pointer;
+          border-radius: 4px;
           padding: 32px;
 
           .pi-clock {

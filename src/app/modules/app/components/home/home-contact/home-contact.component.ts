@@ -29,6 +29,8 @@ export class HomeContactComponent implements OnInit {
 
   public imgPath = imgPath;
 
+  public displaySuccessMessage = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private contactService: ContactService
@@ -74,7 +76,7 @@ export class HomeContactComponent implements OnInit {
       answer: this.results.join('//'),
       answerType: 'Réponse aux questions'
     }).subscribe(
-      () => alert('Contact send')
+      () => this.displaySuccessMessage = true
     )
   }
 

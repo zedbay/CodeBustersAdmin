@@ -51,11 +51,11 @@
 .send-candidacy-container {
   display: flex;
   justify-content: center;
+}
 
-  .success-candidacy-message {
-    color: $white;
-    @include cbsSidePadding(1, 1, 1, 1);
-  }
+.success-candidacy-message {
+  color: $white;
+  @include cbsSidePadding(1, 1, 1, 1);
 }
 
 @media screen and (max-width: $screen-md) {

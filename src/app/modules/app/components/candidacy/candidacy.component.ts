@@ -28,7 +28,7 @@ export class CandidacyComponent implements OnInit {
     lastname: ['', [Validators.required]],
     mail: ['', [Validators.required]],
     phone: ['', [Validators.required]],
-    freeField: ['', [Validators.required]],
+    freeField: ['', []],
     cv: [{ value: 'CV', disabled: true }, [Validators.required]],
     candidacyType: [CandidacyType.SPONTANEE, [Validators.required]]
   });

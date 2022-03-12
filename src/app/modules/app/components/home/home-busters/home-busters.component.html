@@ -13,8 +13,7 @@
         site.startBusterDescription }}
       </p>
     </div>
-    <img [@opacityDown]="clientBusterHover || startBusterHover || staffBusterHover"
-      src="{{  imgPath.logoWithoutBackground }}" class="logo">
+    <img src="{{  imgPath.logoWithoutBackground }}" class="logo">
     <div class="home-busters-content">
       <div [@opacityDown]="!staffBusterHover && (clientBusterHover || startBusterHover)"
         (mouseenter)="staffBusterHover=true" (mouseleave)="staffBusterHover=false" class="home-buster-staff-container">

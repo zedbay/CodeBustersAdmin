@@ -9,7 +9,7 @@
 </div>
 <div class="home-flex-container">
   <app-home-navigation-indicator [selectedContainer]="homeContainer.Contact"></app-home-navigation-indicator>
-  <div class="contact-questions-container" *ngIf="results.length !== 3">
+  <div class="contact-questions-container" *ngIf="results.length !== 3 && !displaySuccessMessage">
     <div>
       <p class="question cbs-main-title"><span class="cbs-text-color-secondary">{{ selectedQuestion.number}}/3</span>
         {{
@@ -28,9 +28,9 @@
     </button>
   </div>
 
-  <div *ngIf="results.length === 3" class="contact-form-container">
+  <div *ngIf="results.length === 3 && !displaySuccessMessage" class="contact-form-container">
     <p class="cbs-under-title contact-text">
-      <span class="secondary-text cbs-text-color-secondary margin-bottom-1">Tu sembles être pret pour rejoindre
+      <span class="secondary-text cbs-text-color-secondary margin-bottom-1">Tu sembles être prêt pour rejoindre
         les Busters</span> <br />
       Quelques infos sur toi ?
     </p>
@@ -44,4 +44,8 @@
       <button (click)="sendContact()" class="cbs-button cbs-savoir">Envoyer</button>
     </div>
   </div>
+
+  <ng-container *ngIf="displaySuccessMessage">
+    <p class="cbs-main-title success-candidacy-message">Candidature bien envoyée !</p>
+  </ng-container>
 </div>

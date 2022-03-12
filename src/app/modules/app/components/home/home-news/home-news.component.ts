@@ -23,7 +23,7 @@ export class HomeNewsComponent implements OnInit {
   }[] = [
       {
         title: 'New Job',
-        underTitle: 'Plusieurs Squad a rejoindre',
+        underTitle: 'Plusieurs Squads à rejoindre',
         callToAction: () => this.router.navigate(['/busters']),
         imgPath: this.imgPath.hat
       },

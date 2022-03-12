@@ -13,7 +13,7 @@ export class SincePipe implements PipeTransform {
       return "Aujourd'hui";
     }
     if (diff < 31) {
-      return `Il y a ${Math.trunc(diff)} jours`;
+      return `Il y a ${Math.trunc(diff)} jour${Math.trunc(diff) === 1 ? '' : 's'}`;
     }
     return `Il y a ${Math.trunc(diff / 31)} mois`;
   }

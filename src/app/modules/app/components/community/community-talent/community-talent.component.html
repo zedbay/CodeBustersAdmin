@@ -19,7 +19,8 @@
             alt="bronze" (click)="selectRank(rankImg.rank)">
         </div>
         <div class="rank-name-container">
-          <p class="cbs-second-title cbs-text-color-gray rank-name" [@zoomIn]="selectedRank === rankImg.rank">{{
+          <p (click)="selectRank(rankImg.rank)" class="cbs-second-title cbs-text-color-gray rank-name"
+            [@zoomIn]="selectedRank === rankImg.rank">{{
             rankImg.rank }}</p>
         </div>
 

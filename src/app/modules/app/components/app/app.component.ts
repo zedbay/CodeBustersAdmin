@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
       .subscribe(() => {
         const anchor: string = window.innerWidth > screenSize[ScreenSizeType.MD] ? 'header' : 'anchor-point';
         this.scroller.scrollToAnchor(anchor);
-      })
+      });
   }
 
   public playVideo() {

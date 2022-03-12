@@ -61,7 +61,8 @@
     }
   }
 
-  &.disabled {
+  &.disabled,
+  &:disabled {
     color: $first-gray !important;
     border-color: $first-gray !important;
     opacity: 0.7 !important;
