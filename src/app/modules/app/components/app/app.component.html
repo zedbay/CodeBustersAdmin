@@ -3,7 +3,9 @@
     class="video-element" autoplay=true allow="autoplay">
     <source src="{{ videoPath.home }}">
   </video>
+  <a (click)="showApp = false" class="skip-video-link">Continuer sur wwww.codebusters.fr</a>
 </div>
+
 
 <div *ngIf="!showApp" [@fadeInOnEnter] [@fadeOutOnLeave]>
   <app-header class="header"></app-header>

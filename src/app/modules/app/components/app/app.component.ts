@@ -53,5 +53,10 @@ export class AppComponent implements OnInit {
     }, 8000);
   }
 
+  public test() {
+    this.showApp = false;
+    console.log('hello wolrd');
+  }
+
 
 }
