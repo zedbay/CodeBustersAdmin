@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BusterService } from 'src/app/core/services/buster.service';
 import { PicturesService } from 'src/app/core/services/pictures.service';
 import { Buster } from 'src/app/shared/models/buster';
-import { saveAs } from "file-saver";
 
 @Component({
   selector: 'app-buster-profil-picture',
