@@ -26,8 +26,8 @@
 
       <p-tabPanel header="Busters">
         <div class="edit-category">
-          <app-resource-listing [resourceService]="busterService" [resourcesActions]="bustersListingAction"
-            [resources]="_resource.consumers">
+          <app-resource-listing [disableSelection]=true [resourceService]="busterService"
+            [resourcesActions]="bustersListingAction" [resources]="_resource.consumers">
           </app-resource-listing>
           <p class="empty-list-message" *ngIf="!_resource.consumers || _resource.consumers.length === 0">Noby knows this
             technology</p>

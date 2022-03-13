@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { BusterService } from 'src/app/core/services/buster.service';
 import { PicturesService } from 'src/app/core/services/pictures.service';
 import { Buster } from 'src/app/shared/models/buster';
+import { saveAs } from "file-saver";
 
 @Component({
   selector: 'app-buster-profil-picture',
@@ -22,12 +22,19 @@ export class BusterProfilPictureComponent implements OnInit {
 
   public imgToShow: any;
 
+  private res;
+
   constructor(
     private busterService: BusterService,
     private pictureService: PicturesService
   ) { }
 
   ngOnInit(): void {
+  }
+
+  public savePhoto(): void {
+    if (!this.res) { return; }
+    this.pictureService.saveResAsImage(this.res, this.buster.profilPictureName);
   }
 
   public uploadProfilPicture(file: File): void {
@@ -37,9 +44,13 @@ export class BusterProfilPictureComponent implements OnInit {
   }
 
   public downloadProfilePicture(): void {
-    this.busterService.downloadProfilPicture(this.buster.id, this.buster.profilPictureName).subscribe(
-      (res: any) => this.imgToShow = this.pictureService.transformBlobToPictureUrl(res)
-    );
+    this.busterService.downloadProfilPicture(this.buster.id, this.buster.profilPictureName)
+      .subscribe(
+        (res: any) => {
+          this.res = res;
+          this.imgToShow = this.pictureService.transformBlobToPictureUrl(res);
+        }
+      );
   }
 
 }

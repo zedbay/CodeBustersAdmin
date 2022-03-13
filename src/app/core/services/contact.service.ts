@@ -11,8 +11,7 @@ import { ResourcesService } from './resources.service';
 export class ContactService extends ResourcesService<Contact> {
 
   public labels: TableLabels<Contact>[] = [
-    { key: 'mail', value: 'Email' },
-    { key: 'phone', value: 'Phone' }
+    { key: 'mail', value: 'Email' }
   ];
 
   constructor(

@@ -14,12 +14,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
 import { TabViewModule } from 'primeng/tabview';
 import { PanelModule } from 'primeng/panel';
+import { ToastModule } from 'primeng/toast';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 @NgModule({
   declarations: [
     AdministrationComponent,
     WebsiteComponent,
     LoginComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -34,7 +38,9 @@ import { PanelModule } from 'primeng/panel';
     FormsModule,
     PasswordModule,
     TabViewModule,
-    PanelModule
+    PanelModule,
+    ToastModule,
+    DynamicDialogModule
   ]
 })
 export class AdministrationModule { }

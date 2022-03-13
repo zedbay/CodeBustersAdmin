@@ -6,6 +6,7 @@ import { BusterService } from 'src/app/core/services/buster.service';
 import { TechnoService } from 'src/app/core/services/techno.service';
 import { Buster } from 'src/app/shared/models/buster';
 import { Techno } from 'src/app/shared/models/techno';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-technology-edit',
@@ -19,13 +20,15 @@ export class TechnologyEditComponent extends ResourceEditComponent<Techno> imple
   });
 
   public bustersListingAction: TableAction = {
-    onDelete: (busterId: number) => this.onRemoveBusterKnowledge(busterId)
+    onDelete: (busterId: number) => this.onRemoveBusterKnowledge(busterId),
+    onConsult: (busterId: number) => this.router.navigate(['/admin'], { queryParams: { resourceId: busterId } })
   }
 
   constructor(
     private formBuilder: FormBuilder,
     private technoService: TechnoService,
-    public busterService: BusterService
+    public busterService: BusterService,
+    private router: Router
   ) {
     super(technoService);
   }

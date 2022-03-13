@@ -13,7 +13,8 @@ import { PictureInputComponent } from './components/picture-input/picture-input.
 import { DndDirective } from './directives/dnd.directive';
 import { FileZoneComponent } from './components/file-zone/file-zone.component';
 import { ToastModule } from 'primeng/toast';
-
+import { TooltipModule } from 'primeng/tooltip';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @NgModule({
   declarations: [
     ResourceSearchComponent,
@@ -32,7 +33,9 @@ import { ToastModule } from 'primeng/toast';
     FormsModule,
     ButtonModule,
     DropdownModule,
-    ToastModule
+    ToastModule,
+    TooltipModule,
+    ConfirmDialogModule
   ],
   exports: [
     ResourceSearchComponent,

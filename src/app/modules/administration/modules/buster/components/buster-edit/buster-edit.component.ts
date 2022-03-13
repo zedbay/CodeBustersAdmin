@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourceEditComponent } from 'src/app/modules/administration/shared/components/resource-edit/resource-edit.component';
 import { TableAction } from 'src/app/modules/administration/shared/models/TableActions.model';
@@ -12,6 +12,7 @@ import { Client } from 'src/app/shared/models/client';
 import { Project } from 'src/app/shared/models/project';
 import { Squad } from 'src/app/shared/models/squad';
 import { Techno } from 'src/app/shared/models/techno';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buster-edit',
@@ -39,11 +40,13 @@ export class BusterEditComponent extends ResourceEditComponent<Buster> implement
   });
 
   public technologiesListingAction: TableAction = {
-    onDelete: (technoId: number) => this.onDeleteTechno(technoId)
+    onDelete: (technoId: number) => this.onDeleteTechno(technoId),
+    onConsult: (technoId: number) => this.router.navigate(['/admin/technology'], { queryParams: { resourceId: technoId } })
   }
 
   public projectsListingAction: TableAction = {
-    onDelete: (projectId: number) => this.removeProject(projectId)
+    onDelete: (projectId: number) => this.removeProject(projectId),
+    onConsult: (projectId: number) => this.router.navigate(['/admin/project'], { queryParams: { resourceId: projectId } })
   }
 
   constructor(
@@ -52,7 +55,8 @@ export class BusterEditComponent extends ResourceEditComponent<Buster> implement
     public technoService: TechnoService,
     public clientService: ClientService,
     public squadService: SquadService,
-    public projectService: ProjectService
+    public projectService: ProjectService,
+    private router: Router
   ) {
     super(busterService);
   }
@@ -88,7 +92,6 @@ export class BusterEditComponent extends ResourceEditComponent<Buster> implement
       this.busterCurrentClientForm.controls.name.setValue(buster.currentClient.name);
     }
   }
-
 
   public removeMembershipOfSquad(squadId: number) {
     this.busterService.removeMembershipOfSquad(this._resource.id, squadId).subscribe(() => this._resource.squad = undefined)

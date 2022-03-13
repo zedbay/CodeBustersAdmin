@@ -4,9 +4,7 @@ import { ResourcesService } from 'src/app/core/services/resources.service';
 import { Resource } from 'src/app/shared/models/ressource';
 
 @Component({
-  selector: 'app-resource',
-  templateUrl: './resource.component.html',
-  styleUrls: ['./resource.component.scss']
+  template: ''
 })
 export abstract class ResourceComponent<T extends Resource> implements OnInit {
 

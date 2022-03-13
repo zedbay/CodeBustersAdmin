@@ -1,5 +1,4 @@
 <div *ngIf="_resource || _createMode" class="edit-container">
-
   <p-tabView>
     <p-tabPanel header="Main informations">
       <div class="edit-category">
@@ -23,72 +22,9 @@
         </div>
       </div>
     </p-tabPanel>
-
     <p-tabPanel header="Busters" *ngIf="!_createMode">
-      <div class="edit-category">
-        <h4 class="edit-category-title">Manager informations</h4>
-        <ng-container *ngIf="_resource.manager">
-          <form [formGroup]="managerForm" class="edit-form">
-            <div class="double-field-container">
-              <div class="edit-field">
-                <label class="edit-label">Firstname</label>
-                <input class="edit-input" formControlName="firstName" type="text" pInputText />
-              </div>
-              <div class="edit-field">
-                <label class="edit-label">lastname</label>
-                <input class="edit-input" formControlName="lastName" type="text" pInputText />
-              </div>
-            </div>
-            <div class="double-field-container">
-              <div class="edit-field">
-                <label class="edit-label">Email</label>
-                <input class="edit-input" formControlName="email" type="text" pInputText />
-              </div>
-              <div class="edit-field">
-                <label class="edit-label">Rank</label>
-                <input class="edit-input" formControlName="rank" type="text" pInputText />
-              </div>
-            </div>
-          </form>
-          <div class="edit-actions">
-            <button pButton type="button" icon="pi pi-directions" iconPos="left" label="Go To Manager"
-              class="p-button-outlined p-button-secondary" [routerLink]="['/admin']"
-              [queryParams]="{ resourceId: _resource.manager.id }"></button>
-            <button pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Manager"
-              class="edit-save p-button-outlined p-button-danger"
-              (click)="removeManagement(_resource.manager.id)"></button>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="!_resource.manager">
-          <div>
-            <p class="empty-list-message">This squad hasn't manager yet :(</p>
-            <app-resource-search actionLabel="Add manager" [resourceService]="busterService"
-              (selectionEmitter)="addManagement($event)">
-            </app-resource-search>
-          </div>
-        </ng-container>
-      </div>
-
-      <div class="edit-category">
-        <h4 class="edit-category-title">Busters in this squad</h4>
-        <app-resource-listing [resourceService]="busterService" [resources]="_resource.members"
-          [resourcesActions]="bustersListingAction">
-        </app-resource-listing>
-        <p class="empty-list-message" *ngIf="!_resource.members || _resource.members.length === 0">This squad has no
-          member yet :(</p>
-        <app-resource-search actionLabel="Add Buster" [resourceService]="busterService"
-          (selectionEmitter)="addMemberInSquad($event)">
-        </app-resource-search>
-      </div>
-
+      <app-squad-edit-members [members]="_resource.members" [squadId]="_resource.id" [manager]="_resource.manager">
+      </app-squad-edit-members>
     </p-tabPanel>
   </p-tabView>
-
-
-
-
-
-
-
-
 </div>

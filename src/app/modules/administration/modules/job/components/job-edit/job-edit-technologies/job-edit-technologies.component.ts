@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JobService } from 'src/app/core/services/job.service';
 import { TechnoService } from 'src/app/core/services/techno.service';
 import { TableAction } from 'src/app/modules/administration/shared/models/TableActions.model';
@@ -15,13 +15,15 @@ export class JobEditTechnologiesComponent implements OnInit {
   @Input() technologies: Techno[];
 
   public technologiesListingAction: TableAction = {
-    onDelete: (technoId: number) => this.onDeleteTechno(technoId)
+    onDelete: (technoId: number) => this.onDeleteTechno(technoId),
+    onConsult: (technoId: number) => this.router.navigate(['/admin/technology'], { queryParams: { resourceId: technoId } })
   }
 
   constructor(
     public technoService: TechnoService,
     private jobService: JobService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {

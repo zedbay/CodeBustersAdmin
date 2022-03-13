@@ -126,8 +126,8 @@
 
         <div class="edit-category">
           <h4 class="edit-category-title">Buster's projects</h4>
-          <app-resource-listing [resourceService]="projectService" [resources]="_resource.projects"
-            [resourcesActions]="projectsListingAction">
+          <app-resource-listing [disableSelection]=true [resourceService]="projectService"
+            [resources]="_resource.projects" [resourcesActions]="projectsListingAction">
           </app-resource-listing>
           <p class="empty-list-message" *ngIf="!_resource.technologies || _resource.technologies.length === 0">This
             buster
@@ -139,8 +139,8 @@
 
       <p-tabPanel header="Buster's technologies">
         <div class="edit-category">
-          <app-resource-listing [resourceService]="technoService" [resources]="_resource.technologies"
-            [resourcesActions]="technologiesListingAction">
+          <app-resource-listing [disableSelection]=true [resourceService]="technoService"
+            [resources]="_resource.technologies" [resourcesActions]="technologiesListingAction">
           </app-resource-listing>
           <p class="empty-list-message" *ngIf="!_resource.technologies || _resource.technologies.length === 0">This
             buster

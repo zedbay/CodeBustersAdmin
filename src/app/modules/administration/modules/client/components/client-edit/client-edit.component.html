@@ -22,8 +22,8 @@
 
     <p-tabPanel header="Workers" *ngIf="!_createMode">
       <div class="edit-category">
-        <app-resource-listing [resourceService]="busterService" [resourcesActions]="bustersListingAction"
-          [resources]="_resource.contractors">
+        <app-resource-listing [disableSelection]=true [resourceService]="busterService"
+          [resourcesActions]="bustersListingAction" [resources]="_resource.contractors">
         </app-resource-listing>
         <p class="empty-list-message" *ngIf="!_resource.contractors || _resource.contractors.length === 0">This clients
           hasn't

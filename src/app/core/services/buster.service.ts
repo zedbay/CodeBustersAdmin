@@ -4,6 +4,8 @@ import { TableLabels } from 'src/app/modules/administration/shared/models/TableL
 import { NetworkService } from 'src/app/core/services/network.service';
 import { ResourcesService } from 'src/app/core/services/resources.service';
 import { Buster } from 'src/app/shared/models/buster';
+import { ToastService } from './toast.service';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +18,17 @@ export class BusterService extends ResourcesService<Buster> {
   ];
 
   constructor(
-    public networkService: NetworkService
+    public networkService: NetworkService,
+    public toastService: ToastService
   ) {
     super(
       'buster',
       networkService
     );
+  }
+
+  public changePassword(currentPassword: string, password: string): Observable<boolean> {
+    return this.networkService.put<boolean>('password', { currentPassword, password });
   }
 
   public downloadProfilPicture(busterId: number, fileName: string): Observable<File> {
@@ -39,15 +46,33 @@ export class BusterService extends ResourcesService<Buster> {
   }
 
   public addMembership(busterId: number, squadId: number): Observable<boolean> {
-    return this.networkService.put(`${this.endpoint}/${busterId}/membership/${squadId}`);
+    return this.networkService
+      .put<boolean>(`${this.endpoint}/${busterId}/membership/${squadId}`)
+      .pipe(
+        tap(
+          () => this.toastService.sendToast({ severity: 'success', summary: 'Success', detail: 'Buster correctement ajouter à la squad.' })
+        )
+      );
   }
 
   public addCurrentClient(busterId: number, clientId: number): Observable<boolean> {
-    return this.networkService.put(`${this.endpoint}/${busterId}/client/${clientId}`);
+    return this.networkService
+      .put<boolean>(`${this.endpoint}/${busterId}/client/${clientId}`)
+      .pipe(
+        tap(
+          () => this.toastService.sendToast({ severity: 'success', summary: 'Success', detail: 'Client correctement ajouter' })
+        )
+      );
   }
 
   public removeCurrentClient(busterId: number, clientId: number): Observable<boolean> {
-    return this.networkService.delete(`${this.endpoint}/${busterId}/client/${clientId}`);
+    return this.networkService
+      .delete<boolean>(`${this.endpoint}/${busterId}/client/${clientId}`)
+      .pipe(
+        tap(
+          () => this.toastService.sendToast({ severity: 'success', summary: 'Success', detail: 'Client correctement supprimer' })
+        )
+      );
   }
 
   public removeManagement(busterId: number, squadId: number): Observable<boolean> {

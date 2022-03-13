@@ -9,6 +9,7 @@ import { Buster } from 'src/app/shared/models/buster';
 import { Project } from 'src/app/shared/models/project';
 import { Rank } from 'src/app/shared/models/rank';
 import { Techno } from 'src/app/shared/models/techno';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-edit',
@@ -24,18 +25,21 @@ export class ProjectEditComponent extends ResourceEditComponent<Project> impleme
   });
 
   public technologiesListingAction: TableAction = {
-    onDelete: (technoId: number) => this.removingTechno(technoId)
+    onDelete: (technoId: number) => this.removingTechno(technoId),
+    onConsult: (technoId: number) => this.router.navigate(['/admin/technology'], { queryParams: { resourceId: technoId } })
   }
 
   public bustersListingAction: TableAction = {
-    onDelete: (busterId: number) => this.removingWorker(busterId)
+    onDelete: (busterId: number) => this.removingWorker(busterId),
+    onConsult: (busterId: number) => this.router.navigate(['/admin'], { queryParams: { resourceId: busterId } })
   }
 
   constructor(
     public projectService: ProjectService,
     private formBuilder: FormBuilder,
     public technoService: TechnoService,
-    public busterService: BusterService
+    public busterService: BusterService,
+    private router: Router
   ) {
     super(projectService);
   }

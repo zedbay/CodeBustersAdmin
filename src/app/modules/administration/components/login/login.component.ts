@@ -28,9 +28,10 @@ export class LoginComponent implements OnInit {
     this.loginService.login(
       this.loginForm.controls.email.value,
       this.loginForm.controls.password.value
-    ).subscribe(
-      () => this.router.navigate(['admin'])
-    );
+    )
+      .subscribe(
+        () => this.router.navigate(['admin'])
+      );
   }
 
 }

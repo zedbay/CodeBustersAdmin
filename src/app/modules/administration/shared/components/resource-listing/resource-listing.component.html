@@ -6,12 +6,15 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-element>
-    <tr (click)="selectElement(element); resourcesActions?.onRowClick(element.id)"
-      [ngClass]="{'selected': element.selected }">
+    <tr (click)="selectElement(element)" [ngClass]="{'selected': element.selected }">
       <td *ngFor="let label of resourcesLabels">{{ label.key ? element[label.key] : label.formatter(element) }}</td>
       <td class="action-cell">
-        <i class="pi pi-trash" (click)="resourcesActions?.onDelete(element.id)" *ngIf="resourcesActions.onDelete"></i>
+        <i class="pi pi-trash" pTooltip="Delete" (click)="onDeleteRessource(element)"
+          *ngIf="resourcesActions.onDelete"></i>
+        <i class="pi pi-directions" pTooltip="Consult" (click)="resourcesActions?.onConsult(element.id)"
+          *ngIf="resourcesActions.onConsult"></i>
       </td>
     </tr>
   </ng-template>
 </p-table>
+<p-confirmDialog header="Confirmer la supression" icon="pi pi-exclamation-triangle"></p-confirmDialog>

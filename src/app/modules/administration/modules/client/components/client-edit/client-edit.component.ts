@@ -6,6 +6,7 @@ import { BusterService } from 'src/app/core/services/buster.service';
 import { ClientService } from 'src/app/core/services/client.service';
 import { Buster } from 'src/app/shared/models/buster';
 import { Client } from 'src/app/shared/models/client';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-edit',
@@ -15,7 +16,8 @@ import { Client } from 'src/app/shared/models/client';
 export class ClientEditComponent extends ResourceEditComponent<Client> implements OnInit {
 
   public bustersListingAction: TableAction = {
-    onDelete: (busterId: number) => this.deleteContractorForClient(busterId)
+    onDelete: (busterId: number) => this.deleteContractorForClient(busterId),
+    onConsult: (busterId: number) => this.router.navigate(['/admin'], { queryParams: { resourceId: busterId } })
   }
 
   public resourceForm: FormGroup = this.formBuilder.group({
@@ -25,7 +27,8 @@ export class ClientEditComponent extends ResourceEditComponent<Client> implement
   constructor(
     public formBuilder: FormBuilder,
     public clientService: ClientService,
-    public busterService: BusterService
+    public busterService: BusterService,
+    private router: Router
   ) {
     super(clientService);
   }

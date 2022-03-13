@@ -12,10 +12,11 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { TabViewModule } from 'primeng/tabview';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CustomNgxModule } from 'src/app/shared/modules/custom-ngx/custom-ngx.module';
+import { SquadEditMembersComponent } from './components/squad-edit/squad-edit-members/squad-edit-members.component';
 
 
 @NgModule({
-  declarations: [SquadComponent, SquadEditComponent],
+  declarations: [SquadComponent, SquadEditComponent, SquadEditMembersComponent],
   imports: [
     CommonModule,
     SquadRoutingModule,

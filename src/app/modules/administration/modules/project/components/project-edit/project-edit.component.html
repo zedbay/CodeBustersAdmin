@@ -37,8 +37,8 @@
     <ng-container *ngIf="!_createMode">
       <p-tabPanel header="Busters">
         <div class="edit-category">
-          <app-resource-listing [resourceService]="busterService" [resources]="_resource.workers"
-            [resourcesActions]="bustersListingAction"></app-resource-listing>
+          <app-resource-listing [disableSelection]=true [resourceService]="busterService"
+            [resources]="_resource.workers" [resourcesActions]="bustersListingAction"></app-resource-listing>
           <p class="empty-list-message" *ngIf="!_resource.technologies || _resource.technologies.length === 0">
             This project hasn't worker binded yet
           </p>
@@ -51,8 +51,8 @@
       <p-tabPanel header="Technologies">
 
         <div class="edit-category">
-          <app-resource-listing [resourceService]="technoService" [resources]="_resource.technologies"
-            [resourcesActions]="technologiesListingAction"></app-resource-listing>
+          <app-resource-listing [disableSelection]=true [resourceService]="technoService"
+            [resources]="_resource.technologies" [resourcesActions]="technologiesListingAction"></app-resource-listing>
           <p class="empty-list-message" *ngIf="!_resource.technologies || _resource.technologies.length === 0">
             This project hasn't techno binded yet
           </p>

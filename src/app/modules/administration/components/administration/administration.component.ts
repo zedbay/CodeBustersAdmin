@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, Message, MessageService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
 import { LoginService } from 'src/app/core/services/login.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 import { imgPath } from 'src/app/shared/constants/imgPath';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-administration',
   templateUrl: './administration.component.html',
-  styleUrls: ['./administration.component.scss']
+  styleUrls: ['./administration.component.scss'],
+  providers: [MessageService, DialogService]
 })
 export class AdministrationComponent implements OnInit {
 
@@ -20,6 +24,7 @@ export class AdministrationComponent implements OnInit {
         {
           label: 'Change password',
           icon: 'pi pi-fw pi-lock',
+          command: () => this.showChangePassword()
         },
         {
           label: 'Logout',
@@ -43,10 +48,23 @@ export class AdministrationComponent implements OnInit {
   ];
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private messageService: MessageService,
+    private toastService: ToastService,
+    public dialogService: DialogService
   ) { }
 
   ngOnInit(): void {
+    this.toastService.onToast.subscribe(
+      (message: Message) => this.messageService.add(message)
+    );
   }
+
+  public showChangePassword(): void {
+    const ref = this.dialogService.open(ChangePasswordComponent, {
+      header: 'Modifier votre mot de passe'
+    });
+  }
+
 
 }

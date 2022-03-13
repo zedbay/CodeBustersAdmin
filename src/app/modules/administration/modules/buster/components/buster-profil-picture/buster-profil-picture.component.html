@@ -1,6 +1,9 @@
 <ng-container *ngIf="buster.profilPictureName && imgToShow">
   <img [src]="imgToShow" alt="profil-picture" class="profil-picture">
 </ng-container>
+<ng-container *ngIf="buster.profilPictureName">
+  <a class="download-link" (click)="savePhoto()">Télécharger la photo</a>
+</ng-container>
 <ng-container *ngIf="!buster.profilPictureName">
   <p>No profil picture yet</p>
 </ng-container>

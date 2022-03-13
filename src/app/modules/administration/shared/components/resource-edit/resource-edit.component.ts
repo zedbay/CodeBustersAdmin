@@ -5,9 +5,7 @@ import { Resource } from 'src/app/shared/models/ressource';
 
 
 @Component({
-  selector: 'app-resource-edit',
-  templateUrl: './resource-edit.component.html',
-  styleUrls: ['./resource-edit.component.scss']
+  template: ''
 })
 export abstract class ResourceEditComponent<T extends Resource> implements OnInit {
 

@@ -8,3 +8,13 @@
   max-width: 100%;
   max-height: 40vh;
 }
+
+.download-link {
+  margin: 16px 0;
+  text-decoration: underline;
+  cursor: pointer;
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+  }
+}
