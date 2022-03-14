@@ -14,62 +14,25 @@
 
     .rule {
       z-index: 2;
-      position: relative;
       @include cbsSideMargin(0, 1, 0, 1);
       display: flex;
-
-      &:hover {
-        .rule-title,
-        .cbs-text {
-          color: $secondary;
-        }
-
-        .picto-rule {
-          display: none;
-        }
-
-        .picto-hover {
-          display: block !important;
-        }
-
-        @media screen and (max-width: $screen-md) {
-          .cbs-text {
-            color: $second-gray;
-            display: block;
-          }
-        }
-      }
+      align-items: center;
 
       & > * {
-        flex: 1;
+        padding: 32px 0;
       }
 
-      @media screen and (max-width: $screen-md) {
-        display: flex;
-        flex-direction: column;
+      .picto-rule-hover {
+        display: none;
       }
 
       .rule-title {
         display: flex;
         align-items: center;
 
-        @media screen and (max-width: $screen-md) {
-          @include cbsSideMargin(0, 0, 1, 0);
-        }
-
         .picto-rule {
           width: 38px;
           margin-right: 16px;
-        }
-
-        .picto-hover {
-          display: none;
-        }
-      }
-
-      @media screen and (max-width: $screen-md) {
-        .cbs-text {
-          display: none;
         }
       }
     }
@@ -84,9 +47,51 @@
       transform: translate(-50%, -50%);
       z-index: 1;
     }
-
+  }
+}
+@media screen and (min-width: $screen-md) {
+  .rule {
     & > * {
-      padding: 32px 0;
+      flex: 1;
+    }
+
+    &:hover {
+      .cbs-text,
+      .rule-title {
+        color: $secondary !important;
+      }
+      .picto-rule {
+        display: none;
+      }
+      .picto-rule-hover {
+        display: block !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-md) {
+  .rule {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &.rule-selected {
+      .cbs-text {
+        color: $white !important;
+        padding: 0 !important;
+      }
+      .rule-title {
+        color: $secondary;
+      }
+    }
+
+    .rule-header {
+      width: 100%;
+    }
+
+    .rule-title {
+      @include cbsSideMargin(0, 0, 1, 0);
     }
   }
 }

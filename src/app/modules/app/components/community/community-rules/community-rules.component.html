@@ -3,15 +3,18 @@
 </div>
 <div class="rules-container">
   <img class="rules-container-background" src="{{ imgPath.logoWithoutBackground }}" alt="cbs-logo">
-  <div class="rule" *ngFor="let rule of rules; let i = index">
-    <div class="flex-element">
+  <div class="rule" (click)="selectRule(rule)" [ngClass]="{ 'rule-selected': rule.selected}"
+    *ngFor="let rule of rules; let i = index">
+    <div class="rule-header">
       <p class="cbs-main-title cbs-font-size-2 rule-title">
-        <img class="picto-rule" src="{{ rule.pictoPath }}" alt="{{ rule.pictoPath }}">
-        <img class="picto-rule picto-hover" src="{{ rule.pictoPathHover }}" alt="{{  rule.pictoPathHover }}">
+        <img class="picto-rule" src="{{ rule.selected ? rule.pictoPathHover : rule.pictoPath }}"
+          alt="{{ rule.pictoPath }}">
+        <img class="picto-rule picto-rule-hover" src="{{rule.pictoPathHover}}" alt="{{ rule.pictoPath }}">
         {{ rule.title }}
       </p>
     </div>
-    <p class="flex-element cbs-text cbs-text-color-gray">
+    <p [@expandOnEnter] [@collapseOnLeave] *ngIf="!isMobileVersion || rule.selected"
+      class="cbs-text cbs-text-color-gray">
       {{ rule.content }}
     </p>
   </div>
