@@ -14,8 +14,8 @@
         <i *ngIf="isMobileVersion" class="pi pi-chevron-down"
           [ngClass]="selectedContainer.includes('start') ? 'pi-chevron-up': 'pi-chevron-down'"></i>
       </p>
-      <p *ngIf="!isMobileVersion || selectedContainer.includes('start')" [@fadeIn]="startBusterHover"
-        class=" cbs-text cbs-text-color-gray cbs-text-justify home-buster-description">{{
+      <p [@expandOnEnter] [@collapseOnLeave] *ngIf="!isMobileVersion || selectedContainer.includes('start')"
+        [@fadeIn]="startBusterHover" class=" cbs-text cbs-text-color-gray cbs-text-justify home-buster-description">{{
         site.startBusterDescription }}
       </p>
 
@@ -33,8 +33,8 @@
           <i *ngIf="isMobileVersion" class="pi pi-chevron-down"
             [ngClass]="selectedContainer.includes('staff') ? 'pi-chevron-up': 'pi-chevron-down'"></i>
         </p>
-        <p *ngIf="!isMobileVersion || selectedContainer.includes('staff')" [@fadeIn]="staffBusterHover"
-          class="cbs-text cbs-text-color-gray cbs-text-justify home-buster-description">{{
+        <p [@expandOnEnter] [@collapseOnLeave] *ngIf="!isMobileVersion || selectedContainer.includes('staff')"
+          [@fadeIn]="staffBusterHover" class="cbs-text cbs-text-color-gray cbs-text-justify home-buster-description">{{
           site.staffBusterDescription
           }}</p>
 
@@ -50,8 +50,8 @@
           <i *ngIf="isMobileVersion" class="pi pi-chevron-down"
             [ngClass]="selectedContainer.includes('client') ? 'pi-chevron-up': 'pi-chevron-down'"></i>
         </p>
-        <p *ngIf="!isMobileVersion || selectedContainer.includes('client')" [@fadeIn]="clientBusterHover"
-          class="cbs-text cbs-text-color-gray cbs-text-justify home-buster-description">
+        <p [@expandOnEnter] [@collapseOnLeave] *ngIf="!isMobileVersion || selectedContainer.includes('client')"
+          [@fadeIn]="clientBusterHover" class="cbs-text cbs-text-color-gray cbs-text-justify home-buster-description">
           {{
           site.clientBusterDescription
           }}</p>

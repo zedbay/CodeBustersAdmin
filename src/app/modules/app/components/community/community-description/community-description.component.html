@@ -7,7 +7,8 @@
         <p class="cbs-second-title cbs-text-color-gray">{{ principle.underTitle }}</p>
       </div>
     </div>
-    <p class="cbs-text cbs-text-color-gray" *ngIf="!isMobileVersion || principle.selected">{{ principle.content }}</p>
+    <p [@expandOnEnter] [@collapseOnLeave] class="cbs-text cbs-text-color-gray"
+      *ngIf="!isMobileVersion || principle.selected">{{ principle.content }}</p>
     <i (click)="principle.selected = !principle.selected" *ngIf="isMobileVersion" class="pi"
       [ngClass]="principle.selected ? 'pi-chevron-up': 'pi-chevron-down'"></i>
   </li>

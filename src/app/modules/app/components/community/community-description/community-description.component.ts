@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { collapseOnLeaveAnimation, expandOnEnterAnimation } from 'angular-animations';
 import { imgPath } from 'src/app/shared/constants/imgPath';
 import { screenSize, ScreenSizeType } from 'src/app/shared/constants/screenSize';
 import { Site } from 'src/app/shared/models/site';
@@ -16,7 +17,11 @@ interface Principle {
 @Component({
   selector: 'app-community-description',
   templateUrl: './community-description.component.html',
-  styleUrls: ['./community-description.component.scss']
+  styleUrls: ['./community-description.component.scss'],
+  animations: [
+    expandOnEnterAnimation({ duration: 300 }),
+    collapseOnLeaveAnimation({ duration: 300 }),
+  ]
 })
 export class CommunityDescriptionComponent implements OnInit {
 

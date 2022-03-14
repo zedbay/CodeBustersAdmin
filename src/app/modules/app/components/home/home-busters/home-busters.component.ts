@@ -1,7 +1,7 @@
 import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { fadeInAnimation, fadeOutAnimation } from 'angular-animations';
+import { collapseOnLeaveAnimation, expandOnEnterAnimation, fadeInAnimation, fadeOutAnimation } from 'angular-animations';
 import { imgPath } from 'src/app/shared/constants/imgPath';
 import { screenSize, ScreenSizeType } from 'src/app/shared/constants/screenSize';
 import { Site } from 'src/app/shared/models/site';
@@ -16,6 +16,8 @@ export type ContainerType = 'start' | 'staff' | 'client';
   animations: [
     fadeInAnimation({ duration: 200 }),
     fadeOutAnimation({ duration: 200 }),
+    expandOnEnterAnimation({ duration: 400 }),
+    collapseOnLeaveAnimation({ duration: 400 }),
     trigger('textZoomIn', [
       state('false', style({ fontSize: AUTO_STYLE })),
       state('true', style({ fontSize: AUTO_STYLE })),
