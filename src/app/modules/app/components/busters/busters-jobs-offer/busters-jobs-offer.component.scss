@@ -3,25 +3,26 @@
 @import "mixin";
 
 .search-container {
-  @include cbsSideMargin(1, 1, 0, 1);
+  @include cbsSideMargin(0.5, 1, 0, 1);
 
   .cbs-main-title {
     border: solid $second-gray;
     border-width: 0 0 1px 0;
     padding-bottom: 16px;
-    margin-bottom: 8px;
   }
 
   .ranks-container {
     display: flex;
     align-items: center;
+    overflow: visible;
+    margin: 0 0 32px 0;
 
     .rank-container {
       display: flex;
       align-items: center;
-      height: 48px;
       overflow: hidden;
-      max-width: 40%;
+      max-width: 60%;
+      height: 80px;
 
       .rank-description-container {
         display: flex;
@@ -29,14 +30,14 @@
 
         .rank-title {
           padding-right: 8px;
-          font-size: 14px;
+          font-size: 18px;
         }
 
         .rank-description {
           border: solid $second-gray;
           border-width: 0 0 0 1px;
           padding-left: 8px;
-          font-size: 12px;
+          font-size: 16px;
 
           display: -webkit-box;
           -webkit-line-clamp: 2;
@@ -46,7 +47,7 @@
       }
 
       .talent-rank-img {
-        width: 40px;
+        width: 56px;
       }
 
       &.selected,
@@ -66,7 +67,7 @@
   overflow: hidden;
 
   .job-container {
-    padding: 6px 12px;
+    padding: 0px 12px;
 
     margin-bottom: 24px;
     border: solid 1px $first-gray;
@@ -106,7 +107,7 @@
     }
 
     .job-img {
-      width: 72px;
+      width: 80px;
       margin-right: 16px;
     }
 

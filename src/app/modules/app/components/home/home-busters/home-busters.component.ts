@@ -1,10 +1,13 @@
 import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { fadeInAnimation, fadeOutAnimation } from 'angular-animations';
 import { imgPath } from 'src/app/shared/constants/imgPath';
+import { screenSize, ScreenSizeType } from 'src/app/shared/constants/screenSize';
 import { Site } from 'src/app/shared/models/site';
 import { HomeContainer } from '../home/home.component';
+
+export type ContainerType = 'start' | 'staff' | 'client';
 
 @Component({
   selector: 'app-home-busters',
@@ -35,6 +38,15 @@ export class HomeBustersComponent implements OnInit {
 
   public homeContainer = HomeContainer;
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.isMobileVersion = window.innerWidth < screenSize[ScreenSizeType.MD];
+  }
+
+  public selectedContainer: ContainerType[] = [];
+
+  public isMobileVersion: boolean;
+
   public startBusterHover = false;
   public staffBusterHover = false;
   public clientBusterHover = false;
@@ -44,9 +56,16 @@ export class HomeBustersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.isMobileVersion = window.innerWidth < screenSize[ScreenSizeType.MD];
   }
 
-
+  public selectContainer(container: ContainerType): void {
+    if (this.selectedContainer.some((c) => c === container)) {
+      this.selectedContainer = this.selectedContainer.filter((c) => c !== container);
+    } else {
+      this.selectedContainer.push(container);
+    }
+  }
 
 }
 

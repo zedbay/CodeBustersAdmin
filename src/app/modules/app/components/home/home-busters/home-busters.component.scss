@@ -17,7 +17,7 @@
   margin: 32px 0;
 
   .logo {
-    max-width: 30%;
+    max-width: 35%;
   }
 
   .home-busters-title {
@@ -25,6 +25,7 @@
   }
 
   .home-buster-undertitle {
+    position: relative;
     margin-bottom: 16px;
   }
 
@@ -57,6 +58,29 @@
 
     .home-buster-description {
       visibility: visible;
+      margin: 16px 0;
+    }
+
+    .home-busters-content {
+      width: 100%;
+    }
+
+    .home-busters-start-container,
+    .home-buster-staff-container,
+    .home-busters-client-container {
+      border: solid $first-gray;
+      border-width: 0 0 1px 0;
+      width: 100% !important;
+      align-self: stretch !important;
+      position: relative;
+
+      .pi-chevron-down,
+      .pi-chevron-up {
+        color: $white;
+        position: absolute;
+        right: 0;
+        bottom: 0.5em;
+      }
     }
 
     .logo {

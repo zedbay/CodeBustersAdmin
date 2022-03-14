@@ -187,7 +187,7 @@
   }
 
   .rank-description-container {
-    @include cbsSideMargin(0, 0, 1, 0);
+    @include cbsSideMargin(1, 0, 1, 0);
     text-align: center;
     display: flex;
     align-items: center;
@@ -195,7 +195,12 @@
     height: 200px !important;
 
     .cbs-text {
+      width: calc(100% - 48px);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
+      margin: 0 !important;
     }
   }
 }

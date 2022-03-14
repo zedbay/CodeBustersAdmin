@@ -1,8 +1,14 @@
 <ul class="principles">
   <li class="principle" *ngFor="let principle of principles">
-    <img class="principle-img" src="{{ principle.img }}" alt="{{ principle.img }}">
-    <p class="cbs-main-title">{{ principle.title }}</p>
-    <p class="cbs-second-title cbs-text-color-gray">{{ principle.underTitle }}</p>
-    <p class="cbs-text cbs-text-color-gray">{{ principle.content }}</p>
+    <div class="principle-main-content">
+      <img class="principle-img" src="{{ principle.img }}" alt="{{ principle.img }}">
+      <div>
+        <p class="cbs-main-title">{{ principle.title }}</p>
+        <p class="cbs-second-title cbs-text-color-gray">{{ principle.underTitle }}</p>
+      </div>
+    </div>
+    <p class="cbs-text cbs-text-color-gray" *ngIf="!isMobileVersion || principle.selected">{{ principle.content }}</p>
+    <i (click)="principle.selected = !principle.selected" *ngIf="isMobileVersion" class="pi"
+      [ngClass]="principle.selected ? 'pi-chevron-up': 'pi-chevron-down'"></i>
   </li>
 </ul>

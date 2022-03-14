@@ -30,7 +30,7 @@ const MIDDLE_DURATION = 200;
     ]),
     trigger('zoomIn', [
       state('false', style({ width: AUTO_STYLE })),
-      state('true', style({ width: '48px' })),
+      state('true', style({ width: '64px' })),
       transition('false => true', animate(MIDDLE_DURATION + 'ms ease-in')),
       transition('true => false', animate(MIDDLE_DURATION + 'ms ease-out'))
     ]),

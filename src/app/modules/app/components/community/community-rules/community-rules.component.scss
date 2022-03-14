@@ -18,6 +18,28 @@
       @include cbsSideMargin(0, 1, 0, 1);
       display: flex;
 
+      &:hover {
+        .rule-title,
+        .cbs-text {
+          color: $secondary;
+        }
+
+        .picto-rule {
+          display: none;
+        }
+
+        .picto-hover {
+          display: block !important;
+        }
+
+        @media screen and (max-width: $screen-md) {
+          .cbs-text {
+            color: $second-gray;
+            display: block;
+          }
+        }
+      }
+
       & > * {
         flex: 1;
       }
@@ -48,28 +70,6 @@
       @media screen and (max-width: $screen-md) {
         .cbs-text {
           display: none;
-        }
-      }
-
-      &:hover {
-        .rule-title,
-        .cbs-text {
-          color: $secondary;
-        }
-
-        .picto-rule {
-          display: none;
-        }
-
-        .picto-hover {
-          display: block !important;
-        }
-
-        @media screen and (max-width: $screen-md) {
-          .cbs-text {
-            color: $second-gray;
-            display: block;
-          }
         }
       }
     }

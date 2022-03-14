@@ -68,26 +68,35 @@
       transform: translate(-50%, -50%);
     }
   }
+}
 
-  @media screen and (max-width: $screen-md) {
+@media screen and (max-width: $screen-md) {
+  .home-news-content-container {
     flex-direction: column;
     justify-content: center;
     @include cbsSidePadding(0, 0, 0, 0);
-
     height: 100%;
-
-    .news-under-title {
-      margin-top: 16px;
-    }
+    display: flex;
 
     .home-news-content {
       order: 2;
       width: 100%;
-    }
 
+      .news-title {
+        font-size: $font-size-1 !important;
+      }
+
+      .news-under-title {
+        margin: 16px 0;
+        font-size: $font-size-2 !important;
+      }
+    }
+    .img-container {
+      width: 100%;
+      min-height: 300px;
+    }
     img {
       order: 1;
-      min-width: 100%;
     }
   }
 }
