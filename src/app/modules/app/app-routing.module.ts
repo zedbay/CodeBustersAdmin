@@ -14,7 +14,6 @@ import { CommunityComponent } from './components/community/community/community.c
 import { JobOfferComponent } from './components/busters/job-offer/job-offer.component';
 import { NewsComponent } from './components/news/news/news.component';
 import { NewsDisplayElementComponent } from './components/news/news-display-element/news-display-element.component';
-import { NewsDisplayResolver } from './resolvers/news-display.resolver';
 import { HomeResolver } from './resolvers/home.resolver';
 
 const routes: Routes = [
@@ -62,10 +61,7 @@ const routes: Routes = [
       },
       {
         path: 'news/display',
-        component: NewsDisplayElementComponent,
-        resolve: {
-          data: NewsDisplayResolver
-        }
+        component: NewsDisplayElementComponent
       },
       {
         path: 'busters',

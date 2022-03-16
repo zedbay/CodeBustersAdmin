@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
-import {
-  Router, Resolve,
-  ActivatedRouteSnapshot
-} from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { BusterService } from 'src/app/core/services/buster.service';
-import { EventService } from 'src/app/core/services/event.service';
-import { JobService } from 'src/app/core/services/job.service';
-import { ProjectService } from 'src/app/core/services/project.service';
+import { News, NewsId, typeNewsToCallToAction } from 'src/app/modules/app/models/news.mode';
 import { Buster } from 'src/app/shared/models/buster';
-import { Event } from 'src/app/shared/models/event';
 import { Job } from 'src/app/shared/models/job';
+import { BusterService } from './buster.service';
+import { EventService } from './event.service';
+import { JobService } from './job.service';
+import { ProjectService } from './project.service';
+import { Event } from 'src/app/shared/models/event';
 import { Project } from 'src/app/shared/models/project';
-import { News, NewsId, typeNewsToCallToAction } from '../models/news.mode';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NewsDisplayResolver implements Resolve<News> {
+export class NewsService {
 
   public callToActions: { [key in NewsId]: (elementId: number) => Observable<News> } = {
     jobId: (jobId: number) => this.jobService
@@ -47,16 +43,11 @@ export class NewsDisplayResolver implements Resolve<News> {
     private busterService: BusterService,
     private eventService: EventService,
     private jobService: JobService,
-    private projectService: ProjectService,
-    private router: Router
+    private projectService: ProjectService
   ) { }
 
-  resolve(route: ActivatedRouteSnapshot): Observable<News> {
-    const keyNewsId: string = Object.keys(route.queryParams)[0];
-    const elementId: number = Number(route.queryParams[keyNewsId]);
-    if (!this.callToActions[keyNewsId]) {
-      this.router.navigate(['/error/404']);
-    }
-    return this.callToActions[keyNewsId](elementId);
+  public getNewsFromObject(key: NewsId, elementId: number): Observable<News> {
+    return this.callToActions[key](elementId);
   }
+
 }

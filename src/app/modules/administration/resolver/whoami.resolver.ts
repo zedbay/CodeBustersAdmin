@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { BusterService } from 'src/app/core/services/buster.service';
+import { LoginService } from 'src/app/core/services/login.service';
 import { Buster } from 'src/app/shared/models/buster';
 
 @Injectable({
@@ -9,9 +10,9 @@ import { Buster } from 'src/app/shared/models/buster';
 })
 export class WhoamiResolver implements Resolve<Buster> {
 
-  constructor(private busterService: BusterService) {
-
-  }
+  constructor(
+    private busterService: BusterService
+  ) { }
 
   resolve(): Observable<Buster> {
     return this.busterService.whoami();

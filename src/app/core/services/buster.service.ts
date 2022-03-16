@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { TableLabels } from 'src/app/modules/administration/shared/models/TableLabel.mode';
 import { NetworkService } from 'src/app/core/services/network.service';
 import { ResourcesService } from 'src/app/core/services/resources.service';
 import { Buster } from 'src/app/shared/models/buster';
 import { ToastService } from './toast.service';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class BusterService extends ResourcesService<Buster> {
 
   constructor(
     public networkService: NetworkService,
-    public toastService: ToastService
+    public toastService: ToastService,
+    private loginService: LoginService
   ) {
     super(
       'buster',
@@ -28,7 +30,13 @@ export class BusterService extends ResourcesService<Buster> {
   }
 
   public whoami(): Observable<Buster> {
-    return this.networkService.get<Buster>(`${this.endpoint}/whoami`);
+    return this.networkService.get<Buster>(`${this.endpoint}/whoami`)
+      .pipe(
+        catchError(() => {
+          this.loginService.logout();
+          return EMPTY;
+        })
+      );
   }
 
   public changePassword(currentPassword: string, password: string): Observable<boolean> {
