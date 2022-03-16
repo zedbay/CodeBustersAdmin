@@ -40,7 +40,8 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/styles"
+                "src/styles",
+                "src/app/modules/administration/styles"
               ]
             },
             "scripts": []

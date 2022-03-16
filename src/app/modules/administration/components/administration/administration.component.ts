@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MenuItem, Message, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { LoginService } from 'src/app/core/services/login.service';
@@ -18,7 +19,7 @@ export class AdministrationComponent implements OnInit {
 
   public menuItems: MenuItem[] = [
     {
-      label: 'Antoine Heurtault',
+      label: `${this.activatedRoute.snapshot.data.whoami.firstName} ${this.activatedRoute.snapshot.data.whoami.lastName}`,
       icon: 'pi pi-fw pi-user',
       items: [
         {
@@ -51,7 +52,8 @@ export class AdministrationComponent implements OnInit {
     private loginService: LoginService,
     private messageService: MessageService,
     private toastService: ToastService,
-    public dialogService: DialogService
+    public dialogService: DialogService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {

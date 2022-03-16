@@ -41,6 +41,7 @@
     margin-left: 24px;
     font-size: 32px;
     order: 2;
+    color: $white;
 
     &:hover {
       cursor: pointer;
@@ -52,6 +53,14 @@
   .links-container {
     display: flex;
     order: 1;
+
+    .link {
+      margin-left: 24px;
+      cursor: pointer;
+      &:hover {
+        color: $secondary;
+      }
+    }
   }
 }
 

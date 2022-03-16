@@ -6,6 +6,7 @@ import { SiteResolver } from '../../shared/resolvers/site.resolver';
 import { AdministrationComponent } from './components/administration/administration.component';
 import { LoginComponent } from './components/login/login.component';
 import { WebsiteComponent } from './components/website/website.component';
+import { WhoamiResolver } from './resolver/whoami.resolver';
 
 const routes: Routes = [
   {
@@ -17,6 +18,9 @@ const routes: Routes = [
     path: '',
     component: AdministrationComponent,
     canActivate: [AuthGuardService],
+    resolve: {
+      whoami: WhoamiResolver
+    },
     children: [
       {
         path: '',

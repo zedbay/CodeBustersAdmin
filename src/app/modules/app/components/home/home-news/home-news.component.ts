@@ -14,6 +14,8 @@ export class HomeNewsComponent implements OnInit {
 
   public imgPath = imgPath;
 
+  public primengCarouselSwipeFix = false;
+
   public homeContainers: {
     title: string,
     underTitle: string,
@@ -53,6 +55,17 @@ export class HomeNewsComponent implements OnInit {
     this.homeContainers[2].underTitle = `${buster.firstName} ${buster.lastName}`;
     const event: Event = this.activatedRoute.snapshot.data.data.event;
     this.homeContainers[1].underTitle = event.name;
+  }
+
+  ngAfterViewChecked(): void {
+    const carousels = document.querySelectorAll('.p-carousel-items-container');
+    if (this.primengCarouselSwipeFix === false && carousels.length > 0) {
+      carousels.forEach((carousel: any) => {
+        const fixEventIndex = 3;
+        carousel.removeEventListener("touchmove", carousel.eventListeners()[fixEventIndex]);
+      });
+      this.primengCarouselSwipeFix = true;
+    }
   }
 
   public goToElement(queryParams: Partial<{ [key in NewsId]: number }>): void {

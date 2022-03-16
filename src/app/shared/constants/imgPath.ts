@@ -1,4 +1,7 @@
 export const imgPath = {
+  error: {
+    notFound: 'assets/404.gif'
+  },
   linkedinLogo: 'assets/linkedin.png',
   buster: 'assets/buster.jpg',
   logo: 'assets/logo/logo.png',

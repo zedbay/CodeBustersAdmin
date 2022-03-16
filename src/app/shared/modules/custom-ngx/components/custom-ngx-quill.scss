@@ -4,7 +4,7 @@
 .custom-ngx-quill-editor,
 .custom-ngx-quill-view {
   * {
-    font-family: "GothamMedium", sans-serif !important;
+    font-family: "GothamBook", sans-serif !important;
     font-size: $font-size-4;
   }
 
@@ -24,19 +24,20 @@
 
   p,
   span {
+    font-family: "GothamBook", sans-serif !important;
     font-size: $font-size-4 !important;
   }
 
   h4,
   h4 span {
     font-size: $font-size-1 !important;
-    font-family: "GothamBold", sans-serif !important;
+    font-family: "GothamMedium", sans-serif !important;
   }
 
   h3,
   h3 span {
     font-size: $font-size-3 !important;
-    font-family: "GothamBold", sans-serif !important;
+    font-family: "GothamMedium", sans-serif !important;
   }
 
   h2,

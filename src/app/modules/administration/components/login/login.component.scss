@@ -1,6 +1,41 @@
+@import "colors";
+
 :host {
   display: flex;
   height: 100vh;
   justify-content: center;
   align-items: center;
+
+  background-image: url("../../../../../assets/Administration/dustin-humes-cy8fjF0thec-unsplash.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    box-shadow: inset 0px 0px 300px black;
+    z-index: 0;
+  }
+}
+
+.admin-card {
+  z-index: 1;
+  color: $white;
+  width: 400px;
+  padding: 24px;
+  backdrop-filter: blur(12px) saturate(64%);
+  -webkit-backdrop-filter: blur(12px) saturate(64%);
+  background-color: rgba(30, 33, 35, 0.52);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+
+  .login-form {
+    margin-top: 24px;
+  }
 }

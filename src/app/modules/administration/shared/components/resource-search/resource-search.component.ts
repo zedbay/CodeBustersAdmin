@@ -34,7 +34,7 @@ export class ResourceSearchComponent<T extends Resource> implements OnInit {
 
   public search(event) {
     this.results = this.resources
-      .map((r: T) =>  this.resourceService.searchNameOnResource(r))
+      .map((r: T) => this.resourceService.searchNameOnResource(r))
       .filter((name: string) => name.toLocaleLowerCase().includes(event.query.toLocaleLowerCase()));
   }
 

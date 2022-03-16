@@ -27,6 +27,10 @@ export class BusterService extends ResourcesService<Buster> {
     );
   }
 
+  public whoami(): Observable<Buster> {
+    return this.networkService.get<Buster>(`${this.endpoint}/whoami`);
+  }
+
   public changePassword(currentPassword: string, password: string): Observable<boolean> {
     return this.networkService.put<boolean>('password', { currentPassword, password });
   }

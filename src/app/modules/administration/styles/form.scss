@@ -1,3 +1,53 @@
+@import "constants";
+@import "colors";
+
+.cbs-admin-form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.cbs-admin-form-actions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cbs-admin-error-message {
+  color: red;
+  margin: 8px 0;
+  font-size: $font-size-3;
+  font-family: "GothamMedium";
+}
+
+.cbs-admin-form-label {
+  color: $white;
+  font-size: $font-size-3;
+  font-family: "GothamMedium";
+  margin-bottom: 8px;
+}
+
+.cbs-admin-input {
+}
+
+.cbs-admin-input-password {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.cbs-admin-main-action {
+  color: $white !important;
+  font-family: "GothamBold" !important;
+  font-size: $font-size-3 !important;
+  padding: 8px 32px !important;
+  &:disabled {
+    cursor: not-allowed !important;
+  }
+}
+
+// OLD
+
 .edit-field {
   display: flex;
   flex-direction: column;

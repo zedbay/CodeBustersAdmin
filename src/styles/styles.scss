@@ -1,70 +1,23 @@
-@import "colors";
-@import "constants";
-
-body {
-  margin: 0;
-}
-
-@font-face {
-  font-family: "GothamBold";
-  src: url("../assets/fonts/GothamCond-Bold.woff") format("woff");
-}
-
-@font-face {
-  font-family: "GothamMedium";
-  src: url("../assets/fonts/GothamCond-Medium.woff") format("woff");
-}
-
-@font-face {
-  font-family: "GothamLight";
-  src: url("../assets/fonts/GothamCond-Light.woff") format("woff");
-}
-
-@font-face {
-  font-family: "GothamBook";
-  src: url("../assets/fonts/GothamBook.woff") format("woff");
-}
-
 * {
   scroll-behavior: smooth;
-
   outline: none !important;
-
-  a {
-    color: unset;
-    text-decoration: unset;
-  }
 
   h1,
   h2,
   h3,
   h4,
   h5,
-  p {
-    margin: 0;
-  }
-
-  ul {
+  p,
+  ul,
+  a,
+  body {
+    text-decoration: unset;
     margin: 0;
     list-style: none;
     padding: 0;
-    color: $white;
-
-    li {
-      margin-left: 24px;
-      &.separator {
-        border: solid $white;
-        border-width: 0 0 0 1px;
-        padding-left: 24px;
-      }
-
-      &:hover {
-        cursor: pointer;
-        color: $secondary;
-      }
-    }
   }
 }
 
+@import "admin";
+
 @import "./design-system/index.scss";
-@import "./admin/index.scss";

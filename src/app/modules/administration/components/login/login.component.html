@@ -1,17 +1,21 @@
-<div>
-  <form [formGroup]="loginForm">
-    <div class="edit-field">
-      <label class="edit-label">Email</label>
-      <input class="edit-input" formControlName="email" type="email" pInputText />
+<div class="admin-card">
+  <h1 class="cbs-font-size-2 cbs-gotham-medium">Espace Administration</h1>
+  <form [formGroup]="loginForm" class="login-form">
+    <div class="cbs-admin-form-field">
+      <label class="cbs-admin-form-label">Email</label>
+      <input (keyup.enter)="login()" class="cbs-admin-input" formControlName="email" type="email" pInputText />
     </div>
-    <div class="edit-field">
-      <label class="edit-label">Password</label>
-      <p-password formControlName="password" [feedback]="false"></p-password>
+    <div class="cbs-admin-form-field">
+      <label class="cbs-admin-form-label">Password</label>
+      <p-password (keyup.enter)="login()" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+        class="cbs-admin-input-password" formControlName="password" [feedback]="false"></p-password>
     </div>
   </form>
-  <div class="edit-actions">
-    <button pButton type="button" iconPos="left" label="Login" class="edit-save p-button-outlined p-button-success"
-      (click)="login()" [disabled]="loginForm.invalid"></button>
+  <p class="cbs-admin-error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+  <a class="cbs-admin-link">Mot de passe oublié ?</a>
+  <div class="cbs-admin-form-actions">
+    <button label="Connexion" pButton [loading]="isLoading" type="button" iconPos="left"
+      class="p-button-outlined p-button-success cbs-admin-main-action" (click)="login()" [disabled]="loginForm.invalid">
+    </button>
   </div>
-
 </div>

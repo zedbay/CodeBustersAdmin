@@ -21,14 +21,21 @@ const routes: Routes = [
   {
     path: '',
     component: AppComponent,
-    resolve: {
-      site: SiteResolver
-    },
     children: [
       {
+        path: 'error',
+        loadChildren: () => import('./error/error.module').then(m => m.ErrorModule)
+      },
+      {
         path: '',
+        pathMatch: 'full',
+        redirectTo: 'home'
+      },
+      {
+        path: 'home',
         component: HomeComponent,
         resolve: {
+          site: SiteResolver,
           data: HomeResolver
         }
       },
@@ -79,13 +86,13 @@ const routes: Routes = [
             }
           }
         ]
-      },
-      {
-        path: '*',
-        component: HomeComponent
       }
-    ]
+    ],
   },
+  {
+    path: '**',
+    redirectTo: 'error/404'
+  }
 ];
 
 @NgModule({

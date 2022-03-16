@@ -17,6 +17,7 @@ import { PanelModule } from 'primeng/panel';
 import { ToastModule } from 'primeng/toast';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
     TabViewModule,
     PanelModule,
     ToastModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    ProgressSpinnerModule
   ]
 })
 export class AdministrationModule { }

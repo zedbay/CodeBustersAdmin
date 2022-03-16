@@ -1,3 +1,17 @@
+@import "./form.scss";
+@import "constants";
+@import "colors";
+
+.cbs-admin-link {
+  font-family: "GothamMedium";
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+// OLD
 .list-header {
   display: flex;
   justify-content: space-between;
