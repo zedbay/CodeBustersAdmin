@@ -1,7 +1,0 @@
-@import "constants";
-@import "mixin";
-
-.contact-link {
-  display: block;
-  @include cbsSideMargin(0, 1, 1, 1);
-}

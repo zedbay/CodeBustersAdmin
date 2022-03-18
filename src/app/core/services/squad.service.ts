@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { TableLabels } from 'src/app/modules/administration/shared/models/TableLabel.mode';
 import { NetworkService } from 'src/app/core/services/network.service';
 import { ResourcesService } from 'src/app/core/services/resources.service';
 import { Squad } from 'src/app/shared/models/squad';
+import { TableLabels } from 'src/app/shared/models/TableLabel.mode';
 
 @Injectable({
   providedIn: 'root'

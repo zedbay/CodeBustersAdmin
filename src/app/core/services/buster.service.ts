@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable } from 'rxjs';
-import { TableLabels } from 'src/app/modules/administration/shared/models/TableLabel.mode';
 import { NetworkService } from 'src/app/core/services/network.service';
 import { ResourcesService } from 'src/app/core/services/resources.service';
 import { Buster } from 'src/app/shared/models/buster';
 import { ToastService } from './toast.service';
 import { catchError, tap } from 'rxjs/operators';
 import { LoginService } from './login.service';
+import { TableLabels } from 'src/app/shared/models/TableLabel.mode';
 
 @Injectable({
   providedIn: 'root'

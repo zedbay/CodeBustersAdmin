@@ -1,9 +1,0 @@
-@import "colors";
-@import "constants";
-@import "mixin";
-
-.became-buster-container {
-  display: flex;
-  justify-content: center;
-  @include cbsSideMargin(0.6, 0, 1, 0);
-}
