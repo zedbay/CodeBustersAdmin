@@ -1,0 +1,22 @@
+<div class="edit-category">
+  <form [formGroup]="busterSquadForm" class="edit-form" *ngIf="squad">
+    <div class="edit-field">
+      <label class="edit-label">Name</label>
+      <input class="edit-input" formControlName="name" type="text" pInputText />
+    </div>
+  </form>
+  <div class="edit-actions">
+    <button *ngIf="squad" pButton type="button" icon="pi pi-directions" iconPos="left" label="Go To Squad"
+      class="p-button-outlined p-button-secondary" [routerLink]="['/admin/squad']"
+      [queryParams]="{ resourceId: squad.id }"></button>
+    <button *ngIf="squad" pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Membership"
+      class="edit-save p-button-outlined p-button-danger" (click)="removeMembershipOfSquad(squad.id)"></button>
+  </div>
+
+  <div *ngIf="!squad">
+    <p class="empty-list-message">This buster isn't member of squad :(</p>
+    <app-resource-search actionLabel="Add Squad" [resourceService]="squadService"
+      (selectionEmitter)="addMembership($event)">
+    </app-resource-search>
+  </div>
+</div>

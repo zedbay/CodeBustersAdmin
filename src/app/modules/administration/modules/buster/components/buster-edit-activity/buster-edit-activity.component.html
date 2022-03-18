@@ -1,0 +1,36 @@
+<div class="edit-category">
+  <h4>Buster's current client</h4>
+  <form [formGroup]="busterCurrentClientForm" class="edit-form" *ngIf="currentClient">
+    <div class="edit-field">
+      <label class="edit-label">Name</label>
+      <input class="edit-input" formControlName="name" type="text" pInputText />
+    </div>
+  </form>
+
+  <div class="edit-actions">
+    <button *ngIf="currentClient" pButton type="button" icon="pi pi-directions" iconPos="left" label="Go To Client"
+      class="p-button-outlined p-button-secondary" [routerLink]="['/admin/client']"
+      [queryParams]="{ resourceId: currentClient.id }"></button>
+    <button *ngIf="currentClient" pButton type="button" icon="pi pi-minus" iconPos="left" label="Remove Current Client"
+      class="edit-save p-button-outlined p-button-danger" (click)="removeCurrentClient(currentClient.id)"></button>
+  </div>
+
+  <div *ngIf="!currentClient">
+    <p class="empty-list-message">This buster hasn't current client yet :(</p>
+    <app-resource-search actionLabel="Add Current Client" [resourceService]="clientService"
+      (selectionEmitter)="addCurrentClient($event)">
+    </app-resource-search>
+  </div>
+</div>
+
+<div class="edit-category">
+  <h4 class="edit-category-title">Buster's projects</h4>
+  <app-resource-listing [disableSelection]=true [resourceService]="projectService" [resources]="projects"
+    [resourcesActions]="projectsListingAction">
+  </app-resource-listing>
+  <p class="empty-list-message" *ngIf="!projects || projects.length === 0">This
+    buster
+    hasn't project yet</p>
+  <app-resource-search actionLabel="Add Project" [resourceService]="projectService"
+    (selectionEmitter)="addingProject($event)"></app-resource-search>
+</div>

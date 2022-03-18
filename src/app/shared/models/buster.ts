@@ -18,4 +18,5 @@ export interface Buster extends Resource {
   profilPictureName: string;
   startingDate: string;
   createdDate?: string;
+  isAdmin: boolean;
 }

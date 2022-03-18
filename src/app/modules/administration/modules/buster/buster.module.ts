@@ -15,13 +15,20 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { BusterProfilPictureComponent } from './components/buster-profil-picture/buster-profil-picture.component';
 import { CalendarModule } from 'primeng/calendar';
 import { CustomNgxModule } from 'src/app/shared/modules/custom-ngx/custom-ngx.module';
+import { CheckboxModule } from 'primeng/checkbox';
+import { BusterEditTechnologiesComponent } from './components/buster-edit-technologies/buster-edit-technologies.component';
+import { BusterEditSquadComponent } from './components/buster-edit-squad/buster-edit-squad.component';
+import { BusterEditActivityComponent } from './components/buster-edit-activity/buster-edit-activity.component';
 
 
 @NgModule({
   declarations: [
     BusterEditComponent,
     BusterComponent,
-    BusterProfilPictureComponent
+    BusterProfilPictureComponent,
+    BusterEditTechnologiesComponent,
+    BusterEditSquadComponent,
+    BusterEditActivityComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +44,8 @@ import { CustomNgxModule } from 'src/app/shared/modules/custom-ngx/custom-ngx.mo
     TabViewModule,
     InputTextareaModule,
     CalendarModule,
-    CustomNgxModule
+    CustomNgxModule,
+    CheckboxModule
   ],
   exports: [
     BusterComponent

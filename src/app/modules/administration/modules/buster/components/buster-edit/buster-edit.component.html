@@ -42,7 +42,13 @@
             </div>
           </div>
 
-          <div class="edit-field">
+          <div class="field-checkbox edit-field-checkbox">
+            <p-checkbox [binary]="true" formControlName="isAdmin" inputId="isAdmin">
+            </p-checkbox>
+            <label class="edit-label" for="isAdmin">Est un administrateur</label>
+          </div>
+
+          <div class="edit-field edit-description">
             <label class="edit-label">Description</label>
             <app-custom-ngx-quill formControlName="description"></app-custom-ngx-quill>
           </div>
@@ -60,8 +66,6 @@
       </div>
     </p-tabPanel>
 
-
-
     <ng-container *ngIf="!_createMode">
 
       <p-tabPanel header="Profil picture">
@@ -69,98 +73,20 @@
       </p-tabPanel>
 
       <p-tabPanel header="Buster's squad">
-        <ng-container *ngIf="!_createMode">
-          <div class="edit-category">
-            <form [formGroup]="busterSquadForm" class="edit-form" *ngIf="_resource.squad">
-              <div class="edit-field">
-                <label class="edit-label">Name</label>
-                <input class="edit-input" formControlName="name" type="text" pInputText />
-              </div>
-            </form>
-            <div class="edit-actions">
-              <button *ngIf="_resource.squad" pButton type="button" icon="pi pi-directions" iconPos="left"
-                label="Go To Squad" class="p-button-outlined p-button-secondary" [routerLink]="['/admin/squad']"
-                [queryParams]="{ resourceId: _resource.squad.id }"></button>
-              <button *ngIf="_resource.squad" pButton type="button" icon="pi pi-minus" iconPos="left"
-                label="Remove Membership" class="edit-save p-button-outlined p-button-danger"
-                (click)="removeMembershipOfSquad(_resource.squad.id)"></button>
-            </div>
-
-            <div *ngIf="!_resource.squad">
-              <p class="empty-list-message">This buster isn't member of squad :(</p>
-              <app-resource-search actionLabel="Add Squad" [resourceService]="squadService"
-                (selectionEmitter)="addMembership($event)">
-              </app-resource-search>
-            </div>
-          </div>
-
-        </ng-container>
+        <app-buster-edit-squad [squad]="_resource.squad" [resourceId]="_resource.id"></app-buster-edit-squad>
       </p-tabPanel>
 
       <p-tabPanel header="Buster's activity">
-        <div class="edit-category">
-          <h4>Buster's current client</h4>
-          <form [formGroup]="busterCurrentClientForm" class="edit-form" *ngIf="_resource.currentClient">
-            <div class="edit-field">
-              <label class="edit-label">Name</label>
-              <input class="edit-input" formControlName="name" type="text" pInputText />
-            </div>
-          </form>
-
-          <div class="edit-actions">
-            <button *ngIf="_resource.currentClient" pButton type="button" icon="pi pi-directions" iconPos="left"
-              label="Go To Client" class="p-button-outlined p-button-secondary" [routerLink]="['/admin/client']"
-              [queryParams]="{ resourceId: _resource.currentClient.id }"></button>
-            <button *ngIf="_resource.currentClient" pButton type="button" icon="pi pi-minus" iconPos="left"
-              label="Remove Current Client" class="edit-save p-button-outlined p-button-danger"
-              (click)="removeCurrentClient(_resource.currentClient.id)"></button>
-          </div>
-
-          <div *ngIf="!_resource.currentClient">
-            <p class="empty-list-message">This buster hasn't current client yet :(</p>
-            <app-resource-search actionLabel="Add Current Client" [resourceService]="clientService"
-              (selectionEmitter)="addCurrentClient($event)">
-            </app-resource-search>
-          </div>
-        </div>
-
-        <div class="edit-category">
-          <h4 class="edit-category-title">Buster's projects</h4>
-          <app-resource-listing [disableSelection]=true [resourceService]="projectService"
-            [resources]="_resource.projects" [resourcesActions]="projectsListingAction">
-          </app-resource-listing>
-          <p class="empty-list-message" *ngIf="!_resource.technologies || _resource.technologies.length === 0">This
-            buster
-            hasn't project yet</p>
-          <app-resource-search actionLabel="Add Project" [resourceService]="projectService"
-            (selectionEmitter)="addingProject($event)"></app-resource-search>
-        </div>
+        <app-buster-edit-activity [resourceId]="_resource.id" [currentClient]="_resource.currentClient"
+          [projects]="_resource.projects"></app-buster-edit-activity>
       </p-tabPanel>
 
       <p-tabPanel header="Buster's technologies">
-        <div class="edit-category">
-          <app-resource-listing [disableSelection]=true [resourceService]="technoService"
-            [resources]="_resource.technologies" [resourcesActions]="technologiesListingAction">
-          </app-resource-listing>
-          <p class="empty-list-message" *ngIf="!_resource.technologies || _resource.technologies.length === 0">This
-            buster
-            don't
-            knows any
-            technology</p>
-          <app-resource-search actionLabel="Add Technology" [resourceService]="technoService"
-            (selectionEmitter)="onAddingTechno($event)"></app-resource-search>
-        </div>
+        <app-buster-edit-technologies [resourceId]="_resource.id" [technologies]="_resource.technologies">
+        </app-buster-edit-technologies>
       </p-tabPanel>
+
     </ng-container>
 
-
-
   </p-tabView>
-
-
-
-
-
-
-
 </div>

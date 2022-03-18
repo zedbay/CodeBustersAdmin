@@ -48,6 +48,13 @@
 
 // OLD
 
+.edit-field-checkbox {
+  margin: 8px 0;
+  .edit-label {
+    margin-left: 8px;
+  }
+}
+
 .edit-field {
   display: flex;
   flex-direction: column;
